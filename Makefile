@@ -1,5 +1,5 @@
 CC	= gcc
-VPATH	=integrand:x-sec
+VPATH	=ops:x-sec
 CFLAGS= -I. -lgsl -lgslcblas -lm
 DEPS	= core.h
 ODIR	= obj

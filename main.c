@@ -44,7 +44,7 @@ int main() {                                  //Main fnc: to explore...        T
 
   for (int nf=0;nf<1;nf++) {                                     // loop over active quark flavours
 
-    Nf=nf;    qgp(Nf);  Temp=1.;
+    Nf=nf;    qgp(Nf);  Temp=1.;  double res;
 
     /*sprintf(fname, "out/M_eff, (kappa=%.2f) Nf=%d.csv",kappa, Nf);         file = fopen(fname,"w+");*/
     sprintf(fname, "../comparisons/temp.dep/HTL, Nf=%d.csv",kappa, Nf);    file = fopen(fname,"w+");
@@ -58,16 +58,20 @@ int main() {                                  //Main fnc: to explore...        T
     fprintf(file,   "#\n"                                                                         );
     fprintf(file,   "# T,       eta/T^3\n"                                                        );
 
+    printf("\n  :  T/Tc  :    rel err    :   chisq/dof  :  eta/T^3  :\n" );
+    printf("  -----------------------------------------------------\n" );
     for(int i=0; i<points; i++) {
 
       /*g = 10.*pow(10., -(points -1 - i)*4./((double) points - 1));    // evaluate at g = ...*/
       /*printf("%.5f\n", g);*/
 
       Temp = 1. + 3.*( ((double) i)/((double) points) );
-      printf("%.5f : \n", Temp);
- 
-      fprintf(file, "%.8f",Temp);  fprintf(file, ",%.8f\n", eta()/pow(Temp,3) );
+      printf("  :  %-1.2f  :", Temp);
+      res = eta()/pow(Temp,3);
+      fprintf(file, "%.8f",Temp);  fprintf(file, ",%.8f\n", res );
+      printf("   %-1.3f   :\n", res);
     };
+    printf("  -----------------------------------------------------\n" );
     fclose(file);
   }
 
