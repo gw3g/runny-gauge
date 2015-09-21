@@ -42,10 +42,10 @@ double alphas(double Q2) {                                                      
 
 double *M_2(double e[4], double s, double t) {          // energies & Mandelstam invariants :
 
-  double  u = -s-t,                                     e1 = e[0],e2 = e[1],e3 = e[2], e4 = e[3],
-         s2 = s*s,  u2 = u*u,   t2 = t*t, 
-         tu = t*u,  us = u*s,   ts = t*s;
-
+  double  u = -s-t,                                     e1 = e[0],e2 = e[1],e3 = e[2],e4 = e[3],
+         s2 = s*s,  u2 = u*u,   t2 = t*t,
+         tu = t*u,  us = u*s,   ts = t*s;               // need temp units :
+                                                        e1*= Temp;e2*= Temp;e3*= Temp;e4*= Temp;
   double                                                                // parametric dependence
     at = alphas(t),                     at2 = at*at,
     au = alphas(u),                     au2 = au*au,

@@ -74,13 +74,12 @@ double *Sig(double z, pol X) {
  */
 double Replace_G(double s, double t, double e3, double e4, double o, double mu2 ) {
   // ---------------------------------------------
-  // e3, e4   :   outgoing energies (units of T!)
-  // t, o     :   exchanged momenta, omega in units of T
+  // e3, e4   :   outgoing energies
+  // t, o     :   exchanged momenta
   // mu2      :   thermal mass (to multiply HTL)
   // ---------------------------------------------
   double 
-    o2=pow(o*Temp,2), q2=o2-t, z=o/sqrt(q2), 
-    p14p23=(2*e4-o)*(2*e3+o)*pow(Temp,2);                   //(e1+e4).(e2+e3)
+    o2=o*o, q2=o2-t, z=o/sqrt(q2), p14p23=(2*e4-o)*(2*e3+o);                   //(e1+e4).(e2+e3)
 
   /*double m2 = ( (t + Temp*Temp) < 0 ) ? 0. : mu2;*/
   double m2 = mu2;                                          // AP, 150918: no restriction on HTL
