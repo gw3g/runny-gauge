@@ -47,7 +47,7 @@ int main() {                                  //Main fnc: to explore...        T
     Nf=nf;    qgp(Nf);  Temp=1.;
 
     /*sprintf(fname, "out/M_eff, (kappa=%.2f) Nf=%d.csv",kappa, Nf);         file = fopen(fname,"w+");*/
-    sprintf(fname, "out/HTL, Nf=%d.csv",kappa, Nf);         file = fopen(fname,"w+");
+    sprintf(fname, "../comparisons/temp.dep/HTL, Nf=%d.csv",kappa, Nf);    file = fopen(fname,"w+");
 
     fprintf(file,   "# GJ, eta w/ only 2->2 processes\n"                                          );
     fprintf(file,   "# Nf = %d, Lambda/Tc=%.2f\n",Nf,lambda                                       );
