@@ -25,7 +25,7 @@ double xCx( double (*chi)(double,p_type) ) {
     gsl_monte_vegas_integrate(&coll,lower,upper,5,calls,ws,s,&res,&err);
   }
   while (fabs(gsl_monte_vegas_chisq(s)-1.0) > 0.2);
-  printf("result = %.5f, relErr = %.5f, chisq/dof = %.2f\n", res, err/res, gsl_monte_vegas_chisq(s) );
+  printf("  %.8f   :    %.5f   :", err/res, gsl_monte_vegas_chisq(s) );
   gsl_monte_vegas_free(s);                                                    // free memory
 
   return res;
