@@ -50,9 +50,9 @@ int main() {                                  //Main fnc: to explore...        T
     sprintf(fname, "../comparisons/temp.dep/HTL, Nf=%d.csv",kappa, Nf);    file = fopen(fname,"w+");
 
     fprintf(file,   "# GJ, eta w/ only 2->2 processes\n"                                          );
-    fprintf(file,   "# Nf = %d, Lambda/Tc=%.2f\n",Nf,lambda                                       );
+    fprintf(file,   "# Nf = %d, Lambda/Tc=%.3f\n",Nf,lambda                                       );
     fprintf(file,   "# screening: htl\n"                                                          );
-    /*fprintf(file,   "# screening: M_eff, kappa = %.2f\n",kappa                                    );*/
+    /*fprintf(file,   "# screening: M_eff, kappa = %.4f\n",kappa                                    );*/
     fprintf(file,   "# 1-fnc basis (Legendre)\n"                                                  );
     fprintf(file,   "# MC samples, %d\n",(int) calls                                              );
     fprintf(file,   "#\n"                                                                         );
