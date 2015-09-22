@@ -26,7 +26,7 @@ double                                                        // boundaries:
 double integrand(double *args, size_t dim, void *p) {         // the integrand:
 
   /* recover members */
-  struct pair * fp = (struct pair *)p;
+  struct f_params * fp = (struct pair *)p;
 
   double
     y   = args[0],                                            // args0 = y    ~ s
@@ -56,7 +56,6 @@ double integrand(double *args, size_t dim, void *p) {         // the integrand:
                                 x23 = 1. + t/(2.*e2*e3),    x24 = 1. + u/(2.*e2*e4),
                                                             x34 = 1. - s/(2.*e3*e4);
 
-
   /* calculation */
   double e[4] = {e1/Temp,e2/Temp,e3/Temp,e4/Temp};
 
@@ -85,12 +84,6 @@ double integrand(double *args, size_t dim, void *p) {         // the integrand:
     /*R = all_R[i];*/
     /*printf("%.4f \n", (double) all_R[i].multiplicity);*/
     result += kernel(e, s, t, all_R[i])                         // combine reaction kernels
-              /*chi( e[3], all_R[i].particles[3]*(*/
-                                                  /*chi( e[0], all_R[i].particles[0] )*/
-                                                /*+ chi( e[1], all_R[i].particles[1] )*/
-                                                /*- chi( e[2], all_R[i].particles[2] )*/
-                                                /*- chi( e[3], all_R[i].particles[3] )*/
-                  /*)*/
               *qForm( 
                       chi( e[0], all_R[i].particles[0] ),
                       chi( e[1], all_R[i].particles[1] ),
