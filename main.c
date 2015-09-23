@@ -21,9 +21,10 @@
                               // ------------------------
 int             HTL  = 1   ;  // =1 for HTL, =0 for M_eff
 double        kappa  = 1.00;  // kappa*mD^2
-size_t        calls  = 1e4 ;  // MC calls
+size_t        calls  = 1e6 ;  // MC calls
 int         alf_run  = 1   ;  // =1 for running coupling
 double       lambda  = 1.0 ;  // lambda / T_c
+int            pDep  = 0   ;  // 1 : \eta(alf), 0 : \eta(T)
 
 
 /*-----------------------------------------------------------------------------------------------*/
@@ -42,34 +43,50 @@ int main() {                                  //Main fnc: to explore...        T
 
   int points = 20;                            char fname[40];                           FILE *file;
 
-  for (int nf=0;nf<1;nf++) {                                     // loop over active quark flavours
+  for (int nf=0;nf<7;nf++) {                                     // loop over active quark flavours
 
-    Nf=nf;    qgp(Nf);  Temp=1.;  double res;
+    Nf=nf;    qgp(Nf);  Temp=3.;  double res;
 
-    /*sprintf(fname, "out/M_eff, (kappa=%.2f) Nf=%d.csv",kappa, Nf);         file = fopen(fname,"w+");*/
-    sprintf(fname, "../comparisons/temp.dep/HTL, Nf=%d.csv",kappa, Nf);    file = fopen(fname,"w+");
+                                                                                if (  pDep && !HTL )
+    sprintf(fname, "../comparisons/all.nf/M_eff, (kappa=%.2f) Nf=%d.csv",kappa, Nf                );
+                                                                                if (  pDep &&  HTL )
+    sprintf(fname, "../comparisons/all.nf/HTL, Nf=%d.csv",kappa, Nf                               );
+                                                                                if ( !pDep && !HTL )
+    sprintf(fname, "../comparisons/temp.dep/M_eff, (kappa=%.2f) Nf=%d.csv",kappa, Nf              );
+                                                                                                else
+    sprintf(fname, "../comparisons/temp.dep/HTL, Nf=%d.csv",kappa, Nf                             );
+
+    if (HTL) kappa = 1.;                                                   file = fopen(fname,"w+");
+    /*sprintf(fname, "../comparisons/temp.dep/HTL, Nf=%d.csv",kappa, Nf);    file = fopen(fname,"w+");*/
 
     fprintf(file,   "# GJ, eta w/ only 2->2 processes\n"                                          );
     fprintf(file,   "# Nf = %d, Lambda/Tc=%.3f\n",Nf,lambda                                       );
-    fprintf(file,   "# screening: htl\n"                                                          );
-    /*fprintf(file,   "# screening: M_eff, kappa = %.4f\n",kappa                                    );*/
+    if (HTL)  fprintf(file,   "# screening: htl\n"                                                );
+    else fprintf(file,   "# screening: M_eff, kappa = %.4f\n",kappa                               );
     fprintf(file,   "# 1-fnc basis (Legendre)\n"                                                  );
     fprintf(file,   "# MC samples, %d\n",(int) calls                                              );
     fprintf(file,   "#\n"                                                                         );
-    fprintf(file,   "# T,       eta/T^3\n"                                                        );
+    if (pDep) fprintf(file, "  g,      eta/T^3\n"                                                 );
+    else      fprintf(file,   "# T,       eta/T^3\n"                                              );
 
-    printf("\n  :  T/Tc  :    rel err    :   chisq/dof  :  eta/T^3  :\n" );
+    printf("\n [ Nf = %d ] \n", nf );
+    printf("  -----------------------------------------------------\n" );                if ( pDep )
+    printf("  :  g     :    rel err    :   chisq/dof  :  eta/T^3  :\n" );                       else
+    printf("  :  T/Tc  :    rel err    :   chisq/dof  :  eta/T^3  :\n" );
     printf("  -----------------------------------------------------\n" );
     for(int i=0; i<points; i++) {
-
-      /*g = 10.*pow(10., -(points -1 - i)*4./((double) points - 1));    // evaluate at g = ...*/
-      /*printf("%.5f\n", g);*/
-
-      Temp = 1. + 3.*( ((double) i)/((double) points) );
+                                                                                         if ( pDep )
+    { g = 10.*pow(10., -(points -1 - i)*4./((double) points - 1)); Temp = 1.;                      
+      printf("  :  %-1.2f  :", g);
+    }
+                                                                                                else
+    { Temp = 1. + 3.*( ((double) i)/((double) points) );              g = 1.;                      
       printf("  :  %-1.2f  :", Temp);
+    }
       res = eta()/pow(Temp,3);
-      fprintf(file, "%.8f",Temp);  fprintf(file, ",%.8f\n", res );
-      printf("   %-1.3f   :\n", res);
+      if ( pDep ) fprintf(file, "%.8f",g); else fprintf(file, "%.8f", Temp);
+
+      fprintf(file, ",%.8f\n", res );printf("   %-1.3f  :\n",res);
     };
     printf("  -----------------------------------------------------\n" );
     fclose(file);
