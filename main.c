@@ -24,8 +24,6 @@ double        kappa  = 1.00;  // kappa*mD^2
 size_t        calls  = 1e3 ;  // MC calls
 int         alf_run  = 1   ;  // =1 for running coupling
 double       lambda  = 1.0 ;  // lambda / T_c
-int            pDep  = 0   ;  // 1 : \eta(alf), 0 : \eta(T)
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /*
@@ -45,7 +43,7 @@ void eval_T(double Tmin, double Tmax)
 { alf_run=1; int points = 20; g = 1.; double res;
 
        if (!HTL) sprintf(fname, "out/M_eff, (kappa=%.2f) Nf=%d.csv", kappa, Nf                    );
-  else if  (HTL) sprintf(fname, "out/HTL, Nf=%d.csv", Nf                                          );
+  else if  (HTL) sprintf(fname, "out/HTL, Nf=%d, q2_l_T2.csv", Nf                                          );
 
   file = fopen(fname,"w+");
 
@@ -70,7 +68,7 @@ void eval_T(double Tmin, double Tmax)
     fprintf(file, "%.8f", Temp);
     res = eta()/pow(Temp,3);
     fprintf(file, ",%.8f\n", res );
-    printf("   %-1.3f  :\n",res);
+    printf("   %-1.3f   :\n",res);
   }
   printf("  -----------------------------------------------------\n" );
   fclose(file);
@@ -117,7 +115,8 @@ int main() {                                  //Main fnc: to explore...        T
 
   for (int nf=0;nf<1;nf++) {                                     // loop over active quark flavours
     Nf = nf; qgp(Nf);
-    eval_g(0.001,10.);
+    HTL = 1 ; eval_T(1.0,5.);
+    /*HTL = 0 ; kappa = 0.25; eval_T(1.0,5.);*/
   }
 
   return 0;
