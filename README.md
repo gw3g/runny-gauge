@@ -2,8 +2,14 @@
 
 transport coefficients in hot gauge theories, eta (T,g) with Nf = 0, ... 6
 
+_Usage_: (produces CSV data files, default 20 points)
+* ```eval_g(gmin, gmax)``` evaluates \eta(g)/T^3
+* ```eval_T(Tmin, Tmax)``` evaluates \eta(T)/T^3
+
+
 leading-log [AMY1](http://arxiv.org/abs/hep-ph/0010177)
 & beyond [AMY2](http://arxiv.org/abs/hep-ph/0302165)
+
 
   file          |   purpose
 ----------------|-------------:
@@ -21,5 +27,5 @@ Currently, the function main() will calculate eta(g) in units
 of T for Nf = 0,...,6 . A *rough* UML diagram is shown in 
 "~/doc/layout.jpg".
 
-OUTPUT: to "~/out/", csv format
+OUTPUT: to "~/out/", use GLE to plot.
 
