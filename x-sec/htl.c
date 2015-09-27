@@ -81,6 +81,7 @@ double Replace_G(double s, double t, double e3, double e4, double o, double mu2 
   double 
     o2=o*o, q2=o2-t, z=o/sqrt(q2), p14p23=(2*e4-o)*(2*e3+o);                   //(e1+e4).(e2+e3)
 
+  /*double m2 = ( Temp*Temp < q2 ) ? 0. : mu2;*/
   /*double m2 = ( (t + Temp*Temp) < 0 ) ? 0. : mu2;*/
   double m2 = mu2;                                          // AP, 150918: no restriction on HTL
 
