@@ -7,8 +7,8 @@ _OBJ	= main.o basis.o qcd.o amy_prepInt.o operators.o thermal.o htl.o
 OBJ 	= $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: %.c $(DEPS)
-	$(CC) -c -g -o $@ $< $(CFLAGS)
+	$(CC) -c -o $@ $< $(CFLAGS)
 
 eta: $(OBJ)
-	gcc -g -o $@ $^ $(CFLAGS)
+	gcc -o $@ $^ $(CFLAGS)
 
