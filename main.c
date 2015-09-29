@@ -40,14 +40,15 @@ void   eval_T(double,double); void   eval_g(double,double); int   points;  // Se
 
 /*-----------------------------------------------------------------------------------------------*/
 
-int main() {                                  //Main fnc: to explore...        T, alpha  dependence
+int main() {                                        // Main fnc: to explore... T, alpha  dependence
 
   points = 10;
 
   for (int nf=0;nf<1;nf++) {                                     // loop over active quark flavours
     Nf = nf; qgp(Nf);
-    /*HTL = 1 ; eval_T(1.0,5.);*/
-    HTL = 1 ; eval_g(.01,1.);
+    HTL = 1 ; kappa=1.00; eval_T(1.0,5.);
+    /*HTL = 0 ; kappa=0.25; eval_T(1.0,5.);*/
+    /*HTL = 1 ; eval_g(.01,1.);*/
   }
 
   return 0;
@@ -121,7 +122,7 @@ void eval_g(double gmin, double gmax)
     J = .5;  res3 = eta()/pow(Temp,3);
     J = 2.;  res2 = eta()/pow(Temp,3);
     J = 1.;  res1 = eta()/pow(Temp,3);
-    printf("   %-1.3f   :\n",res1);            fprintf(file, ",%.8f,%.8f,%.8f\n", res1, res2, res3);
+    printf("  %-1.1e  :\n",res1);            fprintf(file, ",%.8f,%.8f,%.8f\n", res1, res2, res3);
   }
   printf("  ---------------------------------------------------------\n" );
   fclose(file);

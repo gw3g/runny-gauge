@@ -4,7 +4,7 @@ set lwidth 0.04
 set cap round
 set hei 0.6
 
-nf = 0
+nf = 3
 
 amove 2 1.6
 begin graph
@@ -20,7 +20,7 @@ begin graph
   ysubticks length 0.12
 
   xaxis min 0.8 max 5.2  grid
-  yaxis min 0.0 max 10.2 grid !dticks 1
+  yaxis min 0.0 max 30.2 grid !dticks 1
   ytitle "\eta / T^{ 3}" hei 0.6 font psncsi dist 0.3
   xtitle "T/T_c" hei 0.6 font psncsi dist 0.3
   title "N_f = "+num$(nf)+", \Lambda/T_c = 1., w/ 1-function basis" hei 0.4
