@@ -13,6 +13,7 @@ extern double   kappa;       // coefficient of Debye mass (default = 1.)
 extern size_t   calls;       // max number of MC calls
 extern int    alf_run;       // running alpha             FLAG
 extern double  lambda;       // Lambda / T_c
+extern double       J;       // HTL cut
 /*-----------------------------------------------------------------------------------------------*/
 
 /* fundamental rep */

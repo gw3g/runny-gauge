@@ -25,6 +25,9 @@ double xCx( double (*chi)(double,p_type) ) {
     gsl_monte_vegas_integrate(&coll,lower,upper,5,calls,ws,s,&res,&err);
   }
   while (fabs(gsl_monte_vegas_chisq(s)-1.0) > 0.2);
+
+  if (alf_run) printf("\r  :  %-1.4f  :", Temp/lambda); else printf("\r  :  %03.5f   :", g);
+
   printf("  %.8f   :    %.5f   :", err/res, gsl_monte_vegas_chisq(s) );
   gsl_monte_vegas_free(s);                                                    // free memory
 
