@@ -111,18 +111,19 @@ double *Replace_Q(double s, double t, double e3, double e4, double o, double mu2
   // e3, e4   :   outgoing energies
   // t, o     :   exchanged momenta o = \omega = E4 - E1 ...
   // mu2      :   thermal mass (to multiply HTL)
-  // \vec{q}  :   \vec{q1}-\vec{q4} = \vec{q3}-\vec{q2}
+  // \vec{q}  :   \vec{p4}-\vec{p1} = \vec{p2}-\vec{p3}
+  // R        :   P_1 - P_3
   // ---------------------------------------------
   double
-    o2=o*o, q2=o2-t, u=-s-t, e1=e4-o, e2=e3+o;
+    u=-s-t, e1=e4-o, e2=e3+o;
 
   double                                   // R := exchange mom. (now u-channel)      |
-    r0 = o -e4 + e3,                       // 0-component of R                        |
-    r2 = e1*e1+e3*e3-2*e1*e3-u,            // | \vec{q} + \vec{p4} - \vec{p3} |^2     |
+    r0 = -o +e4 - e3,                       // 0-component of R                        |
+    r2 = e1*e1+e3*e3+2*e1*e3+u,            // | -\vec{q} + \vec{p4} - \vec{p3} |^2     |
     r  = sqrt(r2),                         // magnitude \vec{r}, direction \hat{r}    |
     z  = r0/r,
-    /*m2 = ( (J*u + Temp*Temp) < 0 ) ? 0. : mu2;*/
-    m2 = ( J*r2 > Temp*Temp ) ? 0. : mu2;
+    m2 = ( (J*u + Temp*Temp) < 0 ) ? 0. : mu2;
+    /*m2 = ( J*r2 > Temp*Temp ) ? 0. : mu2;*/
 
   double *S0 = Sig(z,L), *Si = Sig(z,T);
 
@@ -132,6 +133,7 @@ double *Replace_Q(double s, double t, double e3, double e4, double o, double mu2
 
   free(S0);free(Si);
 
+  u*=-1.;
   double complex                                              // four-products  (P_i.\cal{R})
     P1R   = e1*calR0 - (e1*z+0.5*u/r)*calRi +u/2.,            //
     P2R   = e2*calR0 - (e2*z-0.5*u/r)*calRi -u/2.,            //  See "/doc/quark_SE.jpg"
@@ -140,8 +142,8 @@ double *Replace_Q(double s, double t, double e3, double e4, double o, double mu2
   double
     RRs   = -pow(cabs(calR0),2) + pow(cabs(calRi),2),         // \cal{R}.\cal{R}*
     denom = pow(cabs( calR0*calR0 - calRi*calRi), 2),         // denominator...
-    num_s = -4.*creal( P1R * conj(P4R) )  + t*RRs,
-    num_t = +4.*creal( P1R * conj(P2R) )  + s*RRs;
+    num_s = -4.*creal( P1R * conj(P4R) )  - t*RRs,
+    num_t = +4.*creal( P1R * conj(P2R) )  - s*RRs;
 
   //  15/08/25: seems fine
     /*printf("  R.R*    = %.5f \n", RRs);*/

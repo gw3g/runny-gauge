@@ -42,14 +42,14 @@ void   eval_T(double,double); void   eval_g(double,double); int   points;  // Se
 
 int main() {                                        // Main fnc: to explore... T, alpha  dependence
 
-  points = 5;
+  points = 15;
 
-  for (int nf=0;nf<1;nf++) {                                     // loop over active quark flavours
+  for (int nf=3;nf<4;nf++) {                                     // loop over active quark flavours
     Nf = nf; qgp(Nf);
     /*HTL = 0 ; kappa=1.00; eval_g(1e-3,1e1);*/
     /*HTL = 1 ; kappa=1.00; eval_g(1e-3,1e1);*/
-    HTL = 1 ; kappa=1.00; eval_T(1.,5.);
-    HTL = 0 ; kappa=1.00; eval_T(1.0,5.);
+    /*HTL = 1 ; kappa=1.00; eval_T(1.,5.);*/
+    /*HTL = 0 ; kappa=1.00; eval_T(1.0,5.);*/
     HTL = 0 ; kappa=0.25; eval_T(1.0,5.);
     /*HTL = 1 ; eval_g(.01,1.);*/
   }

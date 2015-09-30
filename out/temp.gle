@@ -4,8 +4,8 @@ set lwidth 0.04
 set cap round
 set hei 0.6
 
-nf = 0
-ymax = 8.
+nf = 3
+ymax = 16.
 
 amove 2 1.6
 begin graph
@@ -23,14 +23,14 @@ begin graph
   xaxis min 0.8 max 5.2  grid
   yaxis min 0.0 max ymax grid !dticks 1
   ytitle "\eta / T^{ 3}" hei 0.6 font psncsi dist 0.3
-  xtitle "T/T_c" hei 0.6 font psncsi dist 0.3
+  xtitle "T/\Lambda" hei 0.6 font psncsi dist 0.3
   title "N_f = "+num$(nf)+", \Lambda/T_c = 1., w/ 1-function basis" hei 0.4
 
   d14 line color #EB811B lstyle 1 lwidth 0.15
   d17 line color #14B03D lstyle 1 lwidth 0.1
 
   data "eta(T), M_eff, (kappa=0.25) Nf="+num$(nf)+".csv" comment # d11 = c1, c2
-  data "eta(T), M_eff, (kappa=1.00) Nf="+num$(nf)+".csv" comment # d21 = c1, c2
+  !data "eta(T), M_eff, (kappa=1.00) Nf="+num$(nf)+".csv" comment # d21 = c1, c2
   data "eta(T), HTL, Nf="+num$(nf)+".csv" comment # d31 = c1, c2
   data "eta(T), HTL, Nf="+num$(nf)+".csv" comment # d32 = c1, c3
   data "eta(T), HTL, Nf="+num$(nf)+".csv" comment # d33 = c1, c4
@@ -47,7 +47,10 @@ begin key
   compact
   position tl
   offset .5 .5
-  text "\kappa = 1." marker triangle line color crimson  msize 0.3 lwidth 0.04
+  text "M_{eff}"
+  !text "\kappa = 1." marker triangle line color crimson  msize 0.3 lwidth 0.04
   text "\kappa = .25" marker circle line color #14B03D  msize 0.3 lwidth 0.04
-  text " HTL " marker square line color #0057AE  msize 0.25 lwidth 0.04
+  separator
+  text "Jt+T^2 < 0" 
+  text "J=1 [.5,2.] " marker square line color #0057AE  msize 0.25 lwidth 0.04
 end key
