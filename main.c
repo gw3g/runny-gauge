@@ -21,9 +21,10 @@
                               // ------------------------
 int             HTL  = 1   ;  // =1 for HTL, =0 for M_eff
 double        kappa  = 1.00;  // kappa*mD^2
-size_t        calls  = 1e4 ;  // MC calls
+size_t        calls  = 1e3 ;  // MC calls
 int         alf_run  = 1   ;  // =1 for running coupling
-double       lambda  = 1.0 ;  // lambda / T_c
+double       lambda  = 1.0 ;  // lambda_{QCD}
+double            J  = 1.0 ;  // HTL cut
 
 /*-----------------------------------------------------------------------------------------------*/
 /*
@@ -35,15 +36,36 @@ double eta_NLL() { return                                                   // S
 
                           pow(Temp,3.)*eta1[Nf] / (pow(g,4)*log(mSt[Nf]/sqrt(g*g*mD2/(4.*M_PI))));}
 
+void   eval_T(double,double); void   eval_g(double,double); int   points;  // See after main() ...
+
+/*-----------------------------------------------------------------------------------------------*/
+
+int main() {                                        // Main fnc: to explore... T, alpha  dependence
+
+  points = 5;
+
+  for (int nf=0;nf<1;nf++) {                                     // loop over active quark flavours
+    Nf = nf; qgp(Nf);
+    /*HTL = 0 ; kappa=1.00; eval_g(1e-3,1e1);*/
+    /*HTL = 1 ; kappa=1.00; eval_g(1e-3,1e1);*/
+    HTL = 1 ; kappa=1.00; eval_T(1.,5.);
+    HTL = 0 ; kappa=1.00; eval_T(1.0,5.);
+    HTL = 0 ; kappa=0.25; eval_T(1.0,5.);
+    /*HTL = 1 ; eval_g(.01,1.);*/
+  }
+
+  return 0;
+}
+
 /*-----------------------------------------------------------------------------------------------*/
 
 FILE *file; char fname[40];
 
 void eval_T(double Tmin, double Tmax) 
-{ alf_run=1; int points = 20; g = 1.; double res;
+{ alf_run=1; g = 1.; double res1, res2, res3;
 
-       if (!HTL) sprintf(fname, "out/M_eff, (kappa=%.2f) Nf=%d.csv", kappa, Nf                    );
-  else if  (HTL) sprintf(fname, "out/HTL, Nf=%d.csv", Nf                                          );
+       if (!HTL) sprintf(fname, "out/eta(T), M_eff, (kappa=%.2f) Nf=%d.csv", kappa, Nf            );
+  else if  (HTL) sprintf(fname, "out/eta(T), HTL, Nf=%d.csv", Nf                                  );
 
   file = fopen(fname,"w+");
 
@@ -59,26 +81,26 @@ void eval_T(double Tmin, double Tmax)
   fprintf(file,   "# T,       eta/T^3\n"                                                          );
 
   printf("\n [ Nf = %d ] \n", Nf );
-  printf("  -----------------------------------------------------\n" );
-  printf("  :  T/Tc  :    rel err    :   chisq/dof  :  eta/T^3  :\n" );
-  printf("  -----------------------------------------------------\n" );
+  printf("  -------------------------------------------------------\n" );
+  printf("  : T/lambda :    rel err    :   chisq/dof  :  eta/T^3  :\n" );
+  printf("  -------------------------------------------------------\n" );
   for(int i=0; i<points; i++) {
     Temp = Tmin + (Tmax-Tmin)*( ((double) i)/((double) points) );
-    printf("  :  %-1.2f  :", Temp);
-    fprintf(file, "%.8f", Temp);
-    res = eta()/pow(Temp,3);
-    fprintf(file, ",%.8f\n", res );
-    printf("   %-1.3f   :\n",res);
+    printf("  :  %-1.4f  :", Temp/lambda);                       fprintf(file, "%.8f", Temp/lambda);
+    J = .5;  res3 = eta()/pow(Temp,3);
+    J = 2.;  res2 = eta()/pow(Temp,3);
+    J = 1.;  res1 = eta()/pow(Temp,3);
+    printf("   %-1.3f   :\n",res1);            fprintf(file, ",%.8f,%.8f,%.8f\n", res1, res2, res3);
   }
-  printf("  -----------------------------------------------------\n" );
+  printf("  -------------------------------------------------------\n" );
   fclose(file);
 }
 
 void eval_g(double gmin, double gmax) 
-{ alf_run=0; int points = 20; Temp = 1.; double res;
+{ alf_run=0; Temp = 1.; double res1, res2, res3;
 
-       if (!HTL) sprintf(fname, "out/M_eff, (kappa=%.2f) Nf=%d.csv", kappa, Nf                    );
-  else if  (HTL) sprintf(fname, "out/HTL, Nf=%d.csv", Nf                                          );
+       if (!HTL) sprintf(fname, "out/eta(g), M_eff, (kappa=%.2f) Nf=%d.csv", kappa, Nf            );
+  else if  (HTL) sprintf(fname, "out/eta(g), HTL, Nf=%d.csv", Nf                                  );
 
   file = fopen(fname,"w+");
 
@@ -94,32 +116,18 @@ void eval_g(double gmin, double gmax)
   fprintf(file,   "# g,      eta/T^3\n"                                                           );
 
   printf("\n [ Nf = %d ] \n", Nf );
-  printf("  -----------------------------------------------------------\n" );
-  printf("  :      g       :    rel err    :   chisq/dof  :  eta/T^3  :\n" );
-  printf("  -----------------------------------------------------------\n" );
+  printf("  ---------------------------------------------------------\n" );
+  printf("  :    g       :    rel err    :   chisq/dof  :  eta/T^3  :\n" );
+  printf("  ---------------------------------------------------------\n" );
   for(int i=0; i<points; i++) {
     g = gmax*pow(10., -(points -1 - i)*( log(gmax/gmin)/log(10.))/((double) points - 1));
-    printf("  :  %03.7f  :", g);
-    fprintf(file, "%.8f",g);
-    res = eta()/pow(Temp,3);
-    fprintf(file, ",%.8f\n", res );
-    printf("  %-1.1e  :\n",res);
+    printf("  :  %03.5f   :", g);                                           fprintf(file, "%.8f",g);
+    J = .5;  res3 = eta()/pow(Temp,3);
+    J = 2.;  res2 = eta()/pow(Temp,3);
+    J = 1.;  res1 = eta()/pow(Temp,3);
+    printf("  %-1.1e  :\n",res1);            fprintf(file, ",%.8f,%.8f,%.8f\n", res1, res2, res3);
   }
-  printf("  -----------------------------------------------------------\n" );
+  printf("  ---------------------------------------------------------\n" );
   fclose(file);
 }
 
-/*-----------------------------------------------------------------------------------------------*/
-
-int main() {                                  //Main fnc: to explore...        T, alpha  dependence
-
-  for (int nf=0;nf<1;nf++) {                                     // loop over active quark flavours
-    Nf = nf; qgp(Nf);
-    HTL = 1 ; eval_T(1.0,5.);
-    HTL = 0 ; 
-    /*kappa = 1.00  ;   eval_T(1.0,5.);*/
-    /*kappa = 0.25  ;   eval_T(1.0,5.);*/
-  }
-
-  return 0;
-}
