@@ -4,7 +4,7 @@ set lwidth 0.04
 set cap round
 set hei 0.6
 
-nf = 0
+nf = 3
 
 if nf=0 then
   eta1=27.126
