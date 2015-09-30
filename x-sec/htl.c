@@ -121,8 +121,8 @@ double *Replace_Q(double s, double t, double e3, double e4, double o, double mu2
     r2 = e1*e1+e3*e3-2*e1*e3-u,            // | \vec{q} + \vec{p4} - \vec{p3} |^2     |
     r  = sqrt(r2),                         // magnitude \vec{r}, direction \hat{r}    |
     z  = r0/r,
-    m2 = ( (J*u + Temp*Temp) < 0 ) ? 0. : mu2;
-    /*m2 = ( J*r2 > Temp*Temp ) ? 0. : mu2;*/
+    /*m2 = ( (J*u + Temp*Temp) < 0 ) ? 0. : mu2;*/
+    m2 = ( J*r2 > Temp*Temp ) ? 0. : mu2;
 
   double *S0 = Sig(z,L), *Si = Sig(z,T);
 

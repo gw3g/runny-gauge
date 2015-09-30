@@ -12,14 +12,14 @@ int                                                                             
  */
 double alphas(double Q2) {                                                      // running coupling
 
-  double alf=1., ln=log(fabs(Q2)/pow(lambda,2));
+  double alf=1., L=log(fabs(Q2)/pow(lambda,2)), alfMax=10.;
 
-    if (Q2>0)                       alf = .5 - atan(ln/M_PI)/M_PI;
+    if (Q2>0)                       alf = .5 - atan(L/M_PI)/M_PI;
   else {
-    if (Q2<-2.71828*pow(lambda,2))  alf = 1./ln;
+    if (Q2<-2.71828*pow(lambda,2))  alf = 1./L;
   }
   alf *= 4*M_PI/beta0;
-  return alf_run ? (alf<10.?alf:10.) : g*g/(4*M_PI);
+  return alf_run ? (alf<alfMax?alf:alfMax) : g*g/(4*M_PI);
 
   /*double alf = (4*M_PI/beta0) / log(fabs(Q2)/pow(lambda,2));*/
   /*return alf_run ? alf : g*g/(4*M_PI);*/
@@ -88,7 +88,7 @@ double *M_2(double e[4], double s, double t) {          // energies & Mandelstam
 
   //-----------------------------------------------------------------------------------------//
   // Delbrűck :
-                                       M2[0] =  gg1*( av2*3. - at2*2.*rB1 - as2*tu/s2 );
+                                         M2[0] =  gg1*( av2*3. - at2*2.*rB1 - as2*tu/s2 );
   // (gg <--> gg)
   //-----------------------------------------------------------------------------------------//
   // Møller :
