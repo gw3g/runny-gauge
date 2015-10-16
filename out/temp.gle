@@ -4,7 +4,7 @@ set lwidth 0.04
 set cap round
 set hei 0.6
 
-nf = 3
+nf = 0
 ymax = 16.
 
 amove 2 1.6
@@ -29,7 +29,7 @@ begin graph
   d14 line color #EB811B lstyle 1 lwidth 0.15
   d17 line color #14B03D lstyle 1 lwidth 0.1
 
-  data "eta(T), M_eff, (kappa=0.25) Nf="+num$(nf)+".csv" comment # d11 = c1, c2
+  !data "eta(T), M_eff, (kappa=0.25) Nf="+num$(nf)+".csv" comment # d11 = c1, c2
   !data "eta(T), M_eff, (kappa=1.00) Nf="+num$(nf)+".csv" comment # d21 = c1, c2
   data "eta(T), HTL, Nf="+num$(nf)+".csv" comment # d31 = c1, c2
   data "eta(T), HTL, Nf="+num$(nf)+".csv" comment # d32 = c1, c3
