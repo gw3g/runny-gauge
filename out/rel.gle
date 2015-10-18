@@ -4,7 +4,7 @@ set lwidth 0.04
 set cap round
 set hei 0.6
 
-nf = 3
+nf = 0
 
 if nf=0 then
   eta1=27.126
@@ -61,7 +61,7 @@ begin graph
 
   xaxis min 0.0007 max 13.0  log nolast grid
   yaxis min 0.7 max 2. grid !dticks 1
-  ytitle "\eta/\eta_{NLL}" hei 0.6 font psncsi dist 0.3
+  ytitle "\eta/\eta_{_{\setfont{psncsr}NLL}}" hei 0.6 font psncsi dist 0.3
   title " N_f = "+num$(nf)+", w/ 1-function basis" hei 0.4
 
   d14 line color #EB811B lstyle 1 lwidth 0.15
@@ -73,8 +73,12 @@ begin graph
   data "eta(g), HTL, Nf="+num$(nf)+".csv" comment # d21=c1,c2
   let d22=(d21*log(mu/(x*md))*(x^4))/eta1
 
-  d12 marker cross color crimson msize 0.35 mdist 0 line lwidth 0.04
+  data "eta(g), M_eff, (kappa=0.25) Nf="+num$(nf)+".csv" comment # d31=c1,c2
+  let d32=(d31*log(mu/(x*md))*(x^4))/eta1
+
+  d12 marker cross color #E60C00 msize 0.35 mdist 0 line lwidth 0.04
   d22 marker circle color #0057AE msize 0.35 mdist 0 line lwidth 0.04
+  d32 marker plus color #14B03D msize 0.35 mdist 0 line lwidth 0.04
 
   !d31 marker cross color crimson msize 0.35 mdist 0 line lwidth 0.05
   !d41 marker cross color #0057AE msize 0.2 mdist 0 
@@ -90,8 +94,8 @@ begin key
   compact
   position tl
   offset .7 .7
-  text "\kappa = 1."
-  text "M_{eff}" marker cross color crimson  msize 0.3
+  text "M_{eff}, \kappa=1" marker cross color #E60C00  msize 0.3
+  text "M_{eff}, \kappa=.25" marker plus color #14B03D  msize 0.3
   text "HTL" marker circle color #0057AE  msize 0.3
 end key
 
