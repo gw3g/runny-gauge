@@ -21,8 +21,8 @@
                               // ------------------------
 int             HTL  = 1   ;  // =1 for HTL, =0 for M_eff
 double        kappa  = 1.00;  // kappa*mD^2
-size_t        calls  = 1e3 ;  // MC calls
-int         alf_run  = 1   ;  // =1 for running coupling
+size_t        calls  = 1e5 ;  // MC calls
+int         alf_run  = 0   ;  // =1 for running coupling
 double       lambda  = 1.0 ;  // lambda_{QCD}
 double            J  = 1.0 ;  // HTL cut
 
@@ -42,15 +42,16 @@ void   eval_T(double,double); void   eval_g(double,double); int   points;  // Se
 
 int main() {                                        // Main fnc: to explore... T, alpha  dependence
 
-  points = 15;
+  points = 30;
 
-  for (int nf=3;nf<4;nf++) {                                     // loop over active quark flavours
+  for (int nf=0;nf<1;nf++) {                                     // loop over active quark flavours
     Nf = nf; qgp(Nf);
-    /*HTL = 0 ; kappa=1.00; eval_g(1e-3,1e1);*/
-    /*HTL = 1 ; kappa=1.00; eval_g(1e-3,1e1);*/
+    HTL = 0 ; kappa=1.00; eval_g(1e-3,2e1);
+    HTL = 0 ; kappa=0.25; eval_g(1e-3,2e1);
+    HTL = 1 ; kappa=1.00; eval_g(1e-3,2e1);
     /*HTL = 1 ; kappa=1.00; eval_T(1.,5.);*/
     /*HTL = 0 ; kappa=1.00; eval_T(1.0,5.);*/
-    HTL = 0 ; kappa=0.25; eval_T(1.0,5.);
+    /*HTL = 0 ; kappa=0.25; eval_T(1.0,5.);*/
     /*HTL = 1 ; eval_g(.01,1.);*/
   }
 
@@ -113,7 +114,7 @@ void eval_g(double gmin, double gmax)
   fprintf(file,   "# 1-fnc basis (Legendre)\n"                                                    );
   fprintf(file,   "# MC samples, %d\n",(int) calls                                                );
   fprintf(file,   "#\n"                                                                           );
-  fprintf(file,   "# g,      eta/T^3\n"                                                           );
+  fprintf(file,   "# g,      eta/T^3, lower, upper \n"                                            );
 
   printf("\n [ Nf = %d ] \n", Nf );
   printf("  ---------------------------------------------------------\n" );
