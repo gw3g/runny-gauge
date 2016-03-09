@@ -1,14 +1,37 @@
 CC	= gcc
-VPATH	=ops:x-sec
-CFLAGS= -I. -lgsl -lgslcblas -lm
-DEPS	= core.h
-ODIR	= obj
-_OBJ	= main.o basis.o qcd.o amy_prepInt.o operators.o thermal.o htl.o
-OBJ 	= $(patsubst %,$(ODIR)/%,$(_OBJ))
+CFLAGS	= -I. -lgsl -lgslcblas -lm
+SDIR	= src
+ODIR	= build
+OUT	= out
+TARGET	= bin/eta
 
-$(ODIR)/%.o: %.c $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
+# need to make a choice of ONE suffix
+SRCEXT	= c
 
-eta: $(OBJ)
-	gcc -o $@ $^ $(CFLAGS)
+SRC	= $(wildcard $(SDIR)/*.$(SRCEXT))
+OBJ	= $(patsubst $(SDIR)/%,$(ODIR)/%,$(SRC:.$(SRCEXT)=.o))
+INC	= -I src
+
+$(TARGET): $(OBJ)
+	@mkdir -p bin
+	@mkdir -p $(OUT)/data
+	@echo "Compiling : $(CC) $(CFLAGS) $^ -o $(TARGET)"; $(CC) $(CFLAGS) $^ -o $(TARGET)
+
+$(ODIR)/%.o: $(SDIR)/%.$(SRCEXT)
+	@mkdir -p $(ODIR)
+	@echo " $(CC) $(CFLAGS) $(INC) -c -o $@ $<"; $(CC) $(CFLAGS) $(INC) -c -o $@ $<
+
+clean:
+	@echo "Cleaning : $(RM) -r $(ODIR) $(TARGET)"; $(RM) -r $(ODIR) $(TARGET); $(RM) bin/*;
+
+# auxiliary compiles go here:
+
+plotter1:
+	gle -o "out/Z2_D4.pdf" -d pdf "out/plotter/Z2_D4.gle"
+
+# test
+tester: $(OBJ)
+	$(CC) $(CFLAGS) $(INC) build/matrix.o spike/mat_test.c $(BIN) -o bin/tester
+
+.PHONY: clean
 

@@ -59,8 +59,8 @@ begin graph
   xsubticks length 0.12
   ysubticks length 0.12
 
-  xaxis min 0.0007 max 13.0  log nolast grid
-  yaxis min 0.7 max 2. grid !dticks 1
+  xaxis min 0.0007 max 4.0  log nolast grid
+  yaxis min 0.005 max 2.4 grid !dticks 1
   ytitle "\eta/\eta_{_{\setfont{psncsr}NLL}}" hei 0.6 font psncsi dist 0.3
   title " N_f = "+num$(nf)+", w/ 1-function basis" hei 0.4
 

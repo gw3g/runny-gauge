@@ -21,7 +21,7 @@
                               // ------------------------
 int             HTL  = 1   ;  // =1 for HTL, =0 for M_eff
 double        kappa  = 1.00;  // kappa*mD^2
-size_t        calls  = 1e5 ;  // MC calls
+size_t        calls  = 1e3 ;  // MC calls
 int         alf_run  = 0   ;  // =1 for running coupling
 double       lambda  = 1.0 ;  // lambda_{QCD}
 double            J  = 1.0 ;  // HTL cut
@@ -42,13 +42,13 @@ void   eval_T(double,double); void   eval_g(double,double); int   points;  // Se
 
 int main() {                                        // Main fnc: to explore... T, alpha  dependence
 
-  points = 30;
+  points = 50;
 
   for (int nf=0;nf<1;nf++) {                                     // loop over active quark flavours
     Nf = nf; qgp(Nf);
-    HTL = 0 ; kappa=1.00; eval_g(1e-3,2e1);
-    HTL = 0 ; kappa=0.25; eval_g(1e-3,2e1);
-    HTL = 1 ; kappa=1.00; eval_g(1e-3,2e1);
+    HTL = 0 ; kappa=1.00; eval_g(1e-3,1e2);
+    HTL = 0 ; kappa=0.25; eval_g(1e-3,1e2);
+    /*HTL = 1 ; kappa=1.00; eval_g(1e-3,1e2);*/
     /*HTL = 1 ; kappa=1.00; eval_T(1.,5.);*/
     /*HTL = 0 ; kappa=1.00; eval_T(1.0,5.);*/
     /*HTL = 0 ; kappa=0.25; eval_T(1.0,5.);*/
@@ -60,13 +60,13 @@ int main() {                                        // Main fnc: to explore... T
 
 /*-----------------------------------------------------------------------------------------------*/
 
-FILE *file; char fname[40];
+FILE *file; char fname[90];
 
 void eval_T(double Tmin, double Tmax) 
 { alf_run=1; g = 1.; double res1, res2, res3;
 
-       if (!HTL) sprintf(fname, "out/eta(T), M_eff, (kappa=%.2f) Nf=%d.csv", kappa, Nf            );
-  else if  (HTL) sprintf(fname, "out/eta(T), HTL, Nf=%d.csv", Nf                                  );
+       if (!HTL) sprintf(fname, "out/data/eta(T), M_eff, (kappa=%.2f) Nf=%d.csv", kappa, Nf    );
+  else if  (HTL) sprintf(fname, "out/data/eta(T), HTL, Nf=%d.csv", Nf                          );
 
   file = fopen(fname,"w+");
 
@@ -100,8 +100,8 @@ void eval_T(double Tmin, double Tmax)
 void eval_g(double gmin, double gmax) 
 { alf_run=0; Temp = 1.; double res1, res2, res3;
 
-       if (!HTL) sprintf(fname, "out/eta(g), M_eff, (kappa=%.2f) Nf=%d.csv", kappa, Nf            );
-  else if  (HTL) sprintf(fname, "out/eta(g), HTL, Nf=%d.csv", Nf                                  );
+       if (!HTL) sprintf(fname, "out/data/eta(g), M_eff, (kappa=%.2f) Nf=%d.csv", kappa, Nf    );
+  else if  (HTL) sprintf(fname, "out/data/eta(g), HTL, Nf=%d.csv", Nf                           );
 
   file = fopen(fname,"w+");
 

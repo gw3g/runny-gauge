@@ -5,7 +5,7 @@ set cap round
 set hei 0.6
 
 nf = 0
-ymax = 16.
+ymax = 4.
 
 amove 2 1.6
 begin graph
