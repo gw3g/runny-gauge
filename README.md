@@ -27,5 +27,5 @@ A *rough* UML diagram is shown in "~/doc/layout.jpg".
 
 **monte carlo** integrator using gsl implementation of [VEGAS](https://www.gnu.org/software/gsl/manual/html_node/VEGAS.html#VEGAS)
 
-OUTPUT: to "~/out/", use GLE to plot.
+OUTPUT: to "~/out/data/", use GLE to plot.
 

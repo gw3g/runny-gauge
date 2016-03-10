@@ -8,6 +8,7 @@ TARGET	= bin/eta
 # need to make a choice of ONE suffix
 SRCEXT	= c
 
+# find ALL *.SRCEXT files in ~/src directory
 SRC	= $(wildcard $(SDIR)/*.$(SRCEXT))
 OBJ	= $(patsubst $(SDIR)/%,$(ODIR)/%,$(SRC:.$(SRCEXT)=.o))
 INC	= -I src
@@ -15,19 +16,23 @@ INC	= -I src
 $(TARGET): $(OBJ)
 	@mkdir -p bin
 	@mkdir -p $(OUT)/data
-	@echo "Compiling : $(CC) $(CFLAGS) $^ -o $(TARGET)"; $(CC) $(CFLAGS) $^ -o $(TARGET)
+	$(CC) $(CFLAGS) $^ -o $(TARGET)
 
 $(ODIR)/%.o: $(SDIR)/%.$(SRCEXT)
 	@mkdir -p $(ODIR)
-	@echo " $(CC) $(CFLAGS) $(INC) -c -o $@ $<"; $(CC) $(CFLAGS) $(INC) -c -o $@ $<
+	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
 clean:
-	@echo "Cleaning : $(RM) -r $(ODIR) $(TARGET)"; $(RM) -r $(ODIR) $(TARGET); $(RM) bin/*;
+	$(RM) -r $(ODIR) $(TARGET); $(RM) bin/*;
 
 # auxiliary compiles go here:
 
-plotter1:
-	gle -o "out/Z2_D4.pdf" -d pdf "out/plotter/Z2_D4.gle"
+temp:
+	gle -o "out/eta(temp).pdf" -d pdf "out/plotter/temp.gle"
+rel:
+	gle -o "out/_REL.pdf" -d pdf "out/plotter/rel.gle"
+u:
+	gle -o "out/u(eta).pdf" -d pdf "out/plotter/u_eta.gle"
 
 # test
 tester: $(OBJ)

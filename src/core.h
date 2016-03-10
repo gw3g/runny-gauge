@@ -39,8 +39,8 @@ typedef enum pol {
 } pol;
 
 double 
-   f(float e, p_type X),    // f(e)       for X type
-  bf(float e, p_type X);    // \bar{f}(x) for X type
+   f(double e, p_type X),    // f(e)       for X type
+  bf(double e, p_type X);    // \bar{f}(x) for X type
 
 /*-----------------------------------------------------------------------------------------------*/
 

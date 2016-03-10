@@ -31,9 +31,9 @@ begin graph
 
   !data "eta(T), M_eff, (kappa=0.25) Nf="+num$(nf)+".csv" comment # d11 = c1, c2
   !data "eta(T), M_eff, (kappa=1.00) Nf="+num$(nf)+".csv" comment # d21 = c1, c2
-  data "eta(T), HTL, Nf="+num$(nf)+".csv" comment # d31 = c1, c2
-  data "eta(T), HTL, Nf="+num$(nf)+".csv" comment # d32 = c1, c3
-  data "eta(T), HTL, Nf="+num$(nf)+".csv" comment # d33 = c1, c4
+  data "../data/eta(T), HTL, Nf="+num$(nf)+".csv" comment # d31 = c1, c2
+  data "../data/eta(T), HTL, Nf="+num$(nf)+".csv" comment # d32 = c1, c3
+  data "../data/eta(T), HTL, Nf="+num$(nf)+".csv" comment # d33 = c1, c4
 
   d11 marker circle line color #14B03D msize 0.25
   d21 marker triangle line color crimson msize 0.25
