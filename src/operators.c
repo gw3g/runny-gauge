@@ -24,7 +24,7 @@ double xCx( double (*chi)(double,p_type) ) {
   do {
     gsl_monte_vegas_integrate(&coll,lower,upper,5,calls,ws,s,&res,&err);
   }
-  while (fabs(gsl_monte_vegas_chisq(s)-1.0) > 0.01);
+  while (fabs(gsl_monte_vegas_chisq(s)-1.0) > 0.05);
 
   if (alf_run) printf("\r  :  %-1.4f  :", Temp/lambda); else printf("\r  :  %03.5f   :", g);
 

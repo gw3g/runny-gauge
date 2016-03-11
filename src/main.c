@@ -21,7 +21,7 @@
                               // ------------------------
 int             HTL  = 1   ;  // =1 for HTL, =0 for M_eff
 double        kappa  = 1.00;  // kappa*mD^2
-size_t        calls  = 1e2 ;  // MC calls
+size_t        calls  = 1e4 ;  // MC calls
 int         alf_run  = 0   ;  // =1 for running coupling
 double       lambda  = 1.0 ;  // lambda_{QCD}
 double            J  = 1.0 ;  // HTL cut
@@ -43,11 +43,13 @@ void   Gamma(double,double);
 
 int main() {                                        // Main fnc: to explore... T, alpha  dependence
 
-  points = 50;
+  points = 10;
 
   for (int nf=0;nf<1;nf++) {                                     // loop over active quark flavours
     Nf = nf; qgp(Nf);
     HTL = 0 ; kappa=1.00; Gamma(1e-3,1e2);
+    HTL = 0 ; kappa=0.25; Gamma(1e-3,1e2);
+    HTL = 1 ; kappa=1.00; Gamma(1e-3,1e2);
     /*HTL = 0 ; kappa=1.00; eval_g(1e-3,1e2);*/
     /*HTL = 0 ; kappa=0.25; eval_g(1e-3,1e2);*/
     /*HTL = 1 ; kappa=1.00; eval_g(1e-3,1e2);*/
@@ -155,15 +157,15 @@ void Gamma(double gmin, double gmax)
 
   printf("\n [ Nf = %d ] \n", Nf );
   printf("  ---------------------------------------------------------\n" );
-  printf("  :    g       :    rel err    :   chisq/dof  :  gamma*g^2:\n" );
+  printf("  :    g       :    rel err    :   chisq/dof  :  gamma/g^2:\n" );
   printf("  ---------------------------------------------------------\n" );
   for(int i=0; i<points; i++) {
     g = gmax*pow(10., -(points -1 - i)*( log(gmax/gmin)/log(10.))/((double) points - 1));
     printf("  :  %03.5f   :", g);                                           fprintf(file, "%.8f",g);
-    J = .5;  res3 =     xCx(&f)/(g*g);
-    J = 2.;  res2 =     xCx(&f)/(g*g);
+    /*J = .5;  res3 =     xCx(&f)/(g*g);*/
+    /*J = 2.;  res2 =     xCx(&f)/(g*g);*/
     J = 1.;  res1 =     xCx(&f)/(g*g);
-    printf("  %-1.1e  :\n",res1);            fprintf(file, ",%.8f,%.8f,%.8f\n", res1, res2, res3);
+    printf("  %-1.1e  :\n",res1);            fprintf(file, ",%.8f,%.8f,%.8f\n", res1, res1, res1);
   }
   printf("  ---------------------------------------------------------\n" );
   fclose(file);

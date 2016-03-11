@@ -11,7 +11,7 @@ double Temp, g;
 
 double                                                        // boundaries:
   lower[5] = {0.,       0.,  0.,  0.,  0}, 
-  upper[5] = {1.-1e-6,  1.,  1.,  1.,  M_PI};
+  upper[5] = {1.-1e-9,  1.,  1.,  1.,  M_PI};
 
   /*
    *  Returns the "route" structure to be integrated. Here a list of reactions is

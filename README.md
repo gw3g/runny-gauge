@@ -2,14 +2,16 @@
 
 transport coefficients in hot gauge theories, eta (T,g) with Nf = 0, ... 6
 
-_Usage_: (produces CSV data files, default 20 points)
+_Usage_: (produces CSV data files)
 * ```eval_g(gmin, gmax)``` evaluates \eta(g)/T^3
 * ```eval_T(Tmin, Tmax)``` evaluates \eta(T)/T^3
 
+## literature
 
 leading-log [AMY1](http://arxiv.org/abs/hep-ph/0010177)
 & beyond [AMY2](http://arxiv.org/abs/hep-ph/0302165)
 
+## organisation
 
   file          |   purpose
 ----------------|-------------:
@@ -25,7 +27,12 @@ leading-log [AMY1](http://arxiv.org/abs/hep-ph/0010177)
 
 A *rough* UML diagram is shown in "~/doc/layout.jpg".
 
-**monte carlo** integrator using gsl implementation of [VEGAS](https://www.gnu.org/software/gsl/manual/html_node/VEGAS.html#VEGAS)
+**monte carlo** integrator using gsl implementation of 
+[VEGAS](https://www.gnu.org/software/gsl/manual/html_node/VEGAS.html#VEGAS)
 
-OUTPUT: to "~/out/data/", use GLE to plot.
+## visualisation
+
+data is written to ``~/out/data/``. Pretty pictures using [GLE](http://glx.sourceforge.net/), can compile
+directly by running ``make plotter`` after the main executable has been run. See the
+makefile for details.
 
