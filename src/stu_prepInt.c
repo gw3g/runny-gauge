@@ -23,7 +23,7 @@ double                                                        // boundaries:
    *        { s, t, E3, E4, phi }
    */
 
-double integrand(double *args, size_t dim, void *p) {         // the integrand:
+double C_integrand(double *args, size_t dim, void *p) {         // the integrand:
 
   /* recover members */
   struct f_params * fp = (struct f_params *)p;

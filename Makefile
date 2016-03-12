@@ -11,7 +11,7 @@ SRCEXT	= c
 # find ALL *.SRCEXT files in ~/src directory
 SRC	= $(wildcard $(SDIR)/*.$(SRCEXT))
 OBJ	= $(patsubst $(SDIR)/%,$(ODIR)/%,$(SRC:.$(SRCEXT)=.o))
-INC	= -I src
+INC	= -I include
 
 $(TARGET): $(OBJ)
 	@mkdir -p bin

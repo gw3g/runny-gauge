@@ -1,8 +1,9 @@
 #include "core.h"
 #include <gsl/gsl_monte.h>
 #include <gsl/gsl_monte_vegas.h>
+#include "cubature.h"
 
-int Nf;         size_t calls;                 const gsl_rng_type *tt;                     gsl_rng *ws;
+int Nf;         int calls;                 const gsl_rng_type *tt;                     gsl_rng *ws;
 
 /*
  *  Collisional operator    <χ|C|χ>
@@ -11,20 +12,36 @@ int Nf;         size_t calls;                 const gsl_rng_type *tt;           
  *  hep-ph/0302165, (A18)
  */
 #include<stdio.h>
-double xCx( double (*chi)(double,p_type) ) {
 
-  gsl_rng_env_setup (); tt = gsl_rng_default; ws = gsl_rng_alloc (tt);
+/* cubature template */
+int c_cub(unsigned dim, const double *x, void *data_,
+	   unsigned fdim, double *val)
+{
+  double *k = (double *)x;
+  val[0] = C_integrand( k, (size_t) dim, data_);
+  return 0;
+}
+
+double xCx( double (*chi)(double,p_type) ) {
 
   double res, err;
   struct f_params fp = {(*chi)};                                              // chi for inner product
-
-  gsl_monte_function coll = { integrand, 5, &fp };                            // mc function (integrand)
   gsl_monte_vegas_state *s = gsl_monte_vegas_alloc (5);                       // workspace 5-dim
-  gsl_monte_vegas_integrate(&coll,lower,upper,5,10000,ws,s,&res,&err);        // perform sampling
-  do {
-    gsl_monte_vegas_integrate(&coll,lower,upper,5,calls,ws,s,&res,&err);
+
+  if ((double) calls>0) {
+    gsl_rng_env_setup (); tt = gsl_rng_default; ws = gsl_rng_alloc (tt);
+    gsl_monte_function coll = { C_integrand, 5, &fp };                            // mc function (integrand)
+    gsl_monte_vegas_integrate(&coll,lower,upper,5,10000,ws,s,&res,&err);        // perform sampling
+    do {
+      gsl_monte_vegas_integrate(&coll,lower,upper,5,(size_t)calls,ws,s,&res,&err);
+    }
+    while (fabs(gsl_monte_vegas_chisq(s)-1.0) > 0.05);
   }
-  while (fabs(gsl_monte_vegas_chisq(s)-1.0) > 0.05);
+  else {
+    double    tol=1e-3;
+    int       MaxEvls = (int)-calls;
+    hcubature(1, c_cub, &fp, 5, lower, upper, MaxEvls, 0, tol, ERROR_INDIVIDUAL, &res, &err);
+  }
 
   if (alf_run) printf("\r  :  %-1.4f  :", Temp/lambda); else printf("\r  :  %03.5f   :", g);
 
@@ -66,12 +83,11 @@ double s_integrand(double *args, size_t dim, void *p) {
 
 double xS( double (*chi)(double, p_type) ) {
 
-  gsl_rng_env_setup (); tt = gsl_rng_default; ws = gsl_rng_alloc (tt);
-
   double res, err;
   struct f_params fp = {(*chi)};                                              // chi for inner product
   double sL[1] = {0}, sU[1] = {1};                                            // integration bounds
 
+  gsl_rng_env_setup (); tt = gsl_rng_default; ws = gsl_rng_alloc (tt);
   gsl_monte_function source   = {&s_integrand, 1, &fp};                       // mc function (integrand)
   gsl_monte_vegas_state *s = gsl_monte_vegas_alloc (1);                       // workspace in 1 dim
   gsl_monte_vegas_integrate (&source,sL,sU,1,calls,ws,s,&res,&err);           // perform sampling

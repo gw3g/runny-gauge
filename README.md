@@ -29,6 +29,7 @@ A *rough* UML diagram is shown in "~/doc/layout.jpg".
 
 **monte carlo** integrator using gsl implementation of 
 [VEGAS](https://www.gnu.org/software/gsl/manual/html_node/VEGAS.html#VEGAS)
+[Cubature](https://ab-initio.mit.edu/wiki/index.php/Cubature)
 
 ## visualisation
 
