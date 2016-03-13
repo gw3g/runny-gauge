@@ -60,7 +60,7 @@ begin graph
   ysubticks length 0.12
 
   xaxis min 0.0007 max 150.0  log nolast grid
-  yaxis min 0.00005 max 20.4 log grid !dticks 1
+  yaxis min 0.00005 max 10.4 log grid !dticks 1
   ytitle "\Gamma \ \ /g^2" hei 0.6 font psncsi dist 0.3
   title " N_f = "+num$(nf)+", w/ 1-function basis" hei 0.4
 
@@ -92,7 +92,7 @@ set font psncsr
 set hei 0.4
 begin key
   compact
-  position tl
+  position bl
   offset .7 .7
   text "M_{eff}, \kappa=1" marker cross color #E60C00  msize 0.3
   text "M_{eff}, \kappa=.25" marker plus color #14B03D  msize 0.3
