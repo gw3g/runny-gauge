@@ -33,6 +33,8 @@ rel:
 	gle -o "out/_REL.pdf" -d pdf "out/plotter/rel.gle"
 u:
 	gle -o "out/u(eta).pdf" -d pdf "out/plotter/u_eta.gle"
+C:
+	gle -o "out/C.pdf" -d pdf "out/plotter/C.gle"
 
 # test
 tester: $(OBJ)

@@ -65,9 +65,11 @@ double kernel( double e[4], double s, double t, reaction R);  // thermal weight 
 
 /*-----------------------------------------------------------------------------------------------*/
 
-/* Monte Carlo integration see "??_prepInt.c" */
+/* Monte Carlo integration see "integrand.c" */
 extern double lower[5], upper[5];
-double C_integrand(double *, size_t, void *);
+double (*C_integrand)(double *, size_t, void *);
+double C_integrand_st(double *, size_t, void *);
+double C_integrand_qo(double *, size_t, void *);
 
 /* operators.c */
 double 
