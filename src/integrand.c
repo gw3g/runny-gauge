@@ -1,4 +1,5 @@
 #include "core.h"
+#include <stdio.h>
 reaction *all_R;
 int nR;
 
@@ -11,7 +12,7 @@ double Temp, g;
 
 double                                                        // boundaries:
   lower[5] = {0.,       0.,  0.,  0.,  0}, 
-  upper[5] = {1.-1e-9,  1.,  1.,  1.,  M_PI};
+  upper[5] = {1.-1e-5,  1.,  1.,  1.,  M_PI};
 
   /*
    *  Returns the "route" structure to be integrated. Here a list of reactions is
@@ -52,8 +53,8 @@ double qForm(double c1, double c2, double c3, double c4,  // the chi's
                   +   c2*c2              -  2.*c2*c3*P2(x23)  - 2.*c2*c4*P2(x24)
                                          +  c3*c3             + 2.*c3*c4*P2(x34)
                                                               + c4*c4             ;
-    return XXXX/4.;
-    /*return 1.;*/
+    /*return XXXX/4.;*/
+    return 1.;
 }
 
 /*-----------------------------------------------------------------------------------------------*/
@@ -110,8 +111,9 @@ double C_integrand_st(double *args, size_t dim, void *p) {         // the integr
 
   result *=  ( (4.*e3*e4)*(2.)/pow( eps*xi, 2 ) )               // Jacobian
             *( pow(Temp,2) )                                    // units... T^3
-            *( (1./16.)*(1./pow(2.*M_PI, 6))*(1./2.) );         // prefactors
+            *( (1./16.)*(1./pow(2.*M_PI, 7)) )/2.     ;         // prefactors
 
+  /*printf("%g \n", result);*/
   return result;
 };
 
@@ -168,7 +170,7 @@ double C_integrand_qo(double *args, size_t dim, void *p) {         // the integr
 
   result *=  ( q/pow( y*eps*xi, 2 ) )                           // Jacobian
             *( pow(Temp,-1) )                                   // units... T^3
-            *( 1./pow(4.*M_PI, 6) )*2.*8.;                      // prefactors
+            *( 1./pow(4.*M_PI, 6) )*1.*8./M_PI;                 // prefactors
 
   return result;
 };
