@@ -39,7 +39,7 @@ double xCx( double (*chi)(double,p_type) ) {
   }
   else {
     double    tol=1e-3;
-    int       MaxEvls = (int)-calls;
+    int       MaxEvls = -( (int) calls );
     hcubature(1, c_cub, &fp, 5, lower, upper, MaxEvls, 0, tol, ERROR_INDIVIDUAL, &res, &err);
   }
 

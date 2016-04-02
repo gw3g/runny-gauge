@@ -46,6 +46,13 @@ md = sqrt( (3.+nf*0.5)/3. )
 fileN1 = "eta(g), Meff, (kappa=1.00) Nf="+num$(nf)+".csv"
 fileN2 = "eta(g), HTL, Nf="+num$(nf)+".csv"
 
+amove 2 1.5
+set texlabels 1
+begin texpreamble
+  \usepackage{amsmath}
+  \usepackage{amssymb}
+  \usepackage{eucal}
+end texpreamble
 amove 2 1
 begin graph
   size 11 8 fullsize
@@ -61,44 +68,47 @@ begin graph
 
   xaxis min 0.0007 max 150.0  log nolast grid
   yaxis min 0.00005 max 10.4 log grid !dticks 1
-  ytitle "\Gamma \ \ /g^2" hei 0.6 font psncsi dist 0.3
-  title " N_f = "+num$(nf)+", w/ 1-function basis" hei 0.4
+  ytitle "$\Gamma /g^2$" hei 0.6 font psncsi dist 0.3
+  title "Interaction rate" hei 0.4
 
   d14 line color #EB811B lstyle 1 lwidth 0.15
   d17 line color #14B03D lstyle 1 lwidth 0.1
 
-  data "../data/Gamma(g), M_eff, (kappa=1.00) Nf="+num$(nf)+".csv" comment # d11=c1,c2
-  !let d12=(d11*log(mu/(x*md))*(x^4))/eta1
+set texlabels 0
+  !data "../data/qo_Gamma(g), M_eff, (kappa=1.00) Nf="+num$(nf)+".csv" comment # d11=c1,c2
+  data "../data/qo_Gamma(g), HTL, Nf="+num$(nf)+".csv" comment # d21=c1,c2
+  data "../data/qo_Gamma(g), M_eff, (kappa=0.25) Nf="+num$(nf)+".csv" comment # d31=c1,c2
+  !data "../data/st_Gamma(g), M_eff, (kappa=1.00) Nf="+num$(nf)+".csv" comment # d41=c1,c2
+  data "../data/st_Gamma(g), HTL, Nf="+num$(nf)+".csv" comment # d51=c1,c2
+  data "../data/st_Gamma(g), M_eff, (kappa=0.25) Nf="+num$(nf)+".csv" comment # d61=c1,c2
 
-  data "../data/Gamma(g), HTL, Nf="+num$(nf)+".csv" comment # d21=c1,c2
-  !let d22=(d21*log(mu/(x*md))*(x^4))/eta1
-
-  data "../data/Gamma(g), M_eff, (kappa=0.25) Nf="+num$(nf)+".csv" comment # d31=c1,c2
-  !let d32=(d31*log(mu/(x*md))*(x^4))/eta1
-
-  d11 marker cross color #E60C00 msize 0.35 mdist 0 line lwidth 0.04
+set texlabels 1
+  d51 marker square color purple msize 0.35 mdist 0 line lwidth 0.04
+  d61 marker diamond color yellow msize 0.35 mdist 0 line lwidth 0.06
   d21 marker circle color #0057AE msize 0.35 mdist 0 line lwidth 0.04
-  d31 marker plus color #14B03D msize 0.35 mdist 0 line lwidth 0.04
-
-  !d31 marker cross color crimson msize 0.35 mdist 0 line lwidth 0.05
-  !d41 marker cross color #0057AE msize 0.2 mdist 0 
-  !d32 marker circle color crimson msize 0.35 mdist 0 lwidth 0.05
-  !d42 marker circle color #0057AE msize 0.2 mdist 0 
-  !d33 marker plus color crimson msize 0.35 mdist 0 lwidth 0.05
-  !d43 marker plus color #0057AE msize 0.2 mdist 0 
+  d31 marker plus color #14B03D msize 0.35 mdist 0 line lwidth 0.04 lstyle 2
 end graph
 
 set font psncsr
 set hei 0.4
+set lwidth 0.02
 begin key
   compact
   position bl
   offset .7 .7
-  text "M_{eff}, \kappa=1" marker cross color #E60C00  msize 0.3
-  text "M_{eff}, \kappa=.25" marker plus color #14B03D  msize 0.3
-  text "HTL" marker circle color #0057AE  msize 0.3
+  text ""
+  text "$\kappa=.25$"
+  text "HTL"
+  separator
+  text "AMY $\{q,\omega\}$"
+  marker plus color #14B03D  msize 0.3 lwidth 0.05 lstyle 2
+  marker circle color #0057AE  msize 0.3 lwidth .04
+  separator
+  text "JP $\{s,t\}$"
+  marker diamond color yellow  msize 0.3 lwidth 0.05
+  marker square color purple  msize 0.3 lwidth .04
 end key
 
 amove 13.3 0.6
 set hei 0.4
-text \setfont{psncsi}g
+text \tex{$g$}

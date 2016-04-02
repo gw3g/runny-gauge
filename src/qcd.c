@@ -81,6 +81,8 @@ double *M_2(double e[4], double s, double t) {          // energies & Mandelstam
   //    = su/t2                 = (s2+u2)/t2                = s/u                 = t/u
   { rB1 = (1.-rB)/4.,       rB2 = (1.+rB)/2.,           rF1 = rF[0],          rF2 = rF[1];}
 
+  /*printf("%g\n", rB1);*/
+
   free(rF);
 
   double 
@@ -118,6 +120,7 @@ double *M_2(double e[4], double s, double t) {          // energies & Mandelstam
   //  15/08/26:   Don't forget the alpha(Q) factors!
   //
   /*if (M2[0]<0) {printf("rB = %.5f, alf = %.5f \n", rB1, at);};*/
+  /*printf("%g\n", M2[0]);*/
 
   for(int i=0; i<7; i++) M2[i] *= pow(4.*M_PI,2);                                       return M2;
 }

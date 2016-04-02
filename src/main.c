@@ -21,7 +21,7 @@
                               // ------------------------
 int             HTL  = 1   ;  // =1 for HTL, =0 for M_eff
 double        kappa  = 1.00;  // kappa*mD^2
-int           calls  =+1e5 ;  // MC calls {if > 0 : GSL, else hcubature}
+int           calls  =-1e3 ;  // MC calls {if > 0 : GSL, else hcubature}
 int         alf_run  = 0   ;  // =1 for running coupling
 double       lambda  = 1.0 ;  // lambda_{QCD}
 double            J  = 1.0 ;  // HTL cut
@@ -43,15 +43,19 @@ void   Gamma(double,double);
 
 int main() {                                        // Main fnc: to explore... T, alpha  dependence
 
-  /*C_integrand = &C_integrand_qo;*/
-  points = 10;
+  C_integrand = &C_integrand_qo;
+  points = 20;
 
   for (int nf=0;nf<1;nf++) {                                     // loop over active quark flavours
     Nf = nf; qgp(Nf);
     /*HTL = 0 ; kappa=1.00; Gamma(1e-3,1e2);*/
-    C_integrand = &C_integrand_st;
+    /*C_integrand = &C_integrand_st;*/
     /*HTL = 0 ; kappa=1.00; Gamma(1e-3,1e2);*/
     /*HTL = 0 ; kappa=0.25; Gamma(1e-3,1e2);*/
+    C_integrand = &C_integrand_st;
+    /*HTL = 0 ; kappa=0.25; Gamma(1e-3,1e2);*/
+    /*C_integrand = &C_integrand_qo;*/
+    /*HTL = 0 ; kappa=1.00; Gamma(1e-3,1e2);*/
     HTL = 1 ; kappa=1.00; Gamma(1e-3,1e2);
     /*HTL = 0 ; kappa=1.00; eval_g(1e-3,1e2);*/
     /*HTL = 0 ; kappa=0.25; eval_g(1e-3,1e2);*/
@@ -142,8 +146,8 @@ void eval_g(double gmin, double gmax)
 void Gamma(double gmin, double gmax) 
 { alf_run=0; Temp = 1.; double res1, res2, res3;
 
-       if (!HTL) sprintf(fname, "out/data/Gamma(g), M_eff, (kappa=%.2f) Nf=%d.csv", kappa, Nf    );
-  else if  (HTL) sprintf(fname, "out/data/Gamma(g), HTL, Nf=%d.csv", Nf                           );
+       if (!HTL) sprintf(fname, "out/data/st_Gamma(g), M_eff, (kappa=%.2f) Nf=%d.csv", kappa, Nf    );
+  else if  (HTL) sprintf(fname, "out/data/st_Gamma(g), HTL, Nf=%d.csv", Nf                           );
 
   file = fopen(fname,"w+");
 
