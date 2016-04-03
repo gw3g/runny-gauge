@@ -11,8 +11,8 @@ double P2 ( double x ) {
 double Temp, g;
 
 double                                                        // boundaries:
-  lower[5] = {0., 0.,  0.,  0.,  0}, 
-  upper[5] = {1., 1.,  1.,  1.,  M_PI};
+  lower[5] = {0.+1e-4, 0.,  0.+1e-4,  0.,  0}, 
+  upper[5] = {1.-1e-4, 1.,  1.,  1.,  M_PI};
 
   /*
    *  Returns the "route" structure to be integrated. Here a list of reactions is
@@ -139,9 +139,9 @@ double C_integrand_qo(double *args, size_t dim, void *p) {         // the integr
   /* variable changes */
   double
     q   = 1./y - 1.,                                          //  + g*T for HARD cutoff
-    o   = q*(z),
-    e1  = 1./(eps) - 1. + (0.5)*q*(1-z),
-    e2  = 1./(xi)  - 1. + (0.5)*q*(1+z),
+    o   = q*(2.*z-1.),
+    e1  = 1./(eps) - 1. + (0.5)*(q-o),
+    e2  = 1./(xi)  - 1. + (0.5)*(q+o),
     e3  = e2 - o,
     e4  = e1 + o;
 
@@ -167,9 +167,9 @@ double C_integrand_qo(double *args, size_t dim, void *p) {         // the integr
                 ;
   };
 
-  result *=  ( q/pow( y*eps*xi, 2 ) )                           // Jacobian
+  result *=  ( 2.*q/pow( y*eps*xi, 2 ) )                           // Jacobian
             *( pow(Temp,-1) )                                   // units... T^3
-            *( 1./pow(4.*M_PI, 6) )*1.*8./M_PI;                 // prefactors
+            *( 1./pow(4.*M_PI, 6) )*4./M_PI;                 // prefactors
 
   /*printf("%g \n", result);*/
   return result;

@@ -41,6 +41,7 @@ double xCx( double (*chi)(double,p_type) ) {
     double    tol=1e-3;
     int       MaxEvls = -( (int) calls );
     hcubature(1, c_cub, &fp, 5, lower, upper, MaxEvls, 0, tol, ERROR_INDIVIDUAL, &res, &err);
+    /*printf("\n -- %g\n\n",res);*/
   }
 
   if (alf_run) printf("\r  :  %-1.4f  :", Temp/lambda); else printf("\r  :  %03.5f   :", g);
