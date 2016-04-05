@@ -11,8 +11,8 @@ double P2 ( double x ) {
 double Temp, g;
 
 double                                                        // boundaries:
-  lower[5] = {0.+1e-4, 0.,  0.+1e-4,  0.,  0}, 
-  upper[5] = {1.-1e-4, 1.,  1.,  1.,  M_PI};
+  lower[5] = {0., 0.,  0.,  0.,  0}, 
+  upper[5] = {1., 1.,  1.,  1.,  M_PI};
 
   /*
    *  Returns the "route" structure to be integrated. Here a list of reactions is
@@ -53,8 +53,8 @@ double qForm(double c1, double c2, double c3, double c4,  // the chi's
                   +   c2*c2              -  2.*c2*c3*P2(x23)  - 2.*c2*c4*P2(x24)
                                          +  c3*c3             + 2.*c3*c4*P2(x34)
                                                               + c4*c4             ;
-    /*return XXXX/4.;*/
-    return 1.;
+    return XXXX/4.;
+    /*return 1.;*/
 }
 
 /*-----------------------------------------------------------------------------------------------*/
@@ -109,9 +109,11 @@ double C_integrand_st(double *args, size_t dim, void *p) {         // the integr
              ;
   };
 
-  result *=  ( (4.*e3*e4)*(2.)/pow( eps*xi, 2 ) )               // Jacobian
-            *( pow(Temp,2) )                                    // units... T^3
-            *( (1./16.)*(1./pow(2.*M_PI, 7)) )/2.     ;         // prefactors
+        // J{ phi,         s,      e3,e4      }
+  result *=  ( 1.*(4.*e3*e4)/pow( eps*xi, 2 ) )              // Jacobian (factor s from t=s*z cancels)
+            *( pow(Temp,2) )                                 // units... T^3
+            *( (1./16.)*(1./pow(2.*M_PI, 6)) )*.5            // prefactors
+            *2.                                    ;         // for \xi_\pm sols
 
   return result;
 };
@@ -149,7 +151,7 @@ double C_integrand_qo(double *args, size_t dim, void *p) {         // the integr
   double
     t   = o*o - q*q,
     s   = (-t/(2*q*q))*(
-           ( (e1+e4)*(e2+e3) + q*q ) - cos(phi)*sqrt( (4.*e1*e4 + t)*(4.*e2*e3 + t) )
+           ( (e1+e4)*(e2+e3) + q*q ) - cos(2.*phi)*sqrt( (4.*e1*e4 + t)*(4.*e2*e3 + t) )
           ),
     u   = -t-s;
 
@@ -166,10 +168,10 @@ double C_integrand_qo(double *args, size_t dim, void *p) {         // the integr
                       chi( e[3], all_R[i].particles[3] ),                          e,  s,  t,  u )
                 ;
   };
-
-  result *=  ( 2.*q/pow( y*eps*xi, 2 ) )                           // Jacobian
-            *( pow(Temp,-1) )                                   // units... T^3
-            *( 1./pow(4.*M_PI, 6) )*4./M_PI;                 // prefactors
+        // J{     phi,     o,     q,e1 ,e2      }
+  result *=  (    2. *(2.*q)/pow( y*eps*xi, 2 ) )       // Jacobian
+            *( pow(Temp,-1) )                           // units... T^3
+            *( 1./pow(4.*M_PI, 6) )*4.;                 // prefactors ... 4 from Q-form
 
   /*printf("%g \n", result);*/
   return result;

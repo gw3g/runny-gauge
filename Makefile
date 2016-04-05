@@ -29,12 +29,14 @@ clean:
 
 temp:
 	gle -o "out/eta(temp).pdf" -d pdf "out/plotter/temp.gle"
-rel:
-	gle -o "out/_REL.pdf" -d pdf "out/plotter/rel.gle"
+relative:
+	gle -o "out/_REL.pdf" -d pdf "out/plotter/relative.gle"
 u:
 	gle -o "out/u(eta).pdf" -d pdf "out/plotter/u_eta.gle"
-C:
-	gle -o "out/C.pdf" -d pdf "out/plotter/C.gle"
+i-rate:
+	gle -o "out/i-rate.pdf" -d pdf "out/plotter/i-rate.gle"
+eta_fixCoupling:
+	gle -o "out/eta.pdf" -d pdf -cairo "out/plotter/eta_fixCoupling.gle"
 
 # test
 tester: $(OBJ)
