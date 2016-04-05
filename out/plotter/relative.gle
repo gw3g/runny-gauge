@@ -3,6 +3,7 @@ set font texcmb
 set lwidth 0.04
 set cap round
 set hei 0.6
+set texlabels 1
 
 nf = 0
 
@@ -48,7 +49,7 @@ fileN2 = "eta(g), HTL, Nf="+num$(nf)+".csv"
 
 amove 2 1
 begin graph
-  size 11 8 fullsize
+  size 11 7 fullsize
 
   xlabels font psncsr hei 0.5
   xticks length 0.25 lstyle 2 lwidth 0.01
@@ -62,11 +63,12 @@ begin graph
   xaxis min 0.0007 max 4.0  log nolast grid
   yaxis min 0.005 max 2.4 grid !dticks 1
   ytitle "\eta/\eta_{_{\setfont{psncsr}NLL}}" hei 0.6 font psncsi dist 0.3
-  title " N_f = "+num$(nf)+", w/ 1-function basis" hei 0.4
+  title "\setfont{psncsi}n_f = "+num$(nf)+"\setfont{psncsr}, w/ 1-function basis" hei 0.4
 
   d14 line color #EB811B lstyle 1 lwidth 0.15
   d17 line color #14B03D lstyle 1 lwidth 0.1
 
+  set texlabels 0
   data "../data/eta(g), M_eff, (kappa=1.00) Nf="+num$(nf)+".csv" comment # d11=c1,c2
   let d12=(d11*log(mu/(x*md))*(x^4))/eta1
 
@@ -75,6 +77,10 @@ begin graph
 
   data "../data/eta(g), M_eff, (kappa=0.25) Nf="+num$(nf)+".csv" comment # d31=c1,c2
   let d32=(d31*log(mu/(x*md))*(x^4))/eta1
+
+  let d9 = x*x/(4*PI), d11
+  d9 x2axis
+  x2axis on
 
   d12 marker cross color #E60C00 msize 0.35 mdist 0 line lwidth 0.04
   d22 marker circle color #0057AE msize 0.35 mdist 0 line lwidth 0.04
@@ -88,17 +94,20 @@ begin graph
   !d43 marker plus color #0057AE msize 0.2 mdist 0 
 end graph
 
-set font psncsr
+set texlabels 1
 set hei 0.4
 begin key
   compact
   position tl
   offset .7 .7
-  text "M_{eff}, \kappa=1" marker cross color #E60C00  msize 0.3
-  text "M_{eff}, \kappa=.25" marker plus color #14B03D  msize 0.3
+  text "$\kappa=1$" marker cross color #E60C00  msize 0.3
+  text "$\kappa=.25$" marker plus color #14B03D  msize 0.3
   text "HTL" marker circle color #0057AE  msize 0.3
 end key
 
-amove 13.3 0.6
 set hei 0.4
-text \setfont{psncsi}g
+amove 13.1 0.4
+text \tex{$g$}
+amove 13.1 8.4
+text \tex{$\alpha$}
+
