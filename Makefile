@@ -27,7 +27,7 @@ clean:
 
 # auxiliary compiles go here:
 
-temp:
+temperature:
 	gle -o "out/eta(temp).pdf" -d pdf "out/plotter/temp.gle"
 relative:
 	gle -o "out/_REL.pdf" -d pdf "out/plotter/relative.gle"
