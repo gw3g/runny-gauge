@@ -44,20 +44,22 @@ void   Gamma(double,double);
 int main() {                                        // Main fnc: to explore... T, alpha  dependence
 
   C_integrand = &C_integrand_st;
-  points = 4; Temp=1.;
+  points = 20; Temp=1.;
+
 
   for (int nf=0;nf<1;nf++) {                                     // loop over active quark flavours
     Nf = nf; qgp(Nf);
-    /*HTL = 0 ; kappa=1.00; Gamma(1e-3,1e2);*/
-    /*HTL = 0 ; kappa=1.00; Gamma(1e-3,1e2);*/
-    /*HTL = 0 ; kappa=0.25; Gamma(1e-3,1e2);*/
-    /*HTL = 0 ; kappa=0.25; Gamma(1e-3,1e2);*/
+    // interaction rate
     /*HTL = 0 ; kappa=1.00; Gamma(1e-3,1e2);*/
     /*HTL = 0 ; kappa=0.25; Gamma(1e-3,1e2);*/
     /*HTL = 1 ; kappa=1.00; Gamma(1e-3,1e2);*/
-    HTL = 0 ; kappa=1.00; eval_g(1e-3,1e2);
-    HTL = 0 ; kappa=0.25; eval_g(1e-3,1e2);
+
+    // fixed alpha
+    /*HTL = 0 ; kappa=1.00; eval_g(1e-3,1e2);*/
+    /*HTL = 0 ; kappa=0.25; eval_g(1e-3,1e2);*/
     HTL = 1 ; kappa=1.00; eval_g(1e-3,1e2);
+
+    // T-dep
     /*HTL = 1 ; kappa=1.00; eval_T(1.,5.);*/
     /*HTL = 0 ; kappa=1.00; eval_T(1.0,5.);*/
     /*HTL = 0 ; kappa=0.25; eval_T(1.0,5.);*/
@@ -144,8 +146,8 @@ void eval_g(double gmin, double gmax)
 void Gamma(double gmin, double gmax) 
 { alf_run=0; Temp = 1.; double res1, res2, res3;
 
-       if (!HTL) sprintf(fname, "out/data/qo_Gamma(g), M_eff, (kappa=%.2f) Nf=%d.csv", kappa, Nf  );
-  else if  (HTL) sprintf(fname, "out/data/qo_Gamma(g), HTL, Nf=%d.csv", Nf                        );
+       if (!HTL) sprintf(fname, "out/data/st_Gamma(g), M_eff, (kappa=%.2f) Nf=%d.csv", kappa, Nf  );
+  else if  (HTL) sprintf(fname, "out/data/st_Gamma(g), HTL, Nf=%d.csv", Nf                        );
 
   file = fopen(fname,"w+");
 

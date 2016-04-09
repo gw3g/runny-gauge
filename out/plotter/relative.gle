@@ -78,9 +78,10 @@ begin graph
   data "../data/eta(g), M_eff, (kappa=0.25) Nf="+num$(nf)+".csv" comment # d31=c1,c2
   let d32=(d31*log(mu/(x*md))*(x^4))/eta1
 
-  let d9 = x*x/(4*PI), d11
-  d9 x2axis
+  let d20 = x*x/(4*PI), d11
+  d20 x2axis
   x2axis on
+  x2axis min .0007*.0007/(4*PI) max 4/PI
 
   d12 marker cross color #E60C00 msize 0.35 mdist 0 line lwidth 0.04
   d22 marker circle color #0057AE msize 0.35 mdist 0 line lwidth 0.04
@@ -108,6 +109,6 @@ end key
 set hei 0.4
 amove 13.1 0.4
 text \tex{$g$}
-amove 13.1 8.4
+amove 13.1 8.8
 text \tex{$\alpha$}
 
