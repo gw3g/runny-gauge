@@ -29,12 +29,13 @@ double C_integrand_qo(double *, size_t , void *);
 
 double qForm(double c1, double c2, double c3, double c4,  // the chi's
                     double e[4], double s, double t, double u    ) {
-  double XXXX;
+  double XXXX, T2 = Temp*Temp;
+  double sT = s/T2, tT = t/T2, uT = u/T2;
   /* angles */
   double
-    x12 = 1. - s/(2.*e[0]*e[1]),  x13 = 1. + u/(2.*e[0]*e[2]),  x14 = 1. + t/(2.*e[0]*e[3]),
-                                  x23 = 1. + t/(2.*e[1]*e[2]),  x24 = 1. + u/(2.*e[1]*e[3]),
-                                                                x34 = 1. - s/(2.*e[2]*e[3]);
+    x12 = 1. - sT/(2.*e[0]*e[1]),  x13 = 1. + uT/(2.*e[0]*e[2]),  x14 = 1. + tT/(2.*e[0]*e[3]),
+                                   x23 = 1. + tT/(2.*e[1]*e[2]),  x24 = 1. + uT/(2.*e[1]*e[3]),
+                                                                  x34 = 1. - sT/(2.*e[2]*e[3]);
 
   /*
    *  (A18): expand (χ1+χ2-χ3-χ4)^2, where χi = c_i X_i
