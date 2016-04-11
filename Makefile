@@ -37,6 +37,8 @@ i-rate:
 	gle -o "out/i-rate.pdf" -d pdf "out/plotter/i-rate.gle"
 eta_fixCoupling:
 	gle -o "out/eta.pdf" -d pdf -cairo "out/plotter/eta_fixCoupling.gle"
+eta_over_s:
+	gle -o "out/eta_over_s.pdf" -d pdf -cairo "out/plotter/eta_over_s.gle"
 
 # test
 tester: $(OBJ)

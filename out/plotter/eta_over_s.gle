@@ -1,0 +1,165 @@
+size 15 11
+set font psncsi
+set lwidth 0.04
+set cap round
+
+ym = 2
+xm = 6.2
+
+amove 2 2
+set texlabels 1
+begin graph
+  size 6 8 fullsize
+
+  xlabels hei 0.5
+  xticks length 0.25
+  ylabels hei 0.5
+  yticks length 0.25
+
+  key offset 3.7 3.9 hei 0.52  nobox
+
+  xaxis min .8 max xm dticks 1. 
+  yaxis min 0.0 max ym  dticks .2
+  ytitle "$\eta(T) / s_{_{\rm lQCD}}$" hei 0.6 dist 0.4
+
+  data "../data/mey1.dat"
+  data "../data/mey2.dat"
+  data "../data/bor1.dat"
+  let d10 = 1./(4.*PI) from 1. to 5. step 0.1
+  let d11 = .5/(4.*PI) from 1. to 5. step 0.1
+
+  data "../data/Eta_s, RENORM [nf=0].dat" d31=c1,c2
+  data "../data/Eta_s, RENORM [nf=0].dat" d32=c1,c3
+  data "../data/Eta_s, RENORM [nf=0].dat" d33=c1,c4
+  data "../data/Eta_s, RENORM [nf=0].dat" d34=c1,c5
+  data "../data/Eta_s, RENORM [nf=0].dat" d35=c1,c6
+
+  data "../data/Eta_s, [nll, nf=0].dat" d81=c1,c2
+  data "../data/Eta_s, [nll, nf=0].dat" d82=c1,c3
+
+  !data "wtr eos.csv" d91=c1,c2
+  !data "wtr eos.csv" d92=c1,c3
+
+  ! 1/4PI
+  !fill d11,d10 color rshade3
+  !d10 lstyle 1 lwidth 0.04
+
+  ! pQCD
+  fill d81,d82 color rshade3
+  fill d32,d33 color rgba255(135,206,250,100)
+  d31 smooth color #0057AE lwidth 0.1 lstyle 1
+  d34 smooth color #0057AE lwidth 0.04 lstyle 2
+  d35 smooth color #0057AE lwidth 0.04 lstyle 2
+
+  ! LATTICE DATA:
+  d1 marker wcircle   err d2 color #E60C00 lwidth 0.06 errwidth 0.0001 msize .3
+  d3 marker wtriangle err d4 color #E60C00 lwidth 0.06 errwidth 0.0001 msize .3
+  d5 marker wsquare   err d6 color #E60C00 lwidth 0.06 errwidth 0.0001 msize .3
+
+  ! wtr^-1
+  !d91 smooth color orange lwidth 0.1 lstyle 1
+  !d92 smooth color orange lwidth 0.1 lstyle 4
+
+end graph
+
+set color black
+set hei 0.4
+set font psncsr
+begin key
+  compact
+  nobox
+  position tl
+  offset 6.5 1
+  text " \ [?]" marker wcircle color #E60C00 lwidth 0.06
+  text " \ [?]" marker wtriangle color #E60C00 lwidth 0.06
+  text " \ [?]" marker wsquare color #E60C00 lwidth 0.06
+end key
+
+!set color orange
+!amove 4 7
+!rline 0 -1.3 arrow end
+!rmove 0.3 0.8
+!text renorm
+!let ym = 1.5
+
+set color black
+amove 8 2
+begin graph
+  size 6 8 fullsize
+
+  xlabels font psncsr hei 0.5
+  xticks length 0.25
+  ylabels font psncsr hei 0.5
+  yticks length 0.25
+
+  key offset 3.7 3.9 hei 0.52  nobox
+
+  xaxis min 0.8 max xm dticks 1. 
+  yaxis min 0.0 max ym  dticks .2
+  ynames "" ""  "" "" "" ""
+
+  let d10 = 1./(4.*PI) from 1. to 5. step 0.1
+  let d11 = .5/(4.*PI) from 1. to 5. step 0.1
+
+  ! Niemi's params
+  let d31 = 0.227*x+(0.120-.227) from 1. to 10. step .1
+  let d32 = .16                  from 1. to 10. step .1
+  let d34 = 0.101*x+(0.120-.101) from 1. to 10. step .1
+
+  data "../data/Eta_s, RENORM [nf=3].dat" d21=c1,c2
+  data "../data/Eta_s, RENORM [nf=3].dat" d22=c1,c3
+  data "../data/Eta_s, RENORM [nf=3].dat" d23=c1,c4
+  data "../data/Eta_s, RENORM [nf=3].dat" d24=c1,c5
+  data "../data/Eta_s, RENORM [nf=3].dat" d25=c1,c6
+
+  ! 1/(4PI):
+  !d10 lstyle 1 lwidth 0.04
+  !fill d11,d10 color rshade3
+
+  ! pQCD:
+  fill d22,d23 color rgba255(135,206,250,100)
+  d21 smooth color #0057AE lwidth 0.1 lstyle 1
+  d24 smooth color #0057AE lwidth 0.04 lstyle 2
+  d25 smooth color #0057AE lwidth 0.04 lstyle 2
+
+  ! Niemi:
+  d31 lstyle 8 lwidth .06 color #E60C00
+  d32 lstyle 8 lwidth .06 color #E60C00
+  d34 lstyle 8 lwidth .06 color #E60C00
+
+end graph
+
+set color black
+set hei 0.4
+set font psncsr
+begin key
+  compact
+  nobox
+  position tl
+  offset .5 .5
+  !text " \ [3]" marker wcircle color #E60C00 lwidth 0.06
+  !text " \ [4]" marker wtriangle color #E60C00 lwidth 0.06
+  !text " \ [5]" marker wsquare color #E60C00 lwidth 0.06
+  text " \ [?]" line color #E60C00 lstyle 8 lwidth 0.08
+  !text " \ renorm" line color #0057AE lstyle 1 lwidth 0.1
+end key
+
+
+set hei 0.5
+set font psncsi
+amove 7.5 0.6
+text \tex{$T/T_c$}
+
+amove 2.8 4.3
+box 1.9 0.9 fill lavender round .1 nostroke
+rmove -0.07 0.1
+box 1.9 0.9 fill aliceblue round .1 nostroke
+rmove 0.25 0.3
+  text \tex{$n_f = 0$}
+amove 11.6 8.5
+box 1.9 0.9 fill lavender round .1 nostroke
+rmove -0.07 0.1
+box 1.9 0.9 fill aliceblue round .1 nostroke
+rmove 0.25 0.3
+  text \tex{$n_f = 3$}
+
