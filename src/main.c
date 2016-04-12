@@ -21,7 +21,7 @@
                               // ------------------------
 int             HTL  = 1   ;  // =1 for HTL, =0 for M_eff
 double        kappa  = 1.00;  // kappa*mD^2
-int           calls  =+1e5 ;  // MC calls {if > 0 : GSL, else hcubature}
+int           calls  =+1e3 ;  // MC calls {if > 0 : GSL, else hcubature}
 int         alf_run  = 0   ;  // =1 for running coupling
 double       lambda  = 1.0 ;  // lambda_{QCD}
 double            J  = 1.0 ;  // HTL cut
@@ -44,10 +44,10 @@ void   Gamma(double,double);
 int main() {                                        // Main fnc: to explore... T, alpha  dependence
 
   C_integrand = &C_integrand_st;
-  points = 50; Temp=1.;
+  points = 20; Temp=1.;
 
 
-  for (int nf=3;nf<4;nf++) {                                     // loop over active quark flavours
+  for (int nf=0;nf<1;nf++) {                                     // loop over active quark flavours
     Nf = nf; qgp(Nf);
     // interaction rate
     /*HTL = 0 ; kappa=1.00; Gamma(1e-3,1e2);*/
@@ -60,8 +60,8 @@ int main() {                                        // Main fnc: to explore... T
     /*HTL = 1 ; kappa=1.00; eval_g(1e-3,1e2);*/
 
     // T-dep
-    HTL = 0 ; kappa=1.00; eval_T(1.0,10.);
-    HTL = 0 ; kappa=0.25; eval_T(1.0,10.);
+    /*HTL = 0 ; kappa=1.00; eval_T(1.0,10.);*/
+    /*HTL = 0 ; kappa=0.25; eval_T(1.0,10.);*/
     HTL = 1 ; kappa=1.00; eval_T(1.0,10.);
 
   }
@@ -99,8 +99,8 @@ void eval_T(double Tmin, double Tmax)
   for(int i=0; i<points; i++) {
     Temp = Tmin + (Tmax-Tmin)*( ((double) i)/((double) points) );
     printf("  :  %-1.4f  :", Temp/lambda);                       fprintf(file, "%.8f", Temp/lambda);
-    J = .5;  res3 = eta()/pow(Temp,0);
-    J = 2.;  res2 = eta()/pow(Temp,0);
+    J = .0;  res3 = eta()/pow(Temp,0);
+    J = 10.;  res2 = eta()/pow(Temp,0);
     J = 1.;  res1 = eta()/pow(Temp,0);
     printf("   %-1.3f   :\n",res1);            fprintf(file, ",%.8f,%.8f,%.8f\n", res1, res2, res3);
   }
@@ -134,8 +134,8 @@ void eval_g(double gmin, double gmax)
   for(int i=0; i<points; i++) {
     g = gmax*pow(10., -(points -1 - i)*( log(gmax/gmin)/log(10.))/((double) points - 1));
     printf("  :  %03.5f   :", g);                                           fprintf(file, "%.8f",g);
-    J = .5;  res3 = eta()/pow(Temp,3);
-    J = 2.;  res2 = eta()/pow(Temp,3);
+    J = .0;  res3 = eta()/pow(Temp,3);
+    J = 10.;  res2 = eta()/pow(Temp,3);
     J = 1.;  res1 = eta()/pow(Temp,3);
     printf("  %-1.1e  :\n",res1);            fprintf(file, ",%.8f,%.8f,%.8f\n", res1, res2, res3);
   }
