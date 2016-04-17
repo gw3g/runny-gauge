@@ -3,8 +3,8 @@ set font psncsi
 set lwidth 0.04
 set cap round
 
-ym = 2
-xm = 6.2
+ym = 1.7
+xm = 5.2
 
 amove 2 2
 set texlabels 1
@@ -16,15 +16,28 @@ begin graph
   ylabels hei 0.5
   yticks length 0.25
 
-  key offset 3.7 3.9 hei 0.4  nobox
+  key compact offset 6.5 1. hei 0.4  nobox
 
-  xaxis min .8 max xm dticks 1. 
-  yaxis min -.5 max ym  dticks .2
+  xaxis min .8 max xm  dticks 1.
+  yaxis min -.2 max ym  dticks .5
+
   ytitle "$\eta(T) / s_{_{\rm lQCD}}$" hei 0.6 dist 0.4
+  xplaces 1 2 3 4 5
+  xsubticks off
+  yplaces 0 .5 1 1.5
 
-  data "../data/mey1.dat"
-  data "../data/mey2.dat"
-  data "../data/bor1.dat"
+  data "../data/mey1.dat" d1=c1,c2
+  data "../data/mey1.dat" d2=c1,c3
+  data "../data/mey1.dat" d3=c1,c2
+
+  data "../data/mey2.dat" d4=c1,c2
+  data "../data/mey2.dat" d5=c1,c3
+  data "../data/mey2.dat" d6=c1,c2
+
+  data "../data/bor1.dat" d7=c1,c2
+  data "../data/bor1.dat" d8=c1,c3
+  data "../data/bor1.dat" d9=c1,c2
+
   let d10 = 1./(4.*PI) from 1. to 5. step 0.1
   let d11 = .5/(4.*PI) from 1. to 5. step 0.1
 
@@ -33,6 +46,7 @@ begin graph
   data "../data/Eta_s, RENORM [nf=0].dat" d33=c1,c4
   data "../data/Eta_s, RENORM [nf=0].dat" d34=c1,c5
   data "../data/Eta_s, RENORM [nf=0].dat" d35=c1,c6
+  data "../data/Eta_s, RENORM [nf=0].dat" d36=c1,c7
 
   data "../data/Eta_s, [nll, nf=0].dat" d81=c1,c2
   data "../data/Eta_s, [nll, nf=0].dat" d82=c1,c3
@@ -49,16 +63,19 @@ begin graph
 
   ! pQCD
   fill d81,d82 color rshade2
-  fill d32,d33 color rgba255(135,206,250,60)
-  fill d71,d72 color  rgba255(255,165,0,180)
-  d31 smooth color #0057AE lwidth 0.1 lstyle 1
-  d34 smooth color #0057AE lwidth 0.04 lstyle 2
-  d35 smooth color #0057AE lwidth 0.04 lstyle 2
+  fill d32,d33 color rgba255(255,166,0,80)
+  d31 smooth color crimson lwidth 0.10 lstyle 1
+  d34 smooth color crimson lwidth 0.05 lstyle 52
+  d35 smooth color crimson lwidth 0.03 lstyle 2
+  d36 smooth color crimson lwidth 0.03 lstyle 2
 
   ! LATTICE DATA:
-  d1 marker wcircle   err d2 color #E60C00 lwidth 0.06 errwidth 0.0001 msize .3
-  d3 marker wtriangle err d4 color #E60C00 lwidth 0.06 errwidth 0.0001 msize .3
-  d5 marker wsquare   err d6 color #E60C00 lwidth 0.06 errwidth 0.0001 msize .3
+  d3    err d2 color .6 lwidth 0.06 errwidth 0.0001
+  d1 marker fcircle    color #0057AE lwidth 0.03 msize .25 !key "Mey1"
+  d6    err d5 color .6 lwidth 0.06 errwidth 0.0001 
+  d4 marker fsquare    color #0057AE lwidth 0.03 msize .2  !key "May2"
+  d9    err d8 color .6 lwidth 0.06 errwidth 0.0001 
+  d7 marker ftriangle  color #0057AE lwidth 0.03 msize .3  !key "Bor"
 
   ! wtr^-1
   !d91 smooth color orange lwidth 0.1 lstyle 1
@@ -73,19 +90,11 @@ begin key
   compact
   nobox
   position tl
-  offset 6.5 1
-  text " \ [?]" marker wcircle color #E60C00 lwidth 0.06
-  text " \ [?]" marker wtriangle color #E60C00 lwidth 0.06
-  text " \ [?]" marker wsquare color #E60C00 lwidth 0.06
+  offset 6.6 2.41
+  text "" color .6 lwidth .05
+  text "" color .6 lwidth .05
+  text "" color .6 lwidth .05
 end key
-
-set color black
-amove 8.9 6.8
-box 0.75 0.3 fill rgba255(255,166,0,190) nostroke
-set hei 0.4
-rmove 1.0 -0.00
- text from \tex{$w_{\rm tr}$}
-
 
 !set color orange
 !amove 4 7
@@ -107,8 +116,10 @@ begin graph
   key offset 3.7 3.9 hei 0.52  nobox
 
   xaxis min 0.8 max xm dticks 1. 
-  yaxis min -.5 max ym  dticks .2
-  ynames "" ""  "" "" "" ""
+  yaxis min -.2 max ym  dticks .5
+  xplaces 1 2 3 4 5
+  ynames "" "" "" "" 
+  xsubticks off
 
   let d10 = 1./(4.*PI) from 1. to 5. step 0.1
   let d11 = .5/(4.*PI) from 1. to 5. step 0.1
@@ -129,15 +140,16 @@ begin graph
   !fill d11,d10 color rshade3
 
   ! pQCD:
-  !fill d22,d23 color rgba255(135,206,250,100)
-  !d21 smooth color #0057AE lwidth 0.1 lstyle 1
-  !d24 smooth color #0057AE lwidth 0.04 lstyle 2
-  !d25 smooth color #0057AE lwidth 0.04 lstyle 2
+  fill d22,d23 color  rgba255(255,166,0,80) !bisque
+  d21 smooth color crimson lwidth 0.10 lstyle 1
+  !d24 smooth color crimson lwidth 0.05 lstyle 52
+  d25 smooth color crimson lwidth 0.03 lstyle 2
+  d24 smooth color crimson lwidth 0.03 lstyle 2
 
   ! Niemi:
-  d31 lstyle 8 lwidth .06 color #E60C00
-  d32 lstyle 8 lwidth .06 color #E60C00
-  d34 lstyle 8 lwidth .06 color #E60C00
+  d31 lstyle 22 lwidth .06 color #0057AE
+  d32 lstyle 22 lwidth .06 color #0057AE
+  d34 lstyle 22 lwidth .06 color #0057AE
 
 end graph
 
@@ -148,30 +160,47 @@ begin key
   compact
   nobox
   position tl
-  offset .5 .5
-  !text " \ [3]" marker wcircle color #E60C00 lwidth 0.06
-  !text " \ [4]" marker wtriangle color #E60C00 lwidth 0.06
-  !text " \ [5]" marker wsquare color #E60C00 lwidth 0.06
-  text " \ [?]" line color #E60C00 lstyle 8 lwidth 0.08
-  !text " \ renorm" line color #0057AE lstyle 1 lwidth 0.1
+  offset .6 1.3
+  text "HTL everywhere"  color crimson lwidth 0.05 lstyle 52
+  text " [?]  -  hydro" line color #0057AE lstyle 22 lwidth 0.06
+  text " [?]" marker fcircle  color #0057AE lwidth 0.0000 msize .25
+  text " [?]" marker fsquare  color #0057AE lwidth 0.0000 msize .2
+  text " [?]" marker ftriangle color #0057AE lwidth 0.0000 msize .3
 end key
 
 
 set hei 0.5
-set font psncsi
+set font psncsr
 amove 7.5 0.6
 text \tex{$T/T_c$}
+set hei .4
+amove 10.3 6.7
+text \setfont{plsym2}\char{137}
+set font psncsr
+rmove .3 0
+text lQCD
 
-amove 2.8 2.3
+amove 5.6 2.4
 box 1.9 0.9 fill lavender round .1 nostroke
 rmove -0.07 0.1
 box 1.9 0.9 fill aliceblue round .1 nostroke
 rmove 0.25 0.3
   text \tex{$n_f = 0$}
-amove 11.6 8.5
+amove 11.6 2.4
 box 1.9 0.9 fill lavender round .1 nostroke
 rmove -0.07 0.1
 box 1.9 0.9 fill aliceblue round .1 nostroke
 rmove 0.25 0.3
   text \tex{$n_f = 3$}
+
+set color black
+amove 8.8 8.8
+box 0.75 0.3 fill  rgba255(255,166,0,100) nostroke
+set hei 0.4
+rmove 1.0 -0.00
+ text \tex{$|t^\star|\in [\frac 12, 2] T^2$}
+amove 8.825 8.95
+set color crimson
+set lwidth .06
+rline .7 0
 

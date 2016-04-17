@@ -57,12 +57,12 @@ int main() {                                        // Main fnc: to explore... T
     // fixed alpha
     /*HTL = 0 ; kappa=1.00; eval_g(1e-3,1e2);*/
     /*HTL = 0 ; kappa=0.25; eval_g(1e-3,1e2);*/
-    /*HTL = 1 ; kappa=1.00; eval_g(1e-3,1e2);*/
+    HTL = 1 ; kappa=1.00; eval_g(1e-3,1e2);
 
     // T-dep
     /*HTL = 0 ; kappa=1.00; eval_T(1.0,10.);*/
     /*HTL = 0 ; kappa=0.25; eval_T(1.0,10.);*/
-    HTL = 1 ; kappa=1.00; eval_T(1.0,10.);
+    /*HTL = 1 ; kappa=1.00; eval_T(1.0,10.);*/
 
   }
 
@@ -74,7 +74,7 @@ int main() {                                        // Main fnc: to explore... T
 FILE *file; char fname[90];
 
 void eval_T(double Tmin, double Tmax) 
-{ alf_run=1; g = 1.; double res1, res2, res3;
+{ alf_run=1; g = 1.; double res1, res2, res3, res4;
 
        if (!HTL) sprintf(fname, "out/data/eta(T), kappa=%.2f, Nf=%d.csv", kappa, Nf     );
   else if  (HTL) sprintf(fname, "out/data/eta(T), HTL, Nf=%d.csv", Nf                   );
@@ -99,17 +99,18 @@ void eval_T(double Tmin, double Tmax)
   for(int i=0; i<points; i++) {
     Temp = Tmin + (Tmax-Tmin)*( ((double) i)/((double) points) );
     printf("  :  %-1.4f  :", Temp/lambda);                       fprintf(file, "%.8f", Temp/lambda);
-    J = .0;  res3 = eta()/pow(Temp,0);
-    J = 10.;  res2 = eta()/pow(Temp,0);
-    J = 1.;  res1 = eta()/pow(Temp,0);
-    printf("   %-1.3f   :\n",res1);            fprintf(file, ",%.8f,%.8f,%.8f\n", res1, res2, res3);
+    J = .0;  res4 = eta()/pow(Temp,3);
+    J = .5;  res3 = eta()/pow(Temp,3);
+    J = 2.;  res2 = eta()/pow(Temp,3);
+    J = 1.;  res1 = eta()/pow(Temp,3);
+    printf("  %-1.3e  :\n",res1);            fprintf(file, ", %g, %g, %g, %g\n", res1, res2, res3, res4);
   }
   printf("  -------------------------------------------------------\n" );
   fclose(file);
 }
 
 void eval_g(double gmin, double gmax) 
-{ alf_run=0; Temp = 1.; double res1, res2, res3;
+{ alf_run=0; Temp = 1.; double res1, res2, res3, res4;
 
        if (!HTL) sprintf(fname, "out/data/eta(g), M_eff, (kappa=%.2f) Nf=%d.csv", kappa, Nf    );
   else if  (HTL) sprintf(fname, "out/data/eta(g), HTL, Nf=%d.csv", Nf                           );
@@ -125,7 +126,7 @@ void eval_g(double gmin, double gmax)
   fprintf(file,   "# 1-fnc basis (Legendre)\n"                                                    );
   fprintf(file,   "# MC samples, %d\n",(int) calls                                                );
   fprintf(file,   "#\n"                                                                           );
-  fprintf(file,   "# g,      eta/T^3, lower, upper \n"                                            );
+  fprintf(file,   "# g,      eta/T^3, lower, upper, omni \n"                                            );
 
   printf("\n [ Nf = %d ] \n", Nf );
   printf("  ---------------------------------------------------------\n" );
@@ -134,17 +135,18 @@ void eval_g(double gmin, double gmax)
   for(int i=0; i<points; i++) {
     g = gmax*pow(10., -(points -1 - i)*( log(gmax/gmin)/log(10.))/((double) points - 1));
     printf("  :  %03.5f   :", g);                                           fprintf(file, "%.8f",g);
-    J = .0;  res3 = eta()/pow(Temp,3);
-    J = 10.;  res2 = eta()/pow(Temp,3);
+    J = .0;  res4 = eta()/pow(Temp,3);
+    J = .5;  res3 = eta()/pow(Temp,3);
+    J = 2.;  res2 = eta()/pow(Temp,3);
     J = 1.;  res1 = eta()/pow(Temp,3);
-    printf("  %-1.1e  :\n",res1);            fprintf(file, ",%.8f,%.8f,%.8f\n", res1, res2, res3);
+    printf("  %-1.1e  :\n",res1);            fprintf(file, ", %g, %g, %g, %g\n", res1, res2, res3, res4);
   }
   printf("  ---------------------------------------------------------\n" );
   fclose(file);
 }
 
 void Gamma(double gmin, double gmax) 
-{ alf_run=0; Temp = 1.; double res1, res2, res3;
+{ alf_run=0; Temp = 1.; double res1, res2, res3, res4;
 
        if (!HTL) sprintf(fname, "out/data/st_Gamma(g), M_eff, (kappa=%.2f) Nf=%d.csv", kappa, Nf  );
   else if  (HTL) sprintf(fname, "out/data/st_Gamma(g), HTL, Nf=%d.csv", Nf                        );
@@ -169,10 +171,11 @@ void Gamma(double gmin, double gmax)
   for(int i=0; i<points; i++) {
     g = gmax*pow(10., -(points -1 - i)*( log(gmax/gmin)/log(10.))/((double) points - 1));
     printf("  :  %03.5f   :", g);                                           fprintf(file, "%.8f",g);
-    /*J = .5;  res3 =     xCx(&f)/(g*g);*/
-    /*J = 2.;  res2 =     xCx(&f)/(g*g);*/
+    J = .0;  res4 =     xCx(&f)/(g*g);
+    J = .5;  res3 =     xCx(&f)/(g*g);
+    J = 2.;  res2 =     xCx(&f)/(g*g);
     J = 1.;  res1 =     xCx(&f)/(g*g);
-    printf("  %-1.3e  :\n",res1);            fprintf(file, ",%.8f,%.8f,%.8f\n", res1, res1, res1);
+    printf("  %-1.3e  :\n",res1);            fprintf(file, ", %g,%g,%g,%g\n", res1, res2, res3, res4);
   }
   printf("  ---------------------------------------------------------\n" );
   fclose(file);

@@ -35,6 +35,8 @@ u:
 	gle -o "out/u(eta).pdf" -d pdf "out/plotter/u_eta.gle"
 i-rate:
 	gle -o "out/i-rate.pdf" -d pdf "out/plotter/i-rate.gle"
+eta_LO:
+	gle -o "out/eta_LO.pdf" -d pdf -cairo "out/plotter/eta_LO.gle"
 eta_fixCoupling:
 	gle -o "out/eta.pdf" -d pdf -cairo "out/plotter/eta_fixCoupling.gle"
 eta_over_s:

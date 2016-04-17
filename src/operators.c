@@ -35,10 +35,10 @@ double xCx( double (*chi)(double,p_type) ) {
     do {
       gsl_monte_vegas_integrate(&coll,lower,upper,5,(size_t)calls,ws,s,&res,&err);
     }
-    while (fabs(gsl_monte_vegas_chisq(s)-1.0) > 0.05);
+    while (fabs(gsl_monte_vegas_chisq(s)-1.0) > 0.1);
   }
   else {
-    double    tol=1e-3;
+    double    tol=1e-1;
     int       MaxEvls = -( (int) calls );
     hcubature(1, c_cub, &fp, 5, lower, upper, MaxEvls, 0, tol, ERROR_INDIVIDUAL, &res, &err);
     /*printf("\n -- %g\n\n",res);*/
