@@ -18,7 +18,7 @@ begin graph
 
   key compact offset 6.5 1. hei 0.4  nobox
 
-  xaxis min .8 max xm  dticks 1.
+  xaxis min .8 max xm  dticks 1. 
   yaxis min -.2 max ym  dticks .5
 
   ytitle "$\eta(T) / s_{_{\rm lQCD}}$" hei 0.6 dist 0.4
