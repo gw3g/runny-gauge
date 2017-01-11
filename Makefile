@@ -31,16 +31,8 @@ temperature:
 	gle -o "out/eta(temp).pdf" -d pdf "out/plotter/temp.gle"
 relative:
 	gle -o "out/_REL.pdf" -d pdf "out/plotter/relative.gle"
-u:
-	gle -o "out/u(eta).pdf" -d pdf "out/plotter/u_eta.gle"
 i-rate:
 	gle -o "out/i-rate.pdf" -d pdf "out/plotter/i-rate.gle"
-eta_LO:
-	gle -o "out/eta_LO.pdf" -d pdf -cairo "out/plotter/eta_LO.gle"
-eta_fixCoupling:
-	gle -o "out/eta.pdf" -d pdf -cairo "out/plotter/eta(g).gle"
-eta_over_s:
-	gle -o "out/eta_over_s.pdf" -d pdf -cairo "out/plotter/eta_over_s.gle"
 
 # test
 tester: $(OBJ)
