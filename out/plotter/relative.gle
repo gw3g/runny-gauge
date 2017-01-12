@@ -42,9 +42,6 @@ end if
 
 md = sqrt( (3.+nf*0.5)/3. )
 
-fileN1 = "eta(g), Meff, (kappa=1.00) Nf="+num$(nf)+".csv"
-fileN2 = "eta(g), HTL, Nf="+num$(nf)+".csv"
-
 amove 2 2
 begin graph
   size 11 7 fullsize
@@ -58,24 +55,31 @@ begin graph
   xsubticks length 0.12
   ysubticks length 0.12
 
+  key compact pos bl offset 4. .6 hei .4
+
   xaxis min 0.0007 max 4.0  log nolast grid
-  yaxis min 0.005 max 2.4 grid !dticks 1
+  yaxis min 0.5 max 1.5 grid dticks .2
   ytitle "\tex{$\eta/\eta_{_{\rm NLL}}$}" hei 0.6 dist 0.3
   xtitle "\tex{$g$}" hei 0.6 dist 0.5
   x2title "\tex{$\alpha$}" hei 0.6 dist 0.5
-  !title "\tex{$n_f =$} "+num$(nf) hei 0.4
 
   d14 line color #EB811B lstyle 1 lwidth 0.15
   d17 line color #14B03D lstyle 1 lwidth 0.1
 
   set texlabels 0
-  data "../data/eta(g), M_eff, (kappa=1.00) Nf="+num$(nf)+".csv" comment # d11=c1,c2
+  data "../data/eta(g), mu2, (kappa=0.25) Nf="+num$(nf)+".csv" comment # d11=c1,c2
   let d12=(d11*log(mu/(x*md))*(x^4))/eta1
 
   data "../data/eta(g), HTL, Nf="+num$(nf)+".csv" comment # d21=c1,c2
-  let d22=(d21*log(mu/(x*md))*(x^4))/eta1
+  data "../data/eta(g), HTL, Nf="+num$(nf)+".csv" comment # d22=c1,c3
+  data "../data/eta(g), HTL, Nf="+num$(nf)+".csv" comment # d23=c1,c4
+  data "../data/eta(g), HTL, Nf="+num$(nf)+".csv" comment # d24=c1,c5
+  let d41=(d21*log(mu/(x*md))*(x^4))/eta1
+  let d42=(d22*log(mu/(x*md))*(x^4))/eta1
+  let d43=(d23*log(mu/(x*md))*(x^4))/eta1
+  let d44=(d24*log(mu/(x*md))*(x^4))/eta1
 
-  data "../data/eta(g), M_eff, (kappa=0.25) Nf="+num$(nf)+".csv" comment # d31=c1,c2
+  data "../data/eta(g), mu2, (kappa=0.50) Nf="+num$(nf)+".csv" comment # d31=c1,c2
   let d32=(d31*log(mu/(x*md))*(x^4))/eta1
 
   let d20 = x*x/(4*PI), d11
@@ -83,23 +87,15 @@ begin graph
   x2axis on
   x2axis min .0007*.0007/(4*PI) max 4/PI
 
-  d12 marker cross color #E60C00 msize 0.35 mdist 0 line lwidth 0.04
-  d22 marker circle color #0057AE msize 0.35 mdist 0 line lwidth 0.04
-  d32 marker plus color #14B03D msize 0.35 mdist 0 line lwidth 0.04
-
+  d12 marker cross color red msize 0.35 line key "\tex{$\mu^2$ with $\kappa=0.25$}"
+  d32 marker plus color orange msize 0.35 line key "\tex{$\qquad \ \quad\ \kappa=0.50$}"
+  d41 marker circle color blue msize 0.35 line key "\tex{HTL, $t^\star=[\frac12,2]T^2$}"
+  d44 line lstyle 2 color blue msize 0.25
+  fill d42,d43 color .8
 end graph
 
 set texlabels 1
 set hei 0.4
-begin key
-  compact
-  position tl
-  offset .7 .7
-  text "$\kappa=1$" marker cross color #E60C00  msize 0.3
-  text "$\kappa=.25$" marker plus color #14B03D  msize 0.3
-  text "HTL" marker circle color #0057AE  msize 0.3
-end key
-
 
 amove 3.0 2.9
 box 1.9 0.9 fill lavender round .1 nostroke

@@ -30,7 +30,7 @@ clean:
 temperature:
 	gle -o "out/eta(temp).pdf" -d pdf "out/plotter/temp.gle"
 relative:
-	gle -o "out/_REL.pdf" -d pdf "out/plotter/relative.gle"
+	gle -o "out/eta-to-NLL.pdf" -d pdf "out/plotter/relative.gle"
 i-rate:
 	gle -o "out/i-rate.pdf" -d pdf "out/plotter/i-rate.gle"
 

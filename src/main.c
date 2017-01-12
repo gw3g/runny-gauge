@@ -47,7 +47,7 @@ int main() {                                        // Main fnc: to explore... T
   points = 20; Temp=1.;
 
 
-  for (int nf=0;nf<2;nf++) {                                     // loop over active quark flavours
+  for (int nf=1;nf<2;nf++) {                                     // loop over active quark flavours
     Nf = nf; qgp(Nf);
     // interaction rate
     /*HTL = 0 ; kappa=1.00; Gamma(1e-3,1e2);*/
@@ -55,13 +55,13 @@ int main() {                                        // Main fnc: to explore... T
     /*HTL = 1 ; kappa=1.00; Gamma(1e-3,1e2);*/
 
     // fixed alpha
-    /*HTL = 0 ; kappa=1.00; eval_g(1e-3,1e2);*/
-    /*HTL = 0 ; kappa=0.25; eval_g(1e-3,1e2);*/
-    /*HTL = 1 ; kappa=1.00; eval_g(1e-3,1e2);*/
+    HTL = 0 ; kappa=0.25; eval_g(1e-3,1e2);
+    HTL = 0 ; kappa=0.50; eval_g(1e-3,1e2);
+    HTL = 1 ; kappa=1.00; eval_g(1e-3,1e2);
 
     // T-dep
-    HTL = 0 ; kappa=0.5;  eval_T(1.0,10.);
-    HTL = 1 ; kappa=1.00; eval_T(1.0,10.);
+    /*HTL = 0 ; kappa=0.5;  eval_T(1.0,10.);*/
+    /*HTL = 1 ; kappa=1.00; eval_T(1.0,10.);*/
 
   }
 

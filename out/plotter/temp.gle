@@ -19,6 +19,8 @@ begin graph
   xsubticks length 0.12
   ysubticks length 0.12
 
+  key compact pos tl offset .5 .5 hei .4
+
   xaxis min 0.8 max 10.2 grid dticks 2
   yaxis min 0.0 max ymax grid dticks 5
   ytitle "\tex{$\eta / T^3$}" hei 0.6 dist 0.3
@@ -33,26 +35,15 @@ begin graph
   data "../data/eta(T), HTL, Nf="+num$(nf)+".csv" comment # d34 = c1, c5
   !let d41=d91*d91*d91*d33
 
-  d11 marker circle line color red msize 0.25
+  d11 marker circle line color red msize 0.25 key "\tex{$\mu^2$ with $\kappa=0.50$}"
   !d21 marker triangle line color crimson msize 0.25
-  d31 marker square line color blue msize 0.25
+  d31 marker square line color blue msize 0.25 key "\tex{HTL, $t^\star=[\frac12,2]T^2$}"
   d34 line lstyle 2 color blue msize 0.25
   fill d33,d32 color 0.8
 end graph
 
 set texlabels 1
 set hei 0.4
-begin key
-  compact
-  position tl
-  offset .5 .5
-  text "from $\mu^2$"
-  !text "\kappa = 1." marker triangle line color crimson  msize 0.3 lwidth 0.04
-  text "$\kappa = .5$" marker circle line color red  msize 0.3 lwidth 0.04
-  separator
-  text "$\Theta (t-t^\star)$"
-  text "$-t^\star= [\frac12,2]T^2$" marker square line color blue  msize 0.25 lwidth 0.04
-end key
 
 amove 9.5 2.4
 box 1.9 0.9 fill lavender round .1 nostroke

@@ -19,8 +19,7 @@ leading-log [AMY1](http://arxiv.org/abs/hep-ph/0010177)
   core.h        |   header file
   thermal.c     |   quantum statistics
   basis.c       |   expand chi(p) in basis
-  amy_prepInt.c |   organise integration (q,omega)
-  stu_prepInt.c |                        (s, t)
+  integrand.c   |   organise integration (q,omega) / (t,x)
   operators.c   |   define functional operators
   qcd.c         |   matrix elements
   htl.c         |   hard thermal loops
@@ -33,7 +32,8 @@ A *rough* UML diagram is shown in "~/doc/layout.jpg".
 
 ## visualisation
 
-data is written to ``~/out/data/``. Pretty pictures using [GLE](http://glx.sourceforge.net/), can compile
-directly by running ``make plotter`` after the main executable has been run. See the
-makefile for details.
+data is written to ``~/out/data/``. Pretty pictures 
+using [GLE](http://glx.sourceforge.net/), can compile
+directly by running ``make plotter`` after the main 
+executable has been run. See the makefile for details.
 
