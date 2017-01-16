@@ -21,7 +21,7 @@
                               // ------------------------
 int             HTL  = 1   ;  // =1 for HTL, =0 for M_eff
 double        kappa  = 1.00;  // kappa*mD^2
-int           calls  =+1e5 ;  // MC calls {if > 0 : GSL, else hcubature}
+int           calls  =-1e7 ;  // MC calls {if > 0 : GSL, else hcubature}
 int         alf_run  = 0   ;  // =1 for running coupling
 double       lambda  = 1.0 ;  // lambda_{QCD}
 double            J  = 1.0 ;  // HTL cut
@@ -44,10 +44,10 @@ void   Gamma(double,double);
 int main() {                                        // Main fnc: to explore... T, alpha  dependence
 
   C_integrand = &C_integrand_st;
-  points = 20; Temp=1.;
+  points = 3; Temp=1.;
 
 
-  for (int nf=2;nf<3;nf++) {                                     // loop over active quark flavours
+  for (int nf=3;nf<4;nf++) {                                     // loop over active quark flavours
     Nf = nf; qgp(Nf);
     // interaction rate
     /*HTL = 0 ; kappa=1.00; Gamma(1e-3,1e2);*/
@@ -55,9 +55,9 @@ int main() {                                        // Main fnc: to explore... T
     /*HTL = 1 ; kappa=1.00; Gamma(1e-3,1e2);*/
 
     // fixed alpha
-    HTL = 0 ; kappa=0.25; eval_g(1e-3,1e2);
-    HTL = 0 ; kappa=0.50; eval_g(1e-3,1e2);
-    HTL = 1 ; kappa=1.00; eval_g(1e-3,1e2);
+    /*HTL = 0 ; kappa=0.25; eval_g(1e-3,1e2);*/
+    /*HTL = 0 ; kappa=0.50; eval_g(1e-3,1e2);*/
+    /*HTL = 1 ; kappa=1.00; eval_g(1e-3,1e2);*/
 
     // T-dep
     HTL = 0 ; kappa=0.5;  eval_T(1.0,10.);
@@ -102,7 +102,7 @@ void eval_T(double Tmin, double Tmax)
     J = .5;  res3 = eta()/pow(Temp,0);
     J = 2.;  res2 = eta()/pow(Temp,0);
     J = 1.;  res1 = eta()/pow(Temp,0);
-    printf("  %-1.3e  :\n",res1);            fprintf(file, ", %g, %g, %g, %g\n", res1, res2, res3, res4);
+    printf("  %g  :\n",res1);            fprintf(file, ", %g, %g, %g, %g\n", res1, res2, res3, res4);
   }
   printf("  -------------------------------------------------------\n" );
   fclose(file);

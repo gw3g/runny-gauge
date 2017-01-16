@@ -38,7 +38,7 @@ double xCx( double (*chi)(double,p_type) ) {
     while (fabs(gsl_monte_vegas_chisq(s)-1.0) > 0.1);
   }
   else {
-    double    tol=1e-1;
+    double    tol=1e-2;
     int       MaxEvls = -( (int) calls );
     hcubature(1, c_cub, &fp, 5, lower, upper, MaxEvls, 0, tol, ERROR_INDIVIDUAL, &res, &err);
     /*printf("\n -- %g\n\n",res);*/
@@ -47,7 +47,9 @@ double xCx( double (*chi)(double,p_type) ) {
   if (alf_run) printf("\r  :  %-1.4f  :", Temp/lambda); else printf("\r  :  %03.5f   :", g);
 
   printf("  %.8f   :    %.5f   :", err/res, gsl_monte_vegas_chisq(s) );
+  if ((double) calls>0) {
   gsl_monte_vegas_free(s);                                                    // free memory
+  }
 
   return res;
 }
@@ -91,7 +93,7 @@ double xS( double (*chi)(double, p_type) ) {
   gsl_rng_env_setup (); tt = gsl_rng_default; ws = gsl_rng_alloc (tt);
   gsl_monte_function source   = {&s_integrand, 1, &fp};                       // mc function (integrand)
   gsl_monte_vegas_state *s = gsl_monte_vegas_alloc (1);                       // workspace in 1 dim
-  gsl_monte_vegas_integrate (&source,sL,sU,1,calls,ws,s,&res,&err);           // perform sampling
+  gsl_monte_vegas_integrate (&source,sL,sU,1,abs(calls),ws,s,&res,&err);           // perform sampling
   gsl_monte_vegas_free (s);                                                   // free memory
 
   return res;

@@ -19,6 +19,8 @@ double alphas(double Q2) {                                                      
     if (Q2<-2.71828*pow(lambda,2))  alf = 1./L;
   }
   alf *= 4*M_PI/beta0;
+
+  /*if (alf<0.) {printf("%.4f", alf);}*/
   return alf_run ? (alf<alfMax?alf:alfMax) : g*g/(4*M_PI);
 
   /*double alf = (4*M_PI/beta0) / log(fabs(Q2)/pow(lambda,2));*/
@@ -81,41 +83,40 @@ double *M_2(double e[4], double s, double t) {          // energies & Mandelstam
   //    = su/t2                 = (s2+u2)/t2                = s/u                 = t/u
   { rB1 = (1.-rB)/4.,       rB2 = (1.+rB)/2.,           rF1 = rF[0],          rF2 = rF[1];}
 
-  /*printf("%g\n", rB1);*/
-
   free(rF);
 
   double 
     *M2 = (double *)malloc( 7*sizeof(double) );
+  double IRsafe=1.;
 
   //-----------------------------------------------------------------------------------------//
   // Delbrűck :
-                                         M2[0] =  gg1*( av2*3. - at2*2.*rB1 - 1.*as2*tu/s2 );
+                                         M2[0] =  ( gg1*( IRsafe*av2*3. - at2*2.*rB1 - IRsafe*as2*tu/s2 ) );
   // (gg <--> gg)
   //-----------------------------------------------------------------------------------------//
   // Møller :
-                                                                 M2[1] =  qq1*( at2*rB2 );
+                                                                 M2[1] =  ( qq1*( at2*rB2 ) );
   // (q1q2 <--> q1q2)
-                                  M2[2] =  qq1*( at2*2.*rB2 ) + qq2*( -au2*s/u -at2*s/t );
+                             M2[2] =  ( qq1*( at2*2.*rB2 ) + IRsafe*qq2*( -au2*s/u -at2*s/t ) );
   // (q1q1 <--> q1q1)
   //-----------------------------------------------------------------------------------------//
   // Bhabha :
-                      M2[3] = qq1*( at2*rB2 +as2*(t2+u2)/s2  ) - qq2*( as2*u/s +at2*u/t );
+                      M2[3] = ( qq1*( at2*rB2 +IRsafe*as2*(t2+u2)/s2  ) - IRsafe*qq2*( as2*u/s +at2*u/t ) );
   // (q1\bar{q1} <--> q1\bar{q1})
-                                                          M2[4] =  qq1*( as2*(t2+u2)/s2 );
+                                                          M2[4] =  ( IRsafe*qq1*( as2*(t2+u2)/s2 ) );
   // (q1\bar{q1} <--> q2\bar{q2})
   //-----------------------------------------------------------------------------------------//
   // Annihilation :
-                                  M2[5] =     cc1*( au2*2.*rF2 ) - cc2*( as2*(t2+u2)/s2 );
+                              M2[5] = ( cc1*( au2*2.*rF2 ) - IRsafe*cc2*( as2*(t2+u2)/s2 ) );
   // (q\bar{q} <--> gg)
   //-----------------------------------------------------------------------------------------//
   // Compton :
-                                    M2[6] =  -cc1*( as2*u/s + au2*rF1 ) + cc2*( at2*rB2 );
+                                    M2[6] =  ( -cc1*( IRsafe*as2*u/s + au2*rF1 ) + cc2*( at2*rB2 ) );
   // (qg <--> qg) 
   //-----------------------------------------------------------------------------------------//
   //  15/08/25:   Checking SIGNS! Ms > 0
-  // printf("%.5f,  %.5f,  %.5f,  %.5f,  %.5f,  %.5f,  %.5f\n", 
-  //          M2[0], M2[1], M2[2], M2[3], M2[4], M2[5], M2[6]);
+  //  printf("%.5f,  %.5f,  %.5f,  %.5f,  %.5f,  %.5f,  %.5f\n", 
+  //         M2[0], M2[1], M2[2], M2[3], M2[4], M2[5], M2[6]);
   //
   //  15/08/26:   Don't forget the alpha(Q) factors!
   //

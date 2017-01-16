@@ -41,6 +41,7 @@ double eta() {
 
   if (Nf==0) {                                            // Nf = 0, special case
     double ss = S_n(1), cc = C_mn(1,2);
+    /*printf("ss=%g, cc=%g \n", ss, cc);*/
     return ss*ss/(15.*cc);
   }
   else {                                                  // Nf > 0, invertible matrix
