@@ -44,10 +44,10 @@ void   Gamma(double,double);
 int main() {                                        // Main fnc: to explore... T, alpha  dependence
 
   C_integrand = &C_integrand_st;
-  points = 3; Temp=1.;
+  points = 27; Temp=1.;
 
 
-  for (int nf=3;nf<4;nf++) {                                     // loop over active quark flavours
+  for (int nf=0;nf<1;nf++) {                                     // loop over active quark flavours
     Nf = nf; qgp(Nf);
     // interaction rate
     /*HTL = 0 ; kappa=1.00; Gamma(1e-3,1e2);*/
@@ -75,8 +75,8 @@ FILE *file; char fname[90];
 void eval_T(double Tmin, double Tmax) 
 { alf_run=1; g = 1.; double res1, res2, res3, res4;
 
-       if (!HTL) sprintf(fname, "out/data/eta(T), mu2, (kappa=%.2f) Nf=%d.csv", kappa, Nf     );
-  else if  (HTL) sprintf(fname, "out/data/eta(T), HTL, Nf=%d.csv", Nf                   );
+       if (!HTL) sprintf(fname, "out/data/eta(T), mu2, (kappa=%.2f) Nf=%d.dat", kappa, Nf     );
+  else if  (HTL) sprintf(fname, "out/data/eta(T), HTL, Nf=%d.dat", Nf                   );
 
   file = fopen(fname,"w+");
 
@@ -97,6 +97,7 @@ void eval_T(double Tmin, double Tmax)
   printf("  -------------------------------------------------------\n" );
   for(int i=0; i<points; i++) {
     Temp = Tmin + (Tmax-Tmin)*( ((double) i)/((double) points) );
+    /*Temp = Tmax*pow(10., -(points -1 - i)*( log(Tmax/Tmin)/log(10.))/((double) points - 1));*/
     printf("  :  %-1.4f  :", Temp/lambda);                       fprintf(file, "%.8f", Temp/lambda);
     J = .0;  res4 = eta()/pow(Temp,0);
     J = .5;  res3 = eta()/pow(Temp,0);
