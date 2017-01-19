@@ -47,7 +47,7 @@ int main() {                                        // Main fnc: to explore... T
   points = 27; Temp=1.;
 
 
-  for (int nf=0;nf<1;nf++) {                                     // loop over active quark flavours
+  for (int nf=4;nf<5;nf++) {                                     // loop over active quark flavours
     Nf = nf; qgp(Nf);
     // interaction rate
     /*HTL = 0 ; kappa=1.00; Gamma(1e-3,1e2);*/
@@ -60,8 +60,8 @@ int main() {                                        // Main fnc: to explore... T
     /*HTL = 1 ; kappa=1.00; eval_g(1e-3,1e2);*/
 
     // T-dep
-    HTL = 0 ; kappa=0.5;  eval_T(1.0,10.);
-    HTL = 1 ; kappa=1.00; eval_T(1.0,10.);
+    HTL = 0 ; kappa=0.5;  eval_T(1.0,9.);
+    HTL = 1 ; kappa=1.00; eval_T(1.0,9.);
 
   }
 
@@ -112,8 +112,8 @@ void eval_T(double Tmin, double Tmax)
 void eval_g(double gmin, double gmax) 
 { alf_run=0; Temp = 1.; double res1, res2, res3, res4;
 
-       if (!HTL) sprintf(fname, "out/data/eta(g), mu2, (kappa=%.2f) Nf=%d.csv", kappa, Nf    );
-  else if  (HTL) sprintf(fname, "out/data/eta(g), HTL, Nf=%d.csv", Nf                           );
+       if (!HTL) sprintf(fname, "out/data/eta(g), mu2, (kappa=%.2f) Nf=%d.dat", kappa, Nf    );
+  else if  (HTL) sprintf(fname, "out/data/eta(g), HTL, Nf=%d.dat", Nf                           );
 
   file = fopen(fname,"w+");
 
@@ -148,8 +148,8 @@ void eval_g(double gmin, double gmax)
 void Gamma(double gmin, double gmax) 
 { alf_run=0; Temp = 1.; double res1, res2, res3, res4;
 
-       if (!HTL) sprintf(fname, "out/data/st_Gamma(g), M_eff, (kappa=%.2f) Nf=%d.csv", kappa, Nf  );
-  else if  (HTL) sprintf(fname, "out/data/st_Gamma(g), HTL, Nf=%d.csv", Nf                        );
+       if (!HTL) sprintf(fname, "out/data/st_Gamma(g), M_eff, (kappa=%.2f) Nf=%d.dat", kappa, Nf  );
+  else if  (HTL) sprintf(fname, "out/data/st_Gamma(g), HTL, Nf=%d.dat", Nf                        );
 
   file = fopen(fname,"w+");
 

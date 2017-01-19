@@ -34,9 +34,5 @@ relative:
 i-rate:
 	gle -o "out/i-rate.pdf" -d pdf "out/plotter/i-rate.gle"
 
-# test
-tester: $(OBJ)
-	$(CC) $(CFLAGS) $(INC) build/matrix.o spike/mat_test.c $(BIN) -o bin/tester
-
 .PHONY: clean
 
