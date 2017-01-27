@@ -3,7 +3,7 @@ set lwidth 0.03
 set cap round
 set texlabels 1
 
-nf = 2
+nf = 0
 ymax = 10*(1+nf)
 
 amove 2 2
@@ -21,7 +21,7 @@ begin graph
 
   key compact pos tl offset .5 .5 hei .4
 
-  xaxis min 0.8 max 9.2 grid dticks 3
+  xaxis min 0.8 max 9.2 grid dticks 2
   yaxis min 0.0 max ymax grid dticks 5
   ytitle "\tex{$\eta / T^3$}" hei 0.6 dist 0.3
   xtitle "\tex{$T/\Lambda$}"   hei 0.6 dist 0.3
