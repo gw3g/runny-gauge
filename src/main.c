@@ -21,7 +21,7 @@
                               // ------------------------
 int             HTL  = 1   ;  // =1 for HTL, =0 for M_eff
 double        kappa  = 1.00;  // kappa*mD^2
-int           calls  =-1e7 ;  // MC calls {if > 0 : GSL, else hcubature}
+int           calls  =-1e8 ;  // MC calls {if > 0 : GSL, else hcubature}
 int         alf_run  = 0   ;  // =1 for running coupling
 double       lambda  = 1.0 ;  // lambda_{QCD}
 double            J  = 1.0 ;  // HTL cut
@@ -44,10 +44,10 @@ void   Gamma(double,double);
 int main() {                                        // Main fnc: to explore... T, alpha  dependence
 
   C_integrand = &C_integrand_st;
-  points = 27; Temp=1.;
+  points = 9; Temp=1.;
 
 
-  for (int nf=4;nf<5;nf++) {                                     // loop over active quark flavours
+  for (int nf=6;nf<7;nf++) {                                     // loop over active quark flavours
     Nf = nf; qgp(Nf);
     // interaction rate
     /*HTL = 0 ; kappa=1.00; Gamma(1e-3,1e2);*/
@@ -55,9 +55,9 @@ int main() {                                        // Main fnc: to explore... T
     /*HTL = 1 ; kappa=1.00; Gamma(1e-3,1e2);*/
 
     // fixed alpha
-    /*HTL = 0 ; kappa=0.25; eval_g(1e-3,1e2);*/
-    /*HTL = 0 ; kappa=0.50; eval_g(1e-3,1e2);*/
-    /*HTL = 1 ; kappa=1.00; eval_g(1e-3,1e2);*/
+    HTL = 0 ; kappa=0.25; eval_g(1e-3,1e0);
+    HTL = 0 ; kappa=0.50; eval_g(1e-3,1e0);
+    HTL = 1 ; kappa=1.00; eval_g(1e-3,1e0);
 
     // T-dep
     HTL = 0 ; kappa=0.5;  eval_T(1.0,9.);
@@ -96,7 +96,7 @@ void eval_T(double Tmin, double Tmax)
   printf("  : T/lambda :    rel err    :   chisq/dof  :  eta/T^3  :\n" );
   printf("  -------------------------------------------------------\n" );
   for(int i=0; i<points; i++) {
-    Temp = Tmin + (Tmax-Tmin)*( ((double) i)/((double) points) );
+    Temp = Tmin + (Tmax-Tmin)*( ((double) i)/((double) points-1) );
     /*Temp = Tmax*pow(10., -(points -1 - i)*( log(Tmax/Tmin)/log(10.))/((double) points - 1));*/
     printf("  :  %-1.4f  :", Temp/lambda);                       fprintf(file, "%.8f", Temp/lambda);
     J = .0;  res4 = eta()/pow(Temp,0);
