@@ -67,13 +67,12 @@ begin graph
   d17 line color #14B03D lstyle 1 lwidth 0.1
 
   set texlabels 0
-  data "../data/eta(g), mu2, (kappa=0.25) Nf="+num$(nf)+".dat" comment # d11=c1,c2
+  data "../data/etaT3_kappa0.25_nf"+num$(nf)+"_fixed.dat" comment # d11=c1,c2
   let d12=(d11*log(mu/(x*md))*(x^4))/eta1
-
-  data "../data/eta(g), HTL, Nf="+num$(nf)+".dat" comment # d21=c1,c2
-  data "../data/eta(g), HTL, Nf="+num$(nf)+".dat" comment # d22=c1,c3
-  data "../data/eta(g), HTL, Nf="+num$(nf)+".dat" comment # d23=c1,c4
-  data "../data/eta(g), HTL, Nf="+num$(nf)+".dat" comment # d24=c1,c5
+  data "../data/etaT3_HTL_nf"+num$(nf)+"_fixed.dat" comment # d21=c1,c2
+  data "../data/etaT3_HTL_nf"+num$(nf)+"_fixed.dat" comment # d22=c1,c3
+  data "../data/etaT3_HTL_nf"+num$(nf)+"_fixed.dat" comment # d23=c1,c4
+  data "../data/etaT3_HTL_nf"+num$(nf)+"_fixed.dat" comment # d24=c1,c5
   let d41=(d21*log(mu/(x*md))*(x^4))/eta1
   let d42=(d22*log(mu/(x*md))*(x^4))/eta1
   let d43=(d23*log(mu/(x*md))*(x^4))/eta1
@@ -95,11 +94,11 @@ begin graph
 end graph
 
 set texlabels 1
-set hei 0.4
+set hei 0.5
 
 amove 3.0 2.9
 box 1.9 0.9 fill lavender round .1 nostroke
 rmove -0.07 0.1
 box 1.9 0.9 fill aliceblue round .1 nostroke
-rmove 0.35 0.25
+rmove 0.35 0.3
   tex "{$n_f = $}"+format$(nf, "fix 0")

@@ -21,7 +21,7 @@
                               // ------------------------
 int             HTL  = 1   ;  // =1 for HTL, =0 for M_eff
 double        kappa  = 1.00;  // kappa*mD^2
-int           calls  =-1e8 ;  // MC calls {if > 0 : GSL, else hcubature}
+int           calls  =-1e5 ;  // MC calls {if > 0 : GSL, else hcubature}
 int         alf_run  = 0   ;  // =1 for running coupling
 double       lambda  = 1.0 ;  // lambda_{QCD}
 double            J  = 1.0 ;  // HTL cut
@@ -47,7 +47,7 @@ int main() {                                        // Main fnc: to explore... T
   points = 9; Temp=1.;
 
 
-  for (int nf=6;nf<7;nf++) {                                     // loop over active quark flavours
+  for (int nf=0;nf<1;nf++) {                                     // loop over active quark flavours
     Nf = nf; qgp(Nf);
     // interaction rate
     /*HTL = 0 ; kappa=1.00; Gamma(1e-3,1e2);*/
@@ -60,8 +60,8 @@ int main() {                                        // Main fnc: to explore... T
     HTL = 1 ; kappa=1.00; eval_g(1e-3,1e0);
 
     // T-dep
-    HTL = 0 ; kappa=0.5;  eval_T(1.0,9.);
-    HTL = 1 ; kappa=1.00; eval_T(1.0,9.);
+    /*HTL = 0 ; kappa=0.5;  eval_T(1.0,9.);*/
+    /*HTL = 1 ; kappa=1.00; eval_T(1.0,9.);*/
 
   }
 
@@ -75,8 +75,10 @@ FILE *file; char fname[90];
 void eval_T(double Tmin, double Tmax) 
 { alf_run=1; g = 1.; double res1, res2, res3, res4;
 
-       if (!HTL) sprintf(fname, "out/data/eta(T), mu2, (kappa=%.2f) Nf=%d.dat", kappa, Nf     );
-  else if  (HTL) sprintf(fname, "out/data/eta(T), HTL, Nf=%d.dat", Nf                   );
+       /*if (!HTL) sprintf(fname, "out/data/eta(T), mu2, (kappa=%.2f) Nf=%d.dat", kappa, Nf     );*/
+  /*else if  (HTL) sprintf(fname, "out/data/eta(T), HTL, Nf=%d.dat", Nf                   );*/
+       if (!HTL) sprintf(fname, "out/data/etaT3_kappa%.2f_nf%d_running.dat", kappa, Nf     );
+  else if  (HTL) sprintf(fname, "out/data/etaT3_HTL_nf%d_running.dat", Nf                   );
 
   file = fopen(fname,"w+");
 
@@ -112,8 +114,10 @@ void eval_T(double Tmin, double Tmax)
 void eval_g(double gmin, double gmax) 
 { alf_run=0; Temp = 1.; double res1, res2, res3, res4;
 
-       if (!HTL) sprintf(fname, "out/data/eta(g), mu2, (kappa=%.2f) Nf=%d.dat", kappa, Nf    );
-  else if  (HTL) sprintf(fname, "out/data/eta(g), HTL, Nf=%d.dat", Nf                           );
+       /*if (!HTL) sprintf(fname, "out/data/eta(g), mu2, (kappa=%.2f) Nf=%d.dat", kappa, Nf    );*/
+  /*else if  (HTL) sprintf(fname, "out/data/eta(g), HTL, Nf=%d.dat", Nf                           );*/
+       if (!HTL) sprintf(fname, "out/data/etaT3_kappa%.2f_nf%d_fixed.dat", kappa, Nf    );
+  else if  (HTL) sprintf(fname, "out/data/etaT3_HTL_nf%d_fixed.dat", Nf                           );
 
   file = fopen(fname,"w+");
 

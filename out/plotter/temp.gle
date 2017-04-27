@@ -27,12 +27,12 @@ begin graph
   xtitle "\tex{$T/\Lambda$}"   hei 0.6 dist 0.3
 
   set texlabels 0
-  data "../data/eta(T), mu2, (kappa=0.50) Nf="+num$(nf)+".dat" comment # d11 = c1, c2
-  !data "../data/eta(T), mu2, (kappa=1.00) Nf="+num$(nf)+".dat" comment # d21 = c1, c2
-  data "../data/eta(T), HTL, Nf="+num$(nf)+".dat" comment # d31 = c1, c2
-  data "../data/eta(T), HTL, Nf="+num$(nf)+".dat" comment # d32 = c1, c3
-  data "../data/eta(T), HTL, Nf="+num$(nf)+".dat" comment # d33 = c1, c4
-  data "../data/eta(T), HTL, Nf="+num$(nf)+".dat" comment # d34 = c1, c5
+  data "../data/etaT3_kappa0.50_nf"+num$(nf)+"_running.dat" comment # d11 = c1, c2
+  !data "../data/etaT3_kappa1.00_nf"+num$(nf)+_running".dat" comment # d21 = c1, c2
+  data "../data/etaT3_HTL_nf"+num$(nf)+"_running.dat" comment # d31 = c1, c2
+  data "../data/etaT3_HTL_nf"+num$(nf)+"_running.dat" comment # d32 = c1, c3
+  data "../data/etaT3_HTL_nf"+num$(nf)+"_running.dat" comment # d33 = c1, c4
+  data "../data/etaT3_HTL_nf"+num$(nf)+"_running.dat" comment # d34 = c1, c5
   !let d41=d91*d91*d91*d33
 
   d11 marker circle line color red msize 0.25 key "\tex{$\mu^2$ with $\kappa=0.50$}"
@@ -43,11 +43,11 @@ begin graph
 end graph
 
 set texlabels 1
-set hei 0.4
+set hei 0.5
 
 amove 9.5 2.4
 box 1.9 0.9 fill lavender round .1 nostroke
 rmove -0.07 0.1
 box 1.9 0.9 fill aliceblue round .1 nostroke
-rmove 0.35 0.25
+rmove 0.35 0.3
   tex "{$n_f = $}"+format$(nf, "fix 0")

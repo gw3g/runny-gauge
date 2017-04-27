@@ -1,6 +1,18 @@
-# (shear) viscosity in quark-gluon plasma
+# Shear viscosity in the quark-gluon plasma (v1.0)
 
-transport coefficients in hot gauge theories, eta (T,g) with Nf = 0, ... 6
+The transport coefficient η (shear viscosity) for
+QCD is revisited with particular focus on the relevant scale that determines
+α, the strong-coupling.
+Perturbation theory was previously deemed incompatible with the inference from
+heavy ion collisions (which indicated "perfect fluid" characteristics) for
+reasons we explain in
+[1704.06284](https://arxiv.org/abs/1704.06284).
+Also in the aforementioned preprint, we give the revised temperature dependence
+for T≈T<sub>c</sub>, which is compatible with other estimates from lattice QCD
+and hydrodynamic simulations.
+
+----
+## usage
 
 _Usage_: (produces DAT data files)
 * ```eval_g(gmin, gmax)``` evaluates \eta(g)/T^3
@@ -8,10 +20,29 @@ _Usage_: (produces DAT data files)
 
 Using HTL function (set ```HTL=1```) OR eff. mass ```mu^2 = kappa*mD^2``` (set ```HTL=0```)
 
-## literature
+Data is saved under ``~/out/data/``
+The file names indicate etaT3 (for η/T<sup>3</sup>)
 
-leading-log [AMY1](http://arxiv.org/abs/hep-ph/0010177)
-& beyond [AMY2](http://arxiv.org/abs/hep-ph/0302165)
+----
+## parametric α-dependence
+
+The QCD Boltzmann equation (in the quenched case) was first linearised by
+[Baym et al.](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.64.1867)
+who used hard thermal loop (HTL) insertions to screen the collision term.
+Their calculation fixed the overall *leading-log* prefactor, has been
+extended to include n<sub>f</sub>>0 flavours of massless quarks
+(and for other gauge groups) due to Arnold, Moore & Jaffe (AMY)
+  [[Part I]](http://arxiv.org/abs/hep-ph/0010177).
+AMY also showed how to go beyond logarithmic accuracy in
+ [[Part II]](http://arxiv.org/abs/hep-ph/0302165),
+ also accomodating inelastic processes.
+
+ given in terms of g = (4pi )
+
+----
+## resummed pert
+
+
 
 ## organisation
 
@@ -32,6 +63,5 @@ leading-log [AMY1](http://arxiv.org/abs/hep-ph/0010177)
 
 ## visualisation
 
-data (comma separated) is written to ``~/out/data/``. 
+data (comma separated) is written to ``~/out/data/``.
 Pretty pictures  using [GLE](http://glx.sourceforge.net/).
-
