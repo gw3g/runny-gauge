@@ -28,7 +28,7 @@ clean:
 # auxiliary compiles go here:
 
 temperature:
-	gle -o "out/eta(temp).png" -tex -d png -dpi 200 "out/plotter/temp.gle"
+	gle -o "out/eta_running.png" -tex -d png -dpi 200 "out/plotter/temp.gle"
 relative:
 	gle -o "out/eta-to-NLL.png" -tex -d png -dpi 200 "out/plotter/relative.gle"
 i-rate:

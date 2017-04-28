@@ -60,8 +60,8 @@ int main() {                                        // Main fnc: to explore... T
     HTL = 1 ; kappa=1.00; eval_g(1e-3,1e0);
 
     // T-dep
-    /*HTL = 0 ; kappa=0.5;  eval_T(1.0,9.);*/
-    /*HTL = 1 ; kappa=1.00; eval_T(1.0,9.);*/
+    HTL = 0 ; kappa=0.5;  eval_T(1.0,9.);
+    HTL = 1 ; kappa=1.00; eval_T(1.0,9.);
 
   }
 
