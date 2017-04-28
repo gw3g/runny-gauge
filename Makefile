@@ -28,11 +28,11 @@ clean:
 # auxiliary compiles go here:
 
 temperature:
-	gle -o "out/eta_running.png" -tex -d png -dpi 200 "out/plotter/temp.gle"
+	gle -o "out/eta_running.png" -tex -d png -dpi 100 "out/plotter/temp.gle"
 relative:
-	gle -o "out/eta-to-NLL.png" -tex -d png -dpi 200 "out/plotter/relative.gle"
+	gle -o "out/eta-to-NLL.png" -tex -d png -dpi 100 "out/plotter/relative.gle"
 i-rate:
-	gle -o "out/i-rate.png" -tex -d png -dpi 200 "out/plotter/i-rate.gle"
+	gle -o "out/i-rate.png" -tex -d png -dpi 100 "out/plotter/i-rate.gle"
 
 .PHONY: clean
 

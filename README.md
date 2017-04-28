@@ -27,7 +27,7 @@ AMY also showed how to go beyond logarithmic accuracy in
  and incoporated inelastic processes.
  That established the rigourous 'weak coupling' NLL formula.
 
-![eta-over-NLL](https://github.com/gw3g/runny-gauge/blob/master/out/eta-to-NLL.png)
+<!--![eta-over-NLL](https://github.com/gw3g/runny-gauge/blob/master/out/eta-to-NLL.png)-->
 
 **With Running**
 
@@ -38,7 +38,7 @@ s-channel (Q<sup>2</sup>>0) and t- or u-channel (Q<sup>2</sup><0) processes.
 To account for the singularity at the Landau pole,
 a maximal value α≤[1...10] which turns out to be of little importance.
 
-![eta with running](https://github.com/gw3g/runny-gauge/blob/master/out/eta_running.png)
+<!--![eta with running](https://github.com/gw3g/runny-gauge/blob/master/out/eta_running.png)-->
 
 ## Usage
 
