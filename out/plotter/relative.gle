@@ -78,7 +78,7 @@ begin graph
   let d43=(d23*log(mu/(x*md))*(x^4))/eta1
   let d44=(d24*log(mu/(x*md))*(x^4))/eta1
 
-  data "../data/eta(g), mu2, (kappa=0.50) Nf="+num$(nf)+".dat" comment # d31=c1,c2
+  data "../data/etaT3_kappa0.50_nf"+num$(nf)+"_fixed.dat" comment # d31=c1,c2
   let d32=(d31*log(mu/(x*md))*(x^4))/eta1
 
   let d20 = x*x/(4*PI), d11

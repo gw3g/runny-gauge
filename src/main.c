@@ -75,77 +75,69 @@ FILE *file; char fname[90];
 void eval_T(double Tmin, double Tmax) 
 { alf_run=1; g = 1.; double res1, res2, res3, res4;
 
-       /*if (!HTL) sprintf(fname, "out/data/eta(T), mu2, (kappa=%.2f) Nf=%d.dat", kappa, Nf     );*/
-  /*else if  (HTL) sprintf(fname, "out/data/eta(T), HTL, Nf=%d.dat", Nf                   );*/
-       if (!HTL) sprintf(fname, "out/data/etaT3_kappa%.2f_nf%d_running.dat", kappa, Nf     );
-  else if  (HTL) sprintf(fname, "out/data/etaT3_HTL_nf%d_running.dat", Nf                   );
+       if (!HTL) sprintf(fname, "out/data/etaT3_kappa%.2f_nf%d_running.dat", kappa, Nf            );
+  else if  (HTL) sprintf(fname, "out/data/etaT3_HTL_nf%d_running.dat", Nf                         );
 
   file = fopen(fname,"w+");
 
-  fprintf(file,   "# GJ, eta w/ only 2->2 processes\n"                                            );
-  fprintf(file,   "# Nf = %d, Lambda/Tc=%.3f\n",Nf,lambda                                         );
-
        if (!HTL) fprintf(file, "# screening: M_eff, kappa = %.3f\n", kappa                        );
-  else if  (HTL) fprintf(file, "# screening: htl\n"                                               );
+  else if  (HTL) fprintf(file, "# screening: HTL\n"                                               );
 
-  fprintf(file,   "# 1-fnc basis (Legendre)\n"                                                    );
   fprintf(file,   "# MC samples, %d\n",(int) calls                                                );
   fprintf(file,   "#\n"                                                                           );
-  fprintf(file,   "# T,       eta/T^3\n"                                                          );
+  fprintf(file,   "# Columns: T/lambda, eta/T^3, {lower, upper, omni}\n"                           );
 
-  printf("\n [ Nf = %d ] \n", Nf );
-  printf("  -------------------------------------------------------\n" );
-  printf("  : T/lambda :    rel err    :   chisq/dof  :  eta/T^3  :\n" );
-  printf("  -------------------------------------------------------\n" );
+  printf("\n [ Nf = %d ] ~ ", Nf );
+       if (!HTL) printf( " w/ screening via M_eff, kappa = %.3f\n", kappa                        );
+  else if  (HTL) printf( " w/ HTL propagators\n"                                               );
+  printf("  --------------------------------------------------------\n" );
+  printf("  : T/lambda :    rel err    :   chisq/dof  :  eta/T^3   :\n" );
+  printf("  --------------------------------------------------------\n" );
   for(int i=0; i<points; i++) {
     Temp = Tmin + (Tmax-Tmin)*( ((double) i)/((double) points-1) );
     /*Temp = Tmax*pow(10., -(points -1 - i)*( log(Tmax/Tmin)/log(10.))/((double) points - 1));*/
-    printf("  :  %-1.4f  :", Temp/lambda);                       fprintf(file, "%.8f", Temp/lambda);
+    printf("  :  %-1.4f  :", Temp/lambda);                   fprintf(file, "%.4f", Temp/lambda);
     J = .0;  res4 = eta()/pow(Temp,0);
     J = .5;  res3 = eta()/pow(Temp,0);
     J = 2.;  res2 = eta()/pow(Temp,0);
     J = 1.;  res1 = eta()/pow(Temp,0);
-    printf("  %g  :\n",res1);            fprintf(file, ", %g, %g, %g, %g\n", res1, res2, res3, res4);
+    printf("  %1.2e  :\n",res1);    fprintf(file, "    %e    %e    %e    %e\n", res1, res2, res3, res4);
   }
-  printf("  -------------------------------------------------------\n" );
+  printf("  --------------------------------------------------------\n" );
   fclose(file);
 }
 
 void eval_g(double gmin, double gmax) 
 { alf_run=0; Temp = 1.; double res1, res2, res3, res4;
 
-       /*if (!HTL) sprintf(fname, "out/data/eta(g), mu2, (kappa=%.2f) Nf=%d.dat", kappa, Nf    );*/
-  /*else if  (HTL) sprintf(fname, "out/data/eta(g), HTL, Nf=%d.dat", Nf                           );*/
-       if (!HTL) sprintf(fname, "out/data/etaT3_kappa%.2f_nf%d_fixed.dat", kappa, Nf    );
+       if (!HTL) sprintf(fname, "out/data/etaT3_kappa%.2f_nf%d_fixed.dat", kappa, Nf              );
   else if  (HTL) sprintf(fname, "out/data/etaT3_HTL_nf%d_fixed.dat", Nf                           );
 
   file = fopen(fname,"w+");
 
-  fprintf(file,   "# GJ, eta w/ only 2->2 processes\n"                                            );
-  fprintf(file,   "# Nf = %d, Lambda/Tc=%.3f\n",Nf,lambda                                         );
-
        if (!HTL) fprintf(file, "# screening: M_eff, kappa = %.3f\n", kappa                        );
-  else if  (HTL) fprintf(file, "# screening: htl\n"                                               );
+  else if  (HTL) fprintf(file, "# screening: HTL\n"                                               );
 
-  fprintf(file,   "# 1-fnc basis (Legendre)\n"                                                    );
   fprintf(file,   "# MC samples, %d\n",(int) calls                                                );
   fprintf(file,   "#\n"                                                                           );
-  fprintf(file,   "# g,      eta/T^3, lower, upper, omni \n"                                            );
+  fprintf(file,   "# Columns: g, eta/T^3, {lower, upper, omni} \n"                                );
 
-  printf("\n [ Nf = %d ] \n", Nf );
-  printf("  ---------------------------------------------------------\n" );
-  printf("  :    g       :    rel err    :   chisq/dof  :  eta/T^3  :\n" );
-  printf("  ---------------------------------------------------------\n" );
+  printf("\n [ Nf = %d ] ~ ", Nf );
+       if (!HTL) printf( " w/ screening via M_eff, kappa = %.3f\n", kappa                        );
+  else if  (HTL) printf( " w/ HTL propagators\n"                                               );
+  printf("  ----------------------------------------------------------\n" );
+  printf("  :    g       :    rel err    :   chisq/dof  :  eta/T^3   :\n" );
+  printf("  ----------------------------------------------------------\n" );
   for(int i=0; i<points; i++) {
     g = gmax*pow(10., -(points -1 - i)*( log(gmax/gmin)/log(10.))/((double) points - 1));
-    printf("  :  %03.5f   :", g);                                           fprintf(file, "%.8f",g);
+    printf("  :  %03.5f   :", g);                                         fprintf(file, "%.4f",g);
     J = .0;  res4 = eta()/pow(Temp,0);
     J = .5;  res3 = eta()/pow(Temp,0);
     J = 2.;  res2 = eta()/pow(Temp,0);
     J = 1.;  res1 = eta()/pow(Temp,0);
-    printf("  %-1.1e  :\n",res1);            fprintf(file, ", %g, %g, %g, %g\n", res1, res2, res3, res4);
+    printf("  %1.2e  :\n",res1);         fprintf(file, "    %e    %e    %e    %e\n", res1, res2, res3, res4);
   }
-  printf("  ---------------------------------------------------------\n" );
+  printf("  ----------------------------------------------------------\n" );
   fclose(file);
 }
 
