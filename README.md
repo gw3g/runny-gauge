@@ -58,7 +58,9 @@ Using HTL function (set ```HTL=1```) OR eff. mass ```mu^2 = kappa*mD^2``` (set `
 
 Plots are made using [GLE](http://glx.sourceforge.net/)
 (scripts are under ``out/plotter``),
-see the Makefile.
+see the Makefile. 
+Change the variable nf in the ``*.gle'' files to produce plots with 
+active quarks flavours.
 
 **Details on 5-dimensional integration**
 

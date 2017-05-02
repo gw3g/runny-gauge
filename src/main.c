@@ -37,7 +37,7 @@ double eta_NLL() { return                                                   // S
                           pow(Temp,3.)*eta1[Nf] / (pow(g,4)*log(mSt[Nf]/sqrt(g*g*mD2/(4.*M_PI))));}
 
 void   eval_T(double,double); void   eval_g(double,double); int   points;  // See after main() ...
-void   Gamma(double,double);
+void   rate_T(double,double);
 
 /*-----------------------------------------------------------------------------------------------*/
 
@@ -51,17 +51,17 @@ int main() {                                        // Main fnc: to explore... T
     Nf = nf; qgp(Nf);
     // interaction rate
     /*HTL = 0 ; kappa=1.00; Gamma(1e-3,1e2);*/
-    /*HTL = 0 ; kappa=0.25; Gamma(1e-3,1e2);*/
+    HTL = 0 ; kappa=0.25; rate_T(1e-3,1e2);
     /*HTL = 1 ; kappa=1.00; Gamma(1e-3,1e2);*/
 
     // fixed alpha
-    HTL = 0 ; kappa=0.25; eval_g(1e-3,1e0);
-    HTL = 0 ; kappa=0.50; eval_g(1e-3,1e0);
-    HTL = 1 ; kappa=1.00; eval_g(1e-3,1e0);
+    /*HTL = 0 ; kappa=0.25; eval_g(1e-3,1e0);*/
+    /*HTL = 0 ; kappa=0.50; eval_g(1e-3,1e0);*/
+    /*HTL = 1 ; kappa=1.00; eval_g(1e-3,1e0);*/
 
     // T-dep
-    HTL = 0 ; kappa=0.5;  eval_T(1.0,9.);
-    HTL = 1 ; kappa=1.00; eval_T(1.0,9.);
+    /*HTL = 0 ; kappa=0.5;  eval_T(1.0,9.);*/
+    /*HTL = 1 ; kappa=1.00; eval_T(1.0,9.);*/
 
   }
 
@@ -85,23 +85,23 @@ void eval_T(double Tmin, double Tmax)
 
   fprintf(file,   "# MC samples, %d\n",(int) calls                                                );
   fprintf(file,   "#\n"                                                                           );
-  fprintf(file,   "# Columns: T/lambda, eta/T^3, {lower, upper, omni}\n"                           );
+  fprintf(file,   "# Columns: T/lambda, eta/T^3, {lower, upper, omni}\n"                          );
 
   printf("\n [ Nf = %d ] ~ ", Nf );
        if (!HTL) printf( " w/ screening via M_eff, kappa = %.3f\n", kappa                        );
-  else if  (HTL) printf( " w/ HTL propagators\n"                                               );
+  else if  (HTL) printf( " w/ HTL propagators\n"                                                 );
   printf("  --------------------------------------------------------\n" );
   printf("  : T/lambda :    rel err    :   chisq/dof  :  eta/T^3   :\n" );
   printf("  --------------------------------------------------------\n" );
   for(int i=0; i<points; i++) {
     Temp = Tmin + (Tmax-Tmin)*( ((double) i)/((double) points-1) );
     /*Temp = Tmax*pow(10., -(points -1 - i)*( log(Tmax/Tmin)/log(10.))/((double) points - 1));*/
-    printf("  :  %-1.4f  :", Temp/lambda);                   fprintf(file, "%.4f", Temp/lambda);
+    printf("  :  %-1.4f  :", Temp/lambda);                      fprintf(file, "%.4f", Temp/lambda);
     J = .0;  res4 = eta()/pow(Temp,0);
     J = .5;  res3 = eta()/pow(Temp,0);
     J = 2.;  res2 = eta()/pow(Temp,0);
     J = 1.;  res1 = eta()/pow(Temp,0);
-    printf("  %1.2e  :\n",res1);    fprintf(file, "    %e    %e    %e    %e\n", res1, res2, res3, res4);
+    printf("  %1.2e  :\n",res1);fprintf(file, "    %e    %e    %e    %e\n", res1, res2, res3, res4);
   }
   printf("  --------------------------------------------------------\n" );
   fclose(file);
@@ -123,25 +123,25 @@ void eval_g(double gmin, double gmax)
   fprintf(file,   "# Columns: g, eta/T^3, {lower, upper, omni} \n"                                );
 
   printf("\n [ Nf = %d ] ~ ", Nf );
-       if (!HTL) printf( " w/ screening via M_eff, kappa = %.3f\n", kappa                        );
-  else if  (HTL) printf( " w/ HTL propagators\n"                                               );
+       if (!HTL) printf( " w/ screening via M_eff, kappa = %.3f\n", kappa                         );
+  else if  (HTL) printf( " w/ HTL propagators\n"                                                  );
   printf("  ----------------------------------------------------------\n" );
   printf("  :    g       :    rel err    :   chisq/dof  :  eta/T^3   :\n" );
   printf("  ----------------------------------------------------------\n" );
   for(int i=0; i<points; i++) {
     g = gmax*pow(10., -(points -1 - i)*( log(gmax/gmin)/log(10.))/((double) points - 1));
-    printf("  :  %03.5f   :", g);                                         fprintf(file, "%.4f",g);
+    printf("  :  %03.5f   :", g);                                           fprintf(file, "%.4f",g);
     J = .0;  res4 = eta()/pow(Temp,0);
     J = .5;  res3 = eta()/pow(Temp,0);
     J = 2.;  res2 = eta()/pow(Temp,0);
     J = 1.;  res1 = eta()/pow(Temp,0);
-    printf("  %1.2e  :\n",res1);         fprintf(file, "    %e    %e    %e    %e\n", res1, res2, res3, res4);
+    printf("  %1.2e  :\n",res1);fprintf(file, "    %e    %e    %e    %e\n", res1, res2, res3, res4);
   }
   printf("  ----------------------------------------------------------\n" );
   fclose(file);
 }
 
-void Gamma(double gmin, double gmax) 
+void rate_T(double gmin, double gmax) 
 { alf_run=0; Temp = 1.; double res1, res2, res3, res4;
 
        if (!HTL) sprintf(fname, "out/data/st_Gamma(g), M_eff, (kappa=%.2f) Nf=%d.dat", kappa, Nf  );
@@ -149,16 +149,10 @@ void Gamma(double gmin, double gmax)
 
   file = fopen(fname,"w+");
 
-  fprintf(file,   "# GJ, eta w/ only 2->2 processes\n"                                            );
   fprintf(file,   "# Nf = %d, Lambda/Tc=%.3f\n",Nf,lambda                                         );
 
        if (!HTL) fprintf(file, "# screening: M_eff, kappa = %.3f\n", kappa                        );
   else if  (HTL) fprintf(file, "# screening: htl\n"                                               );
-
-  fprintf(file,   "# 1-fnc basis (Legendre)\n"                                                    );
-  fprintf(file,   "# MC samples, %d\n",(int) calls                                                );
-  fprintf(file,   "#\n"                                                                           );
-  fprintf(file,   "# g,      eta/T^3, lower, upper \n"                                            );
 
   printf("\n [ Nf = %d ] \n", Nf );
   printf("  ---------------------------------------------------------\n" );
@@ -167,10 +161,10 @@ void Gamma(double gmin, double gmax)
   for(int i=0; i<points; i++) {
     g = gmax*pow(10., -(points -1 - i)*( log(gmax/gmin)/log(10.))/((double) points - 1));
     printf("  :  %03.5f   :", g);                                           fprintf(file, "%.8f",g);
-    J = .0;  res4 =     xCx(&f)/(g*g);
-    J = .5;  res3 =     xCx(&f)/(g*g);
-    J = 2.;  res2 =     xCx(&f)/(g*g);
-    J = 1.;  res1 =     xCx(&f)/(g*g);
+    J = .0;  res4 =     Rate()/(g*g);
+    J = .5;  res3 =     Rate()/(g*g);
+    J = 2.;  res2 =     Rate()/(g*g);
+    J = 1.;  res1 =     Rate()/(g*g);
     printf("  %-1.3e  :\n",res1);            fprintf(file, ", %g,%g,%g,%g\n", res1, res2, res3, res4);
   }
   printf("  ---------------------------------------------------------\n" );

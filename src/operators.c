@@ -98,3 +98,41 @@ double xS( double (*chi)(double, p_type) ) {
 
   return res;
 }
+
+/*
+ * Calculate the gain/loss rate
+ *
+ */
+
+/* cubature template */
+int r_cub(unsigned dim, const double *x, void *data_,
+	   unsigned fdim, double *val)
+{
+  double *k = (double *)x;
+  val[0] = RATE_integrand( k, (size_t) dim );
+  return 0;
+}
+
+
+double Rate() {
+
+  double res, err;
+  gsl_monte_vegas_state *s = gsl_monte_vegas_alloc (5);                       // workspace 5-dim
+
+  {
+    double    tol=1e-2;
+    int       MaxEvls = -( (int) calls );
+    hcubature(1, r_cub, 0, 5, lower, upper, MaxEvls, 0, tol, ERROR_INDIVIDUAL, &res, &err);
+    /*printf("\n -- %g\n\n",res);*/
+  }
+
+  if (alf_run) printf("\r  :  %-1.4f  :", Temp/lambda); else printf("\r  :  %03.5f   :", g);
+
+  printf("  %.8f   :    %.5f   :", err/res, gsl_monte_vegas_chisq(s) );
+  if ((double) calls>0) {
+  gsl_monte_vegas_free(s);                                                    // free memory
+  }
+
+  return res;
+}
+

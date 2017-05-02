@@ -179,3 +179,55 @@ double C_integrand_qo(double *args, size_t dim, void *p) {         // the integr
 };
 
 /*-----------------------------------------------------------------------------------------------*/
+
+  /*
+   *  Integration variables :         [ the stu-way ]
+   *
+   *        { s, t, E3, E4, phi }
+   */
+
+
+double RATE_integrand(double *args, size_t dim) {         // the integrand:
+
+  /* recover members */
+  double
+    y   = args[0],                                            // args0 = y    ~ s
+    z   = args[1],                                            // args1 = z    ~ t
+    eps = args[2],                                            // args2 = eps  ~ E3
+    xi  = args[3],                                            // args3 = xi   ~ E4
+    phi = args[4];                                            // args4 = phi  ~ E1
+
+  /* variable changes */
+  double
+    e3  = 1./(eps) - 1. ,
+    e4  = 1./(xi)  - 1. ,
+
+  /* kinematic vars */
+    s   = y*4.*e3*e4,
+    t   = -s*z,
+    u   = -s -t,
+    b   = -2.*s*( u*e4 + t*e3 ),
+    D   = 4.*s*s*t*u*( 4.*e4*e3 - s ),
+    e1  = (b+sqrt(D)*cos( phi ))/(2.*s*s),
+    e2  = e3 + e4 - e1;
+
+  /* calculation */
+  double e[4] = {e1/Temp,e2/Temp,e3/Temp,e4/Temp};
+
+  double result=0.;
+
+  for (int i=0;i<nR;i++) {
+    /*R = all_R[i];*/
+    /*printf("%.4f \n", (double) all_R[i].multiplicity);*/
+    result += kernel(e, s, t, all_R[i]);                        // combine reaction kernels
+  };
+
+        // J{ phi,         s,      e3,e4      }
+  result *=  ( 1.*(4.*e3*e4)/pow( eps*xi, 2 ) )              // Jacobian (factor s from t=s*z cancels)
+            *( pow(Temp,2) )                                 // units... T^3
+            *( (1./16.)*(1./pow(2.*M_PI, 6)) )*.5            // prefactors
+            *2.                                    ;         // for \xi_\pm sols
+
+  return result;
+};
+

@@ -70,11 +70,13 @@ extern double lower[5], upper[5];
 double (*C_integrand)(double *, size_t, void *);
 double C_integrand_st(double *, size_t, void *);
 double C_integrand_qo(double *, size_t, void *);
+double RATE_integrand(double *, size_t        );
 
 /* operators.c */
 double 
   xCx( double (*chi)(double,p_type) ),
-   xS( double (*chi)(double,p_type) );
+   xS( double (*chi)(double,p_type) ),
+  Rate();
 
 /* test function */
 struct f_params {double (*chi)(double,p_type);};
