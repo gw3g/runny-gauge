@@ -226,7 +226,7 @@ double RATE_integrand(double *args, size_t dim) {         // the integrand:
   result *=  ( 1.*(4.*e3*e4)/pow( eps*xi, 2 ) )              // Jacobian (factor s from t=s*z cancels)
             *( pow(Temp,2) )                                 // units... T^3
             *( (1./16.)*(1./pow(2.*M_PI, 6)) )*.5            // prefactors
-            *2.                                    ;         // for \xi_\pm sols
+            *2.*8./3.                              ;         // for \xi_\pm sols
 
   return result;
 };
