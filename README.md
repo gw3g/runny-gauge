@@ -32,7 +32,10 @@ AMY also showed how to go beyond logarithmic accuracy in
 * [etaT3_HTL_nf0_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf0_fixed.dat)
 * [etaT3_kappa0.50_nf0_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf0_fixed.dat)
 * [etaT3_kappa0.25_nf0_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf0_fixed.dat)
+
 * [etaT3_HTL_nf1_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf1_fixed.dat)
+* [etaT3_kappa0.50_nf1_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf1_fixed.dat)
+* [etaT3_kappa0.25_nf1_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf1_fixed.dat)
 
 **With Running**
 
@@ -44,6 +47,12 @@ To account for the singularity at the Landau pole,
 a maximal value α≤[1...10] which turns out to be of little importance.
 
 <!--![eta with running](https://github.com/gw3g/runny-gauge/blob/master/out/eta_running.png)-->
+
+* [etaT3_HTL_nf0_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf0_running.dat)
+* [etaT3_kappa0.50_nf0_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf0_running.dat)
+
+* [etaT3_HTL_nf1_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf1_running.dat)
+* [etaT3_kappa0.50_nf1_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf1_running.dat)
 
 ## Usage
 

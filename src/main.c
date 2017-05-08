@@ -21,7 +21,7 @@
                               // ------------------------
 int             HTL  = 1   ;  // =1 for HTL, =0 for M_eff
 double        kappa  = 1.00;  // kappa*mD^2
-int           calls  =-1e6 ;  // MC calls {if > 0 : GSL, else hcubature}
+int           calls  =-1e5 ;  // MC calls {if > 0 : GSL, else hcubature}
 int         alf_run  = 0   ;  // =1 for running coupling
 double       lambda  = 1.0 ;  // lambda_{QCD}
 double            J  = 1.0 ;  // HTL cut
@@ -57,11 +57,11 @@ int main() {                                        // Main fnc: to explore... T
     // fixed alpha
     /*HTL = 0 ; kappa=0.25; eval_g(1e-3,1e0);*/
     /*HTL = 0 ; kappa=0.50; eval_g(1e-3,1e0);*/
-    HTL = 1 ; kappa=1.00; eval_g(1e-3,1e0);
+    /*HTL = 1 ; kappa=1.00; eval_g(1e-3,1e0);*/
 
     // T-dep
-    /*HTL = 0 ; kappa=0.5;  eval_T(1.0,9.);*/
-    /*HTL = 1 ; kappa=1.00; eval_T(1.0,9.);*/
+    HTL = 0 ; kappa=0.5;  eval_T(1.0,9.);
+    HTL = 1 ; kappa=1.00; eval_T(1.0,9.);
 
   }
 
