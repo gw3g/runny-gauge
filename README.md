@@ -29,6 +29,11 @@ AMY also showed how to go beyond logarithmic accuracy in
 
 <!--![eta-over-NLL](https://github.com/gw3g/runny-gauge/blob/master/out/eta-to-NLL.png)-->
 
+* [etaT3_HTL_nf0_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf0_fixed.dat)
+* [etaT3_kappa0.50_nf0_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf0_fixed.dat)
+* [etaT3_kappa0.25_nf0_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf0_fixed.dat)
+* [etaT3_HTL_nf1_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf1_fixed.dat)
+
 **With Running**
 
 Here we implement the scheme devised by AMY (minus the inelastic processes),
