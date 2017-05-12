@@ -187,29 +187,30 @@ double C_integrand_qo(double *args, size_t dim, void *p) {         // the integr
    */
 
 
-double RATE_integrand(double *args, size_t dim) {         // the integrand:
+double RATE_integrand(double *args, size_t dim, void *p) {         // the integrand:
 
   /* recover members */
   double
     y   = args[0],                                            // args0 = y    ~ s
     z   = args[1],                                            // args1 = z    ~ t
     eps = args[2],                                            // args2 = eps  ~ E3
-    xi  = args[3],                                            // args3 = xi   ~ E4
-    phi = args[4];                                            // args4 = phi  ~ E1
+ // xi  = args[3],                                            // args3 = xi   ~ E4
+    phi = args[3];                                            // args4 = phi  ~ E1
 
   /* variable changes */
   double
-    e3  = 1./(eps) - 1. ,
-    e4  = 1./(xi)  - 1. ,
+    e2  = 1./(eps) - 1. ,
+ // e4  = 1./(xi)  - 1. ,
+    e1  = *((double *) p),
 
   /* kinematic vars */
-    s   = y*4.*e3*e4,
+    s   = y*4.*e1*e2,
     t   = -s*z,
     u   = -s -t,
-    b   = -2.*s*( u*e4 + t*e3 ),
-    D   = 4.*s*s*t*u*( 4.*e4*e3 - s ),
-    e1  = (b+sqrt(D)*cos( phi ))/(2.*s*s),
-    e2  = e3 + e4 - e1;
+    b   = -2.*s*( u*e2 + t*e1 ),
+    D   = 4.*s*s*t*u*( 4.*e1*e2 - s ),
+    e3  = (b+sqrt(D)*cos( phi ))/(2.*s*s),
+    e4  = e1 + e2 - e3;
 
   /* calculation */
   double e[4] = {e1/Temp,e2/Temp,e3/Temp,e4/Temp};
@@ -219,15 +220,16 @@ double RATE_integrand(double *args, size_t dim) {         // the integrand:
   for (int i=0;i<nR;i++) {
     /*R = all_R[i];*/
     /*printf("%.4f \n", (double) all_R[i].multiplicity);*/
-    result += kernel(e, s, t, all_R[i]);                        // combine reaction kernels
+    result += kernel(e, s, t, all_R[i])/bf(e1/Temp,all_R[i].particles[0]);                        // combine reaction kernels
   };
 
         // J{ phi,         s,      e3,e4      }
-  result *=  ( 1.*(4.*e3*e4)/pow( eps*xi, 2 ) )              // Jacobian (factor s from t=s*z cancels)
-            *( pow(Temp,2) )                                 // units... T^3
-            *( (1./16.)*(1./pow(2.*M_PI, 6)) )*.5            // prefactors
-            *2.*8./3.                              ;         // for \xi_\pm sols
+  result *=  ( 1.*(4.*e1*e2)/pow( eps, 2 ) )              // Jacobian (factor s from t=s*z cancels)
+            *( pow(Temp,0) )                                 // units... T^3
+            *( (1./16.)*(1./pow(2.*M_PI, 4)) )               // prefactors
+            *1./(e1*e1*16.)                        ;         // for \xi_\pm sols
 
+  /*printf("e1=%g, e2=%g, e3=%g, phi=%g,  RES=%g\n", e1, e2, e3, phi, result );*/
   return result;
 };
 

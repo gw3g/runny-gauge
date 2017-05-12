@@ -109,29 +109,29 @@ int r_cub(unsigned dim, const double *x, void *data_,
 	   unsigned fdim, double *val)
 {
   double *k = (double *)x;
-  val[0] = RATE_integrand( k, (size_t) dim );
+  val[0] = RATE_integrand( k, (size_t) dim, data_ );
   return 0;
 }
 
 
-double Rate() {
+double Rate( double e1 ) {
 
   double res, err;
-  gsl_monte_vegas_state *s = gsl_monte_vegas_alloc (5);                       // workspace 5-dim
+
+  double                                                        // boundaries:
+  lowerR[4] = {0.+1e-6, 0.+1e-6,  0.,  0.}, 
+  upperR[4] = {1.-1e-6, 1.-1e-6,  1.,  M_PI};
 
   {
     double    tol=1e-2;
     int       MaxEvls = -( (int) calls );
-    hcubature(1, r_cub, 0, 5, lower, upper, MaxEvls, 0, tol, ERROR_INDIVIDUAL, &res, &err);
+    hcubature(1, r_cub, &e1, 4, lowerR, upperR, MaxEvls, 0, tol, ERROR_INDIVIDUAL, &res, &err);
     /*printf("\n -- %g\n\n",res);*/
   }
 
-  if (alf_run) printf("\r  :  %-1.4f  :", Temp/lambda); else printf("\r  :  %03.5f   :", g);
+  if (alf_run) printf("\r  :  %-1.4f  :", e1/lambda); else printf("\r  :  %03.5f   :", e1/lambda);
 
-  printf("  %.8f   :    %.5f   :", err/res, gsl_monte_vegas_chisq(s) );
-  if ((double) calls>0) {
-  gsl_monte_vegas_free(s);                                                    // free memory
-  }
+  printf("  %.8f   :  ~~   :", err/res  );
 
   return res;
 }

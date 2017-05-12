@@ -87,7 +87,7 @@ double *M_2(double e[4], double s, double t) {          // energies & Mandelstam
 
   double 
     *M2 = (double *)malloc( 7*sizeof(double) );
-  double IRsafe=0.;
+  double IRsafe=1.;
 
   //-----------------------------------------------------------------------------------------//
   // Delbrűck :
