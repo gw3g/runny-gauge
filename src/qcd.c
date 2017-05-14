@@ -87,11 +87,11 @@ double *M_2(double e[4], double s, double t) {          // energies & Mandelstam
 
   double 
     *M2 = (double *)malloc( 7*sizeof(double) );
-  double IRsafe=0.;
+  double IRsafe=1.;
 
   //-----------------------------------------------------------------------------------------//
   // Delbrűck :
-                                         M2[0] =  ( gg1*( IRsafe*av2*3. - at2*2.*rB1 - IRsafe*as2*tu/s2 ) );
+                                         M2[0] =  ( gg1*( IRsafe*av2*3 - at2*2.*rB1 - IRsafe*as2*tu/s2 ) );
   // (gg <--> gg)
   //-----------------------------------------------------------------------------------------//
   // Møller :

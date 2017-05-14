@@ -37,6 +37,26 @@ AMY also showed how to go beyond logarithmic accuracy in
 * [etaT3_kappa0.50_nf1_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf1_fixed.dat)
 * [etaT3_kappa0.25_nf1_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf1_fixed.dat)
 
+* [etaT3_HTL_nf2_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf2_fixed.dat)
+* [etaT3_kappa0.50_nf2_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf2_fixed.dat)
+* [etaT3_kappa0.25_nf2_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf2_fixed.dat)
+
+* [etaT3_HTL_nf3_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf3_fixed.dat)
+* [etaT3_kappa0.50_nf3_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf3_fixed.dat)
+* [etaT3_kappa0.25_nf3_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf3_fixed.dat)
+
+* [etaT3_HTL_nf4_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf4_fixed.dat)
+* [etaT3_kappa0.50_nf4_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf4_fixed.dat)
+* [etaT3_kappa0.25_nf4_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf4_fixed.dat)
+
+* [etaT3_HTL_nf5_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf5_fixed.dat)
+* [etaT3_kappa0.50_nf5_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf5_fixed.dat)
+* [etaT3_kappa0.25_nf5_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf5_fixed.dat)
+
+* [etaT3_HTL_nf6_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf6_fixed.dat)
+* [etaT3_kappa0.50_nf6_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf6_fixed.dat)
+* [etaT3_kappa0.25_nf6_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf6_fixed.dat)
+
 **With Running**
 
 Here we implement the scheme devised by AMY (minus the inelastic processes),
@@ -53,6 +73,21 @@ a maximal value α≤[1...10] which turns out to be of little importance.
 
 * [etaT3_HTL_nf1_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf1_running.dat)
 * [etaT3_kappa0.50_nf1_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf1_running.dat)
+
+* [etaT3_HTL_nf2_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf2_running.dat)
+* [etaT3_kappa0.50_nf2_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf2_running.dat)
+
+* [etaT3_HTL_nf3_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf3_running.dat)
+* [etaT3_kappa0.50_nf3_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf3_running.dat)
+
+* [etaT3_HTL_nf4_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf4_running.dat)
+* [etaT3_kappa0.50_nf4_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf4_running.dat)
+
+* [etaT3_HTL_nf5_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf5_running.dat)
+* [etaT3_kappa0.50_nf5_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf5_running.dat)
+
+* [etaT3_HTL_nf6_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf6_running.dat)
+* [etaT3_kappa0.50_nf6_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf6_running.dat)
 
 ## Usage
 
