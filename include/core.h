@@ -40,7 +40,8 @@ typedef enum pol {
 
 double 
    f(double e, p_type X),    // f(e)       for X type
-  bf(double e, p_type X);    // \bar{f}(x) for X type
+  bf(double e, p_type X),    // \bar{f}(x) for X type
+  degen(       p_type X);    // X degeneracy factor
 
 /*-----------------------------------------------------------------------------------------------*/
 

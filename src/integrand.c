@@ -220,14 +220,15 @@ double RATE_integrand(double *args, size_t dim, void *p) {         // the integr
   for (int i=0;i<nR;i++) {
     /*R = all_R[i];*/
     /*printf("%.4f \n", (double) all_R[i].multiplicity);*/
-    result += kernel(e, s, t, all_R[i])/bf(e1/Temp,all_R[i].particles[0]);                        // combine reaction kernels
+    /*printf("%.4f \n", (double) degen(all_R[i].particles[0]) );*/
+    result += kernel(e, s, t, all_R[i])/( degen(all_R[i].particles[0])*bf(e1/Temp,all_R[i].particles[0]) );                        // combine reaction kernels
   };
 
         // J{ phi,         s,      e3,e4      }
   result *=  ( 1.*(4.*e1*e2)/pow( eps, 2 ) )              // Jacobian (factor s from t=s*z cancels)
             *( pow(Temp,0) )                                 // units... T^3
-            *( (1./16.)*(1./pow(2.*M_PI, 4)) )               // prefactors
-            *1./(e1*e1*16.)                        ;         // for \xi_\pm sols
+            *(1./pow(2.*M_PI, 4))                // prefactors
+            *.5/(e1*e1*16.)                        ;         // for \xi_\pm sols
 
   /*printf("e1=%g, e2=%g, e3=%g, phi=%g,  RES=%g\n", e1, e2, e3, phi, result );*/
   return result;

@@ -23,6 +23,13 @@ double bf(double e, p_type X) {
   }
 };
 
+double degen(p_type X) {
+  switch(X) {
+    case F: return 12.*((double) (Nf?Nf:1) );
+    case B: return 16.;
+  }
+};
+
 double kernel( double e[4], double s, double t, reaction R) {
   /*
    *  Take a reaction and weight by thermal factors. This is 

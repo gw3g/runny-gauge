@@ -3,7 +3,7 @@ set lwidth 0.03
 set cap round
 set texlabels 1
 
-nf = 0
+nf = 3
 ymax = 5*(1+nf)
 
 amove 2 2
@@ -21,44 +21,47 @@ begin graph
 
   key compact pos tl offset .5 .5 hei .4
 
-  xaxis min 0.1 max 4.2 grid dticks 2
-  yaxis  min 0.002 max 5 log grid !dticks 5
-  ytitle "$\lambda$ [fm]" hei 0.6 dist 0.3
-  xtitle "$E/T$"   hei 0.6 dist 0.3
+  xaxis min 0.1 max 1.7 grid dticks .2
+  yaxis  min 0.002 max 40 log grid !dticks 5
+  ytitle "$\lambda$ (fm)" hei 0.6 dist 0.3
+  xtitle "$E$ (GeV)"   hei 0.6 dist 0.3
 
-  !data "../data/RT_T_kappa1.00_nf0.dat" comment # d11=c1,c2
-  !data "../data/RT_T1.0_kappa0.50_nf0_running.dat" comment # d12=c1,c2
-  !data "../data/RT_T2.0_kappa0.50_nf0_running.dat" comment # d13=c1,c2
-  !data "../data/RT_T3.0_kappa0.50_nf0_running.dat" comment # d14=c1,c2
+  data "../data/RT_T2.0_HTL_nf3_running.dat" comment # d39=c1,c1
+  data "../data/RT_T2.0_HTL_nf3_running.dat" comment # d40=c1,c2
+  !data "../data/RT_T2.0_HTL_nf3_running.dat" comment # d41=c1,c3
+  !data "../data/RT_T2.0_HTL_nf3_running.dat" comment # d42=c1,c4
+  data "../data/RT_T2.0_HTL_nf3_running.dat" comment # d43=c1,c5
 
-  !data "../data/RT_T1.0_HTL_nf0_running.dat" comment # d21=c1,c4
-  data "../data/RT_T2.0_HTL_nf0_running.dat" comment # d41=c1,c3
-  data "../data/RT_T2.0_HTL_nf0_running.dat" comment # d42=c1,c4
-  data "../data/RT_T2.0_HTL_nf0_running.dat" comment # d22=c1,c2
-  !data "../data/RT_T3.0_HTL_nf0_running.dat" comment # d23=c1,c4
-  !data "../data/RT_T3.0_HTL_nf0_running.dat" comment # d23=c1,c2
-  !let d12=1/d12
-  !let d13=1/d13
-  !let d14=1/d14
-  !let d21=1/d21
-  let d22=1/(d22*3.)
-  let d41=1/(d41*3.)
-  let d42=1/(d42*3.)
-  !let d23=1/(d23)
-  let d1 = .07 from 1 to 1.4
-  let d2 = .28 from 1 to 1.4
+  data "../data/RT_T0.8_HTL_nf3_running.dat" comment # d10=c1,c1
+  data "../data/RT_T0.8_HTL_nf3_running.dat" comment # d11=c1,c2
 
-  fill d1,d2 color shade
+  let d10=d10*.16
+  let d11=1/(d11*4.)
+  let d11=d10,d11
+
+  let d39=d39*.4
+  let d40=1/(d40*5.)
+  let d43=1/(d43*5.)
+  let d40=d39,d40
+  let d43=d39,d43
+  let d1 = .08 from .0 to .4
+  let d2 = .28 from .0 to .4
+
+  !fill d1,d2 color shade
+  d2 line lstyle 1 color skyblue
+  d1 line lstyle 1 color pink
   !d11 line lstyle 2 color blue msize 0.25
   !d21 marker fcircle line color red key "$T=1$"
-  d22 marker fsquare line color red key "$T=600$ MeV"
+  d11 line marker fsquare line color blue key "$T=0.16$ GeV"
+  d40 marker fsquare line color red key "$T=0.4$ GeV"
+  d43 line lstyle 2 color red !key "$T=0.4$ GeV"
   !d23 marker fsquare line color magenta key "$T=3$"
   !d12 marker square line color blue msize 0.25  key "$T=1$"
   !d13 marker circle line color lightblue msize 0.25 key "$T=1.2$"
   !d14 marker diamond line color purple msize 0.25 key "$T=1.4$"
   d1 lstyle 1  color black
   d2 lstyle 1  color black
-  fill d41,d42 color 0.8
+  !fill d41,d42 color 0.8
 end graph
 
 set hei 0.5

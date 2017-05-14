@@ -129,9 +129,9 @@ double Rate( double e1 ) {
     /*printf("\n -- %g\n\n",res);*/
   }
 
-  if (alf_run) printf("\r  :  %-1.4f  :", e1/lambda); else printf("\r  :  %03.5f   :", e1/lambda);
+  if (alf_run) printf("\r  :  %-2.5f  :", e1/lambda); else printf("\r  :  %03.5f   :", e1/lambda);
 
-  printf("  %.8f   :  ~~   :", err/res  );
+  printf("  %.8f   :    ~  ~    :", err/res  );
 
   return res;
 }
