@@ -37,14 +37,14 @@ double eta_NLL() { return                                                   // S
                           pow(Temp,3.)*eta1[Nf] / (pow(g,4)*log(mSt[Nf]/sqrt(g*g*mD2/(4.*M_PI))));}
 
 void   eval_T(double,double); void   eval_g(double,double); int   points;  // See after main() ...
-void   rate_T(double,double,double);
+void   rate_E(double,double,double);
 
 /*-----------------------------------------------------------------------------------------------*/
 
 int main(int argc, char **argv) {                                        // Main fnc: to explore... T, alpha  dependence
 
   C_integrand = &C_integrand_st;
-  points = 15; Temp=1.;Nf=0;
+  points = 30; Temp=1.;Nf=0;
 
   while (argc--) Nf=(int) atoi(*argv++);
   /*for (int nf=0;nf<1;nf++) {                                     // loop over active quark flavours*/
@@ -54,6 +54,7 @@ int main(int argc, char **argv) {                                        // Main
     /*HTL = 0 ; kappa=1.00; rate_T(.01,9.);*/
     /*HTL = 1 ; kappa=1.00; rate_T(.1,4.,1.0);*/
     HTL = 1 ; kappa=1.00; rate_T(1.,8.,.8);
+    HTL = 1 ; kappa=1.00; rate_T(1.,8.,2.0);
     /*HTL = 1 ; kappa=1.00; rate_T(1.,8.,.8);*/
     /*HTL = 1 ; kappa=1.00; rate_T(.1,4.,3.);*/
     /*HTL = 1 ; kappa=1.00; rate_T(.01,9.);*/
@@ -142,7 +143,7 @@ void eval_g(double gmin, double gmax)
   fclose(file);
 }
 
-void rate_T(double Emin, double Emax, double TT) 
+void rate_E(double Emin, double Emax, double TT) 
 { alf_run=1; Temp = TT; double res1, res2, res3, res4; double Ene;
 
        if (!HTL) sprintf(fname, "out/data/RT_T%.1f_kappa%.2f_nf%d_running.dat", Temp, kappa, Nf  );
