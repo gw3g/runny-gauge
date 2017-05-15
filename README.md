@@ -33,29 +33,29 @@ AMY also showed how to go beyond logarithmic accuracy in
 * [etaT3_kappa0.50_nf0_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf0_fixed.dat)
 * [etaT3_kappa0.25_nf0_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf0_fixed.dat)
 
-* [etaT3_HTL_nf1_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf1_fixed.dat)
-* [etaT3_kappa0.50_nf1_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf1_fixed.dat)
-* [etaT3_kappa0.25_nf1_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf1_fixed.dat)
+<!--* [etaT3_HTL_nf1_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf1_fixed.dat)-->
+<!--* [etaT3_kappa0.50_nf1_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf1_fixed.dat)-->
+<!--* [etaT3_kappa0.25_nf1_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf1_fixed.dat)-->
 
-* [etaT3_HTL_nf2_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf2_fixed.dat)
-* [etaT3_kappa0.50_nf2_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf2_fixed.dat)
-* [etaT3_kappa0.25_nf2_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf2_fixed.dat)
+<!--* [etaT3_HTL_nf2_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf2_fixed.dat)-->
+<!--* [etaT3_kappa0.50_nf2_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf2_fixed.dat)-->
+<!--* [etaT3_kappa0.25_nf2_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf2_fixed.dat)-->
 
 * [etaT3_HTL_nf3_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf3_fixed.dat)
 * [etaT3_kappa0.50_nf3_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf3_fixed.dat)
 * [etaT3_kappa0.25_nf3_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf3_fixed.dat)
 
-* [etaT3_HTL_nf4_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf4_fixed.dat)
-* [etaT3_kappa0.50_nf4_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf4_fixed.dat)
-* [etaT3_kappa0.25_nf4_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf4_fixed.dat)
+<!--* [etaT3_HTL_nf4_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf4_fixed.dat)-->
+<!--* [etaT3_kappa0.50_nf4_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf4_fixed.dat)-->
+<!--* [etaT3_kappa0.25_nf4_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf4_fixed.dat)-->
 
-* [etaT3_HTL_nf5_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf5_fixed.dat)
-* [etaT3_kappa0.50_nf5_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf5_fixed.dat)
-* [etaT3_kappa0.25_nf5_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf5_fixed.dat)
+<!--* [etaT3_HTL_nf5_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf5_fixed.dat)-->
+<!--* [etaT3_kappa0.50_nf5_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf5_fixed.dat)-->
+<!--* [etaT3_kappa0.25_nf5_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf5_fixed.dat)-->
 
-* [etaT3_HTL_nf6_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf6_fixed.dat)
-* [etaT3_kappa0.50_nf6_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf6_fixed.dat)
-* [etaT3_kappa0.25_nf6_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf6_fixed.dat)
+<!--* [etaT3_HTL_nf6_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf6_fixed.dat)-->
+<!--* [etaT3_kappa0.50_nf6_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf6_fixed.dat)-->
+<!--* [etaT3_kappa0.25_nf6_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf6_fixed.dat)-->
 
 **With Running**
 
@@ -68,26 +68,26 @@ a maximal value α≤[1...10] which turns out to be of little importance.
 
 <!--![eta with running](https://github.com/gw3g/runny-gauge/blob/master/out/eta_running.png)-->
 
-* [etaT3_HTL_nf0_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf0_running.dat)
-* [etaT3_kappa0.50_nf0_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf0_running.dat)
+<!--* [etaT3_HTL_nf0_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf0_running.dat)-->
+<!--* [etaT3_kappa0.50_nf0_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf0_running.dat)-->
 
-* [etaT3_HTL_nf1_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf1_running.dat)
-* [etaT3_kappa0.50_nf1_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf1_running.dat)
+<!--* [etaT3_HTL_nf1_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf1_running.dat)-->
+<!--* [etaT3_kappa0.50_nf1_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf1_running.dat)-->
 
-* [etaT3_HTL_nf2_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf2_running.dat)
-* [etaT3_kappa0.50_nf2_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf2_running.dat)
+<!--* [etaT3_HTL_nf2_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf2_running.dat)-->
+<!--* [etaT3_kappa0.50_nf2_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf2_running.dat)-->
 
 * [etaT3_HTL_nf3_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf3_running.dat)
 * [etaT3_kappa0.50_nf3_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf3_running.dat)
 
-* [etaT3_HTL_nf4_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf4_running.dat)
-* [etaT3_kappa0.50_nf4_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf4_running.dat)
+<!--* [etaT3_HTL_nf4_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf4_running.dat)-->
+<!--* [etaT3_kappa0.50_nf4_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf4_running.dat)-->
 
-* [etaT3_HTL_nf5_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf5_running.dat)
-* [etaT3_kappa0.50_nf5_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf5_running.dat)
+<!--* [etaT3_HTL_nf5_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf5_running.dat)-->
+<!--* [etaT3_kappa0.50_nf5_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf5_running.dat)-->
 
-* [etaT3_HTL_nf6_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf6_running.dat)
-* [etaT3_kappa0.50_nf6_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf6_running.dat)
+<!--* [etaT3_HTL_nf6_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf6_running.dat)-->
+<!--* [etaT3_kappa0.50_nf6_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf6_running.dat)-->
 
 ## Usage
 
@@ -97,9 +97,16 @@ Firstly, the files tagged 'fixed' give the parametric dependence on the coupling
 parameter g=(4πα)<sup>1/2</sup>.
 The files tagged as 'running' give the temperature dependence dependence
 (T in units of Λ<sub>QCD</sub>).
+Use the makefile to compile the binary, execute with
+```
+./bin/eta NF
+```
+where ```NF```={0,1,...} is the number of light quark flavours.
+(The default value is ```Nf=0```.)
 
 * ```eval_g(gmin, gmax)``` evaluates η(g)/T<sup>3</sup>
 * ```eval_T(Tmin, Tmax)``` evaluates η(T/Λ)/T<sup>3</sup>
+* ```rate_E(Emin, Emax, Temp)``` evaluates absorbtion rate R(E)/T
 
 Using HTL function (set ```HTL=1```) OR eff. mass ```mu^2 = kappa*mD^2``` (set ```HTL=0```)
 
