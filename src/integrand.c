@@ -216,12 +216,18 @@ double RATE_integrand(double *args, size_t dim, void *p) {         // the integr
   double e[4] = {e1/Temp,e2/Temp,e3/Temp,e4/Temp};
 
   double result=0.;
+  double count;
 
   for (int i=0;i<nR;i++) {
     /*R = all_R[i];*/
     /*printf("%.4f \n", (double) all_R[i].multiplicity);*/
     /*printf("%.4f \n", (double) degen(all_R[i].particles[0]) );*/
-    result += kernel(e, s, t, all_R[i])/( degen(all_R[i].particles[0])*bf(e1/Temp,all_R[i].particles[0]) );                        // combine reaction kernels
+    switch(all_R[i].particles[0]) {
+    case F: count=0.; break;
+    case B: count=1.; break;
+    }
+    /*printf("%.4f \n", (double) count );*/
+    result += count*kernel(e, s, t, all_R[i])/( degen(all_R[i].particles[0])*f(e1/Temp,all_R[i].particles[0]) );                        // combine reaction kernels
   };
 
         // J{ phi,         s,      e3,e4      }
