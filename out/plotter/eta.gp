@@ -25,12 +25,12 @@ set label "n_f = 3" at 4e-2,20
 set label "n_f = 6" at 4e-2,65
 
 
-p "etaT3_HTL_nf0_fixed.dat" us 1:($1**4 * $2) w lp lt 1 t "HTL",\
-  "etaT3_HTL_nf3_fixed.dat" us 1:($1**4 * $2) w lp lt 1 t "",\
-  "etaT3_HTL_nf6_fixed.dat" us 1:($1**4 * $2) w lp lt 1 t "",\
-  "etaT3_kappa0.50_nf0_fixed.dat" us 1:($1**4 *$2)   w lp pt 3 lt 3 t "EFF, \153=0.50",\
-  "etaT3_kappa0.50_nf3_fixed.dat" us 1:($1**4 *$2)   w lp pt 3 lt 3 t "",\
-  "etaT3_kappa0.50_nf6_fixed.dat" us 1:($1**4 *$2)   w lp pt 3 lt 3 t "",\
+p "../data/etaT3_HTL_nf0_fixed.dat" us 1:($1**4 * $2) w lp lt 1 t "HTL",\
+  "../data/etaT3_HTL_nf3_fixed.dat" us 1:($1**4 * $2) w lp lt 1 t "",\
+  "../data/etaT3_HTL_nf6_fixed.dat" us 1:($1**4 * $2) w lp lt 1 t "",\
+  "../data/etaT3_kappa0.50_nf0_fixed.dat" us 1:($1**4 *$2)   w lp pt 3 lt 3 t "EFF, \153=0.50",\
+  "../data/etaT3_kappa0.50_nf3_fixed.dat" us 1:($1**4 *$2)   w lp pt 3 lt 3 t "",\
+  "../data/etaT3_kappa0.50_nf6_fixed.dat" us 1:($1**4 *$2)   w lp pt 3 lt 3 t "",\
   etaNLL_0(x) lt 4 lw 3 t "NLL",\
   etaNLL_6(x) lt 4 lw 3 t "",\
   etaNLL_3(x) lt 4 lw 3 t ""

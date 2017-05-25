@@ -174,6 +174,7 @@ double C_integrand_qo(double *args, size_t dim, void *p) {         // the integr
             *( pow(Temp,-1) )                           // units... T^3
             *( 1./pow(4.*M_PI, 6) )*4.;                 // prefactors ... 4 from Q-form
 
+  /*if ( isnan((result)) ) printf( "\n q = %g \n", q);*/
   /*printf("%g \n", result);*/
   return result;
 };

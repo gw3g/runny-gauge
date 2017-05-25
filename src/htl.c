@@ -60,6 +60,8 @@ double *Sig(double z, pol X) {
       S[1]  = cimag( S0 );          break;
   }
 
+  /*if ( isnan(creal(Si)) ) printf( "\n z = %g \n", z);*/
+
   return S;                         // return array of [ Re(Sigma), Im(Sigma) ]
 }
 
@@ -121,7 +123,7 @@ double *Replace_Q(double s, double t, double e3, double e4, double o, double mu2
   double                                   // R := exchange mom. (now u-channel)      |
     r0 = -o +e4 - e3,                       // 0-component of R                        |
     r2 = e1*e1+e3*e3+2*e1*e3+u,            // | -\vec{q} + \vec{p4} - \vec{p3} |^2     |
-    r  = sqrt(r2),                         // magnitude \vec{r}, direction \hat{r}    |
+    r  = (r2==0)?1.:sqrt(r2),                         // magnitude \vec{r}, direction \hat{r}    |
     z  = r0/r,
     /*m2 = ( (J*u + mu2) < 0 ) ? 0. : mu2;*/
     m2 = ( (J*u + Temp*Temp) < 0 ) ? 0. : mu2;
@@ -129,9 +131,12 @@ double *Replace_Q(double s, double t, double e3, double e4, double o, double mu2
 
   double *S0 = Sig(z,L), *Si = Sig(z,T);
 
+  if ( isnan(z) ) printf( "\n r0 = %g \n", r2);
+
   double complex                                              // \cal{R} = R - Sig(R)
     calR0 = r0 - m2*( S0[0] + I*S0[1] )/r,                    // temporal component
     calRi = r  - m2*( Si[0] + I*Si[1] )/r;                    // parallel to \hat{r}
+  if ( isnan(creal(calR0)) ) printf( "\n r = %g \n", r);
 
   free(S0);free(Si);
 

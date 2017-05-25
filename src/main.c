@@ -65,13 +65,13 @@ int main(int argc, char **argv) {                                        // Main
     /*HTL = 1 ; kappa=1.00; rate_T(1e-3,1e0);*/
 
     // fixed alpha
-    /*HTL = 0 ; kappa=0.25; eval_g(1e-3,1e0);*/
-    /*HTL = 0 ; kappa=0.50; eval_g(1e-3,1e0);*/
-    /*HTL = 1 ; kappa=1.00; eval_g(1e-5,1e2);*/
+    /*HTL = 0 ; kappa=0.25; eval_g(1e-3,1e2);*/
+    /*HTL = 0 ; kappa=0.50; eval_g(1e-3,1e2);*/
+    HTL = 1 ; kappa=1.00; eval_g(1e-0,1e2);
 
     // T-dep
-    HTL = 0 ; kappa=0.5;  eval_T(1.0,9.);
-    HTL = 1 ; kappa=1.00; eval_T(1.0,9.);
+    /*HTL = 0 ; kappa=0.5;  eval_T(1.0,9.);*/
+    /*HTL = 1 ; kappa=1.00; eval_T(1.0,9.);*/
 
   /*}*/
 
