@@ -60,7 +60,7 @@ double *Sig(double z, pol X) {
       S[1]  = cimag( S0 );          break;
   }
 
-  /*if ( isnan(creal(Si)) ) printf( "\n z = %g \n", z);*/
+  /*if ( isnan(creal(S0)) ) printf( "\n z = %g \n", z);*/
 
   return S;                         // return array of [ Re(Sigma), Im(Sigma) ]
 }
@@ -131,12 +131,10 @@ double *Replace_Q(double s, double t, double e3, double e4, double o, double mu2
 
   double *S0 = Sig(z,L), *Si = Sig(z,T);
 
-  if ( isnan(z) ) printf( "\n r0 = %g \n", r2);
-
   double complex                                              // \cal{R} = R - Sig(R)
     calR0 = r0 - m2*( S0[0] + I*S0[1] )/r,                    // temporal component
     calRi = r  - m2*( Si[0] + I*Si[1] )/r;                    // parallel to \hat{r}
-  if ( isnan(creal(calR0)) ) printf( "\n r = %g \n", r);
+  /*if ( isnan(creal(calR0)) ) printf( "\n S0 = %g + i %g \n", S0[0], S0[1] );*/
 
   free(S0);free(Si);
 
@@ -162,6 +160,10 @@ double *Replace_Q(double s, double t, double e3, double e4, double o, double mu2
 
   repl[0] = num_s/denom;                                      // replacement: s/u
   repl[1] = num_t/denom;                                      //              t/u
+
+  /*if ( isnan(creal(calR0)) ) printf( "\n denom = %g \n", denom );*/
+
+  if (isnan(creal(denom))) { repl[0]=0.; repl[1]=0.;} // For z=+/-1, Sig diverges ... (#/u = 0)
 
   return repl;
 }
