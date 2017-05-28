@@ -224,16 +224,18 @@ double RATE_integrand(double *args, size_t dim, void *p) {         // the integr
     /*printf("%.4f \n", (double) all_R[i].multiplicity);*/
     /*printf("%.4f \n", (double) degen(all_R[i].particles[0]) );*/
     switch(all_R[i].particles[0]) {
-    case F: count=0.; break;
-    case B: count=1.; break;
+    case F: count=1.; break;
+    case B: count=0.; break;
     }
     /*printf("%.4f \n", (double) count );*/
-    result += count*kernel(e, s, t, all_R[i])/( degen(all_R[i].particles[0])*f(e1/Temp,all_R[i].particles[0]) );                        // combine reaction kernels
+    result += count*kernel(e, s, t, all_R[i])/( degen(all_R[i].particles[0])*
+        f(e1/Temp,all_R[i].particles[0])*bf(e1/Temp,all_R[i].particles[0]) );                        // combine reaction kernels
   };
 
         // J{ phi,         s,      e3,e4      }
   result *=  ( 1.*(4.*e1*e2)/pow( eps, 2 ) )              // Jacobian (factor s from t=s*z cancels)
             *( pow(Temp,0) )                                 // units... T^3
+            *1.5*(4.*u*t/(s*s))
             *(1./pow(2.*M_PI, 4))                // prefactors
             *.5/(e1*e1*16.)                        ;         // for \xi_\pm sols
 
