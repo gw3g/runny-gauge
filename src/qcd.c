@@ -51,7 +51,8 @@ double *M_2(double e[4], double s, double t) {          // energies & Mandelstam
   double                                                                // parametric dependence
     at = alphas(t),                     at2 = at*at,
     au = alphas(u),                     au2 = au*au,
-    as = alphas(s),                     as2 = as*as,
+    /*as = alphas(s),                     as2 = as*as,*/
+    as = alphas(pow(s*t*u,0.3333)),     as2 = as*as,
     av = alphas(pow(s*t*u,0.3333)),     av2 = av*av;                    // thermal masses :
 
   double                                                          mG2 = kappa*mD2*at*pow(Temp,2), 
@@ -123,6 +124,8 @@ double *M_2(double e[4], double s, double t) {          // energies & Mandelstam
   /*if (M2[0]<0) {printf("rB = %.5f, alf = %.5f \n", rB1, at);};*/
   /*printf("%g\n", M2[0]);*/
 
+  for(int i=0; i<7; i++) { if (M2[i]<0.) { M2[i]=0.; };
+      if (M2[i]<0.) printf("rB = %.5f, alf = %.5f \n", rB1, at);};
   for(int i=0; i<7; i++) M2[i] *= pow(4.*M_PI,2);                                       return M2;
 }
 

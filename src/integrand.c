@@ -54,6 +54,7 @@ double qForm(double c1, double c2, double c3, double c4,  // the chi's
                   +   c2*c2              -  2.*c2*c3*P2(x23)  - 2.*c2*c4*P2(x24)
                                          +  c3*c3             + 2.*c3*c4*P2(x34)
                                                               + c4*c4             ;
+    if (XXXX<0.) XXXX=0.;
     return XXXX/4.;
     /*return 1.;*/
 }
@@ -101,6 +102,7 @@ double C_integrand_st(double *args, size_t dim, void *p) {         // the integr
   for (int i=0;i<nR;i++) {
     /*R = all_R[i];*/
     /*printf("%.4f \n", (double) all_R[i].multiplicity);*/
+    /*if (result<0.) { printf("\n NEG: %d \n", i);}*/
     result += kernel(e, s, t, all_R[i])                         // combine reaction kernels
               *qForm( 
                       chi( e[0], all_R[i].particles[0] ),
@@ -116,7 +118,8 @@ double C_integrand_st(double *args, size_t dim, void *p) {         // the integr
             *( (1./16.)*(1./pow(2.*M_PI, 6)) )*.5            // prefactors
             *2.                                    ;         // for \xi_\pm sols
 
-  return result;
+  /*if (result<0.) { printf("\n NEG: %g \n", result);}*/
+  return fabs(result);
 };
 
 /*-----------------------------------------------------------------------------------------------*/
@@ -224,8 +227,8 @@ double RATE_integrand(double *args, size_t dim, void *p) {         // the integr
     /*printf("%.4f \n", (double) all_R[i].multiplicity);*/
     /*printf("%.4f \n", (double) degen(all_R[i].particles[0]) );*/
     switch(all_R[i].particles[0]) {
-    case F: count=1.; break;
-    case B: count=0.; break;
+    case F: count=0.; break;
+    case B: count=1.; break;
     }
     /*printf("%.4f \n", (double) count );*/
     result += count*kernel(e, s, t, all_R[i])/( degen(all_R[i].particles[0])*

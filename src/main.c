@@ -21,7 +21,7 @@
                               // ------------------------
 int             HTL  = 1   ;  // =1 for HTL, =0 for M_eff
 double        kappa  = 1.00;  // kappa*mD^2
-int           calls  =-1e6 ;  // MC calls {if > 0 : GSL, else hcubature}
+int           calls  =-1e5 ;  // MC calls {if > 0 : GSL, else hcubature}
 int         alf_run  = 0   ;  // =1 for running coupling
 double       lambda  = 1.0 ;  // lambda_{QCD}
 double            J  = 1.0 ;  // HTL cut
@@ -43,8 +43,8 @@ void   rate_E(double,double,double);
 
 int main(int argc, char **argv) {                                        // Main fnc: to explore... T, alpha  dependence
 
-  C_integrand = &C_integrand_qo;
-  points = 10; Temp=1.;Nf=0;
+  C_integrand = &C_integrand_st;
+  points = 20; Temp=1.;Nf=0;
 
   while (argc--) Nf=(int) atoi(*argv++);
   /*for (int nf=0;nf<1;nf++) {                                     // loop over active quark flavours*/
@@ -59,8 +59,9 @@ int main(int argc, char **argv) {                                        // Main
     /*HTL = 1 ; kappa=1.00; rate_E(1.,8.,2.0);*/
     /*HTL = 1 ; kappa=1.00; rate_E(1.,8.,5.0);*/
     /*HTL = 1 ; kappa=1.00; rate_E(1.,20.,2.0);*/
-    HTL = 1 ; kappa=1.00; rate_E(1.,10.,.8);
-    HTL = 1 ; kappa=1.00; rate_E(1.,20.,2.0);
+    /*HTL = 1 ; kappa=1.00; rate_E(1.,80.,.8);*/
+    /*HTL = 1 ; kappa=1.00; rate_E(1.,200.,2.0);*/
+    HTL = 1 ; kappa=1.00; rate_E(1.,1000.,10.0);
 
     /*HTL = 1 ; kappa=1.00; rate_T(1.,8.,.8);*/
     /*HTL = 1 ; kappa=1.00; rate_T(.1,4.,3.);*/
@@ -69,9 +70,9 @@ int main(int argc, char **argv) {                                        // Main
     /*HTL = 1 ; kappa=1.00; rate_T(1e-3,1e0);*/
 
     // fixed alpha
-    /*HTL = 0 ; kappa=0.25; eval_g(1e-3,1e2);*/
-    /*HTL = 0 ; kappa=0.50; eval_g(1e-3,1e2);*/
-    /*HTL = 1 ; kappa=1.00; eval_g(1e-3,1e2);*/
+    /*HTL = 0 ; kappa=0.25; eval_g(1e-3,1e1);*/
+    /*HTL = 0 ; kappa=0.50; eval_g(1e-3,1e1);*/
+    /*HTL = 1 ; kappa=1.00; eval_g(1e-3,1e1);*/
 
     // T-dep
     /*HTL = 0 ; kappa=0.5;  eval_T(1.0,9.);*/
@@ -154,8 +155,8 @@ void rate_E(double Emin, double Emax, double TT)
 { alf_run=1; Temp = TT; double res1, res2, res3, res4; double Ene; 
   //g=sqrt(4.*M_PI*1.);
 
-       if (!HTL) sprintf(fname, "out/data/RT_T%.1f_kappa%.2f_nf%d_running-q.dat", Temp, kappa, Nf  );
-  else if  (HTL) sprintf(fname, "out/data/RT_T%.1f_HTL_nf%d_running-q.dat", Temp, Nf               );
+       if (!HTL) sprintf(fname, "out/data/RT_T%.1f_kappa%.2f_nf%d_running-g.dat", Temp, kappa, Nf  );
+  else if  (HTL) sprintf(fname, "out/data/RT_T%.1f_HTL_nf%d_running-g.dat", Temp, Nf               );
        /*if (!HTL) sprintf(fname, "out/data/RT_T%.1f_kappa%.2f_nf%d_fixed-g.dat", Temp, kappa, Nf  );*/
   /*else if  (HTL) sprintf(fname, "out/data/RT_T%.1f_HTL_nf%d_fixed-g.dat", Temp, Nf               );*/
 
@@ -172,8 +173,8 @@ void rate_E(double Emin, double Emax, double TT)
   printf("  ---------------------------------------------------------\n" );
   for(int i=0; i<points; i++) {
     /*g = gmax*pow(10., -(points -1 - i)*( log(gmax/gmin)/log(10.))/((double) points - 1));*/
-    Ene = Emin + (Emax-Emin)*( ((double) i)/((double) points-1) );
-    /*Ene = Emax*pow(10., -(points -1 - i)*( log(Emax/Emin)/log(10.))/((double) points - 1));*/
+    /*Ene = Emin + (Emax-Emin)*( ((double) i)/((double) points-1) );*/
+    Ene = Emax*pow(10., -(points -1 - i)*( log(Emax/Emin)/log(10.))/((double) points - 1));
     printf("  :  %03.6f   :", Ene/Temp );                        fprintf(file, "%.8f",Ene/Temp);
     J = .0;  res4 =     Rate(Ene)/Temp;
     J = .5;  res3 =     Rate(Ene)/Temp;

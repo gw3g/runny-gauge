@@ -33,6 +33,8 @@ relative:
 	gle -o "out/eta-to-NLL.png" -tex -d png -dpi 100 "out/plotter/relative.gle"
 i-rate:
 	gle -o "out/i-rate.png" -tex -d png -dpi 100 "out/plotter/i-rate.gle"
+g4eta:
+	gnuplot "out/plotter/eta.gp"
 
 .PHONY: clean
 

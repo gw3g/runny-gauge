@@ -59,7 +59,7 @@ double eta() {
       /*
        * Trick to calculate the ``off-diagonal'' elements:
        *
-       *      <1|C|2>  =  ( <1+2|C|1+2> - <1|C|1> - <2|C|2> ,
+       *      <1|C|2>  =  .5*( <1+2|C|1+2> - <1|C|1> - <2|C|2> ) ,
        *
        *  using the linearity of inner prod & symmetry.
        *
@@ -89,6 +89,6 @@ double eta() {
   double qF;
   gsl_blas_ddot(&ss.vector, x, &qF);                      // quadratic form ~ AMY.1  (6.7)
   free(p);free(x);free(cM);free(sV);                      // free mem.
-  return qF/15.;
+  return fabs(qF)/15.;
   }
 }
