@@ -1,9 +1,9 @@
-size 14 11
+size 14 12
 set lwidth 0.03
 set cap round
 set texlabels 1
 
-nf = 0
+nf = arg(1)
 
 if nf=0 then
   eta1=27.126
@@ -42,14 +42,13 @@ end if
 
 md = sqrt( (3.+nf*0.5)/3. )
 
-amove 2 1.5
 set texlabels 1
 begin texpreamble
   \usepackage{amsmath}
   \usepackage{amssymb}
   \usepackage{eucal}
 end texpreamble
-amove 2 1
+amove 2 1.8
 begin graph
   size 11 8 fullsize
 
@@ -66,8 +65,8 @@ begin graph
   xaxis min 0.0007 max 1.5  log nolast grid
   yaxis min 0.5 max 1.5 grid dticks .2
   ytitle "\tex{$\eta/\eta_{_{\rm NLL}}$}" hei 0.6 dist 0.3
-  xtitle "\tex{$g$}" hei 0.6 dist 0.5
-  x2title "\tex{$\alpha$}" hei 0.6 dist 0.5
+  xtitle "\tex{$g$}" hei 0.6 dist 0.3
+  x2title "\tex{$\alpha$}" hei 0.6 dist 0.4
 
   d14 line color #EB811B lstyle 1 lwidth 0.15
   d17 line color #14B03D lstyle 1 lwidth 0.1

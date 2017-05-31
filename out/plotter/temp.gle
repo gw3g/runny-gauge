@@ -3,7 +3,7 @@ set lwidth 0.03
 set cap round
 set texlabels 1
 
-nf = 0
+nf = arg(1)
 ymax = 10*(1+nf)
 
 amove 2 2
