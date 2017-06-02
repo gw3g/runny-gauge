@@ -24,6 +24,8 @@ int c_cub(unsigned dim, const double *x, void *data_,
 
 double xCx( double (*chi)(double,p_type) ) {
 
+  C_integrand = (g<0.1)?&C_integrand_st:&C_integrand_qo;
+
   double res, err;
   struct f_params fp = {(*chi)};                                              // chi for inner product
   gsl_monte_vegas_state *s = gsl_monte_vegas_alloc (5);                       // workspace 5-dim
@@ -38,7 +40,7 @@ double xCx( double (*chi)(double,p_type) ) {
     while (fabs(gsl_monte_vegas_chisq(s)-1.0) > 0.1);
   }
   else {
-    double    tol=1e-7;
+    double    tol=1e-9;
     int       MaxEvls = -( (int) calls );
     hcubature(1, c_cub, &fp, 5, lower, upper, MaxEvls, 0, tol, ERROR_INDIVIDUAL, &res, &err);
     /*printf("\n -- %g\n\n",res);*/
