@@ -12,16 +12,17 @@ int                                                                             
  */
 double alphas(double Q2) {                                                      // running coupling
 
-  double alf=1., L=log(fabs(Q2)/pow(lambda,2)), alfMax=10.;
+  /*double alf=1., L=log(fabs(Q2)/pow(lambda,2)), alfMax=10.;*/
+  double alf, L=log(fabs(Q2)/pow(lambda,2));
 
     if (Q2>0)                       alf = .5 - atan(L/M_PI)/M_PI;
   else {
-    if (Q2<-2.71828*pow(lambda,2))  alf = 1./L;
+    if (Q2<-2.71828*pow(lambda,2))  alf = 1./L - 1./(1.-exp(L));
   }
   alf *= 4*M_PI/beta0;
 
   /*if (alf<0.) {printf("%.4f", alf);}*/
-  return alf_run ? (alf<alfMax?alf:alfMax) : g*g/(4*M_PI);
+  /*return alf_run ? (alf<alfMax?alf:alfMax) : g*g/(4*M_PI);*/
 
   /*double alf = (4*M_PI/beta0) / log(fabs(Q2)/pow(lambda,2));*/
   /*return alf_run ? alf : g*g/(4*M_PI);*/
@@ -51,8 +52,8 @@ double *M_2(double e[4], double s, double t) {          // energies & Mandelstam
   double                                                                // parametric dependence
     at = alphas(t),                     at2 = at*at,
     au = alphas(u),                     au2 = au*au,
-    /*as = alphas(s),                     as2 = as*as,*/
-    as = alphas(pow(s*t*u,0.3333)),     as2 = as*as,
+    as = alphas(s),                     as2 = as*as,
+    /*as = alphas(pow(s*t*u,0.3333)),     as2 = as*as,*/
     av = alphas(pow(s*t*u,0.3333)),     av2 = av*av;                    // thermal masses :
 
   double                                                          mG2 = kappa*mD2*at*pow(Temp,2), 

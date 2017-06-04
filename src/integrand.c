@@ -114,7 +114,7 @@ double C_integrand_st(double *args, size_t dim, void *p) {         // the integr
 
         // J{ phi,         s,      e3,e4      }
   result *=  ( 1.*(4.*e3*e4)/pow( eps*xi, 2 ) )              // Jacobian (factor s from t=s*z cancels)
-            *( pow(Temp,2) )                                 // units... T^3
+            *( pow(Temp,+2) )                                 // units... T^3
             *( (1./16.)*(1./pow(2.*M_PI, 6)) )*.5            // prefactors
             *2.                                    ;         // for \xi_\pm sols
 
@@ -174,7 +174,7 @@ double C_integrand_qo(double *args, size_t dim, void *p) {         // the integr
   };
         // J{     phi,     o,     q,e1 ,e2      }
   result *=  (    2. *(2.*q)/pow( y*eps*xi, 2 ) )       // Jacobian
-            *( pow(Temp,-1) )                           // units... T^3
+            *( pow(Temp,+2) )                           // units... T^3
             *( 1./pow(4.*M_PI, 6) )*4.;                 // prefactors ... 4 from Q-form
 
   /*if ( isnan((result)) ) printf( "\n q = %g \n", q);*/

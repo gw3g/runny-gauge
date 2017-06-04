@@ -4,7 +4,7 @@ set cap round
 set texlabels 1
 
 nf = arg(1)
-ymax = 10*(1+nf)
+ymax = 8.*(1+nf)
 
 amove 2 2
 begin graph

@@ -21,7 +21,7 @@
                               // ------------------------
 int             HTL  = 1   ;  // =1 for HTL, =0 for M_eff
 double        kappa  = 1.00;  // kappa*mD^2
-int           calls  =-1e7 ;  // MC calls {if > 0 : GSL, else hcubature}
+int           calls  =-1e6 ;  // MC calls {if > 0 : GSL, else hcubature}
 int         alf_run  = 0   ;  // =1 for running coupling
 double       lambda  = 1.0 ;  // lambda_{QCD}
 double            J  = 1.0 ;  // HTL cut
@@ -43,8 +43,8 @@ void   rate_E(double,double,double);
 
 int main(int argc, char **argv) {                                        // Main fnc: to explore... T, alpha  dependence
 
-  C_integrand = &C_integrand_st;
-  points = 10; Temp=1.;Nf=0;
+  C_integrand = &C_integrand_qo;
+  points = 60; Temp=1.;Nf=0;
 
   while (argc--) Nf=(int) atoi(*argv++);
   /*for (int nf=0;nf<1;nf++) {                                     // loop over active quark flavours*/
@@ -70,13 +70,13 @@ int main(int argc, char **argv) {                                        // Main
     /*HTL = 1 ; kappa=1.00; rate_T(1e-3,1e0);*/
 
     // fixed alpha
-    HTL = 0 ; kappa=0.25; eval_g(1e-3,1e2);
-    HTL = 0 ; kappa=0.50; eval_g(1e-3,1e2);
-    HTL = 1 ; kappa=1.00; eval_g(1e-3,1e2);
+    /*HTL = 0 ; kappa=0.25; eval_g(1e-3,1e2);*/
+    /*HTL = 0 ; kappa=0.50; eval_g(1e-3,1e2);*/
+    /*HTL = 1 ; kappa=1.00; eval_g(1e-3,1e2);*/
 
     // T-dep
-    /*HTL = 0 ; kappa=0.5;  eval_T(1.0,9.);*/
-    /*HTL = 1 ; kappa=1.00; eval_T(1.0,9.);*/
+    HTL = 0 ; kappa=0.5;  eval_T(0.8,9.);
+    HTL = 1 ; kappa=1.00; eval_T(0.8,9.);
     /*HTL = 0 ; kappa=0.5;  eval_T(1.0,1000.);*/
     /*HTL = 1 ; kappa=1.00; eval_T(1.0,1000.);*/
 
@@ -92,8 +92,8 @@ FILE *file; char fname[90];
 void eval_T(double Tmin, double Tmax) 
 { alf_run=1; g = 1.; double res1, res2, res3, res4;
 
-       if (!HTL) sprintf(fname, "out/data/etaT3_kappa%.2f_nf%d_running-(log).dat", kappa, Nf            );
-  else if  (HTL) sprintf(fname, "out/data/etaT3_HTL_nf%d_running-(log).dat", Nf                         );
+       if (!HTL) sprintf(fname, "out/data/etaT3_kappa%.2f_nf%d_running.dat", kappa, Nf            );
+  else if  (HTL) sprintf(fname, "out/data/etaT3_HTL_nf%d_running.dat", Nf                         );
 
   file = fopen(fname,"w+");
 
@@ -112,8 +112,8 @@ void eval_T(double Tmin, double Tmax)
   printf("  --------------------------------------------------------\n" );
   Temp = 2.;
   for(int i=0; i<points; i++) {
-    /*Temp = Tmin + (Tmax-Tmin)*( ((double) i)/((double) points-1) );*/
-    Temp = Tmax*pow(10., -(points -1 - i)*( log(Tmax/Tmin)/log(10.))/((double) points - 1));
+    Temp = Tmin + (Tmax-Tmin)*( ((double) i)/((double) points-1) );
+    /*Temp = Tmax*pow(10., -(points -1 - i)*( log(Tmax/Tmin)/log(10.))/((double) points - 1));*/
     printf("  :  %-1.4f  :", Temp/lambda);                      fprintf(file, "%.4f", Temp/lambda);
     J = .0;  res4 = eta(); J = .5;  res3 = eta(); J = 2.;  res2 = eta(); J = 1.;  res1 = eta();
     printf("  %1.2e  :\n",res1);fprintf(file, "    %e    %e    %e    %e\n", res1, res2, res3, res4);
