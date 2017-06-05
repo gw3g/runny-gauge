@@ -18,20 +18,29 @@ and hydrodynamic simulations.
 The QCD Boltzmann equation (in the quenched case) was first linearised by
 [Baym et al.](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.64.1867)
 who used hard thermal loop (HTL) insertions to screen the collision term.
-Their calculation fixed the overall *leading-log* prefactor, has been
+Their calculation fixed the overall *leading-log* prefactor, and has been
 extended to include n<sub>f</sub>>0 flavours of massless quarks
-(and for other gauge groups) due to Arnold, Moore & Jaffe (AMY)
+[plus other gauge theories, besides SU(N)] due to Arnold, Moore & Jaffe (AMY)
   [[Part I]](http://arxiv.org/abs/hep-ph/0010177).
-AMY also showed how to go beyond logarithmic accuracy in
- [[Part II]](http://arxiv.org/abs/hep-ph/0302165),
- and incoporated inelastic processes.
- That established the rigourous 'weak coupling' NLL formula.
+AMY also showed how to go beyond logarithmic accuracy 
+ by incorporating inelastic processes in
+ [[Part II]](http://arxiv.org/abs/hep-ph/0302165).
+ This settled the LO result for η, as an expansion in α and allowed the
+ *next-to-leading-log* coefficients to be calculated.
+
+Data is saved under ``out/data/``, where file names
+indicate etaT3 (for η/t<sup>3</sup>).
+Firstly, the files tagged 'fixed' give the parametric dependence on the coupling
+parameter g=(4πα)<sup>1/2</sup>.
+
 * [etaT3_HTL_nf0_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf0_fixed.dat)
 * [etaT3_kappa0.50_nf0_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf0_fixed.dat)
 * [etaT3_kappa0.25_nf0_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf0_fixed.dat)
+
 * [etaT3_HTL_nf2_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf2_fixed.dat)
 * [etaT3_kappa0.50_nf2_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf2_fixed.dat)
 * [etaT3_kappa0.25_nf2_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf2_fixed.dat)
+
 * [etaT3_HTL_nf3_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf3_fixed.dat)
 * [etaT3_kappa0.50_nf3_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf3_fixed.dat)
 * [etaT3_kappa0.25_nf3_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf3_fixed.dat)
@@ -44,8 +53,10 @@ An effective version of the one-loop running is used, to account for both
 s-channel (Q<sup>2</sup>>0) and t- or u-channel (Q<sup>2</sup><0) processes.
 To account for the singularity at the Landau pole,
 a maximal value α≤[1...10] which turns out to be of little importance.
-
 ![eta with running](https://github.com/gw3g/runny-gauge/blob/master/out/eta_running.png)
+The files tagged as 'running' give the temperature dependence dependence
+(T in units of Λ<sub>QCD</sub>).
+
 
   * [etaT3_HTL_nf0_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf0_running.dat)
   * [etaT3_kappa0.50_nf0_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf0_running.dat)
@@ -62,14 +73,6 @@ a maximal value α≤[1...10] which turns out to be of little importance.
 I have designed this piece of code for my personal use, simply to calculate η (for QCD).
 However, this has become a central quantity in heavy-ion physics and these results may be
 of wider interest.
-
-Data is saved under ``out/data/``, where file names
-indicate etaT3 (for η/t<sup>3</sup>).
-Firstly, the files tagged 'fixed' give the parametric dependence on the coupling
-parameter g=(4πα)<sup>1/2</sup>.
-The files tagged as 'running' give the temperature dependence dependence
-(T in units of Λ<sub>QCD</sub>).
-
 
 **Visualisation**
 
