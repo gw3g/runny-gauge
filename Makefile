@@ -27,11 +27,6 @@ clean:
 	$(RM) -r $(ODIR) $(TARGET); $(RM) bin/*;
 
 # auxiliary compiles go here:
-
-#temperature:
-	#gle -o "out/eta_running.png" -tex -d png -dpi 100 "out/plotter/temp.gle" $(NF)
-#relative:
-	#gle -o "out/eta-to-NLL.png" -tex -d png -dpi 100 "out/plotter/relative.gle" $(NF)
 compare:
 	gnuplot "out/plotter/g4eta.gp"
 temperature:
