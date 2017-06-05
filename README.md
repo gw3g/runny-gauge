@@ -1,7 +1,7 @@
-# Shear viscosity in the quark-gluon plasma (v1.0)
+# Shear viscosity in the quark-gluon plasma
 
-The transport coefficient η (shear viscosity) for
-QCD is revisited with particular focus on the relevant scale(s) that determine
+The shear viscosity for QCD, η(T),
+is revisited with particular focus on the relevant scale(s) that determine
 α, the strong-coupling.
 Perturbation theory was previously deemed incompatible with the inference from
 heavy ion collisions (which indicated "perfect fluid" characteristics) for
@@ -26,19 +26,15 @@ AMY also showed how to go beyond logarithmic accuracy in
  [[Part II]](http://arxiv.org/abs/hep-ph/0302165),
  and incoporated inelastic processes.
  That established the rigourous 'weak coupling' NLL formula.
-
 * [etaT3_HTL_nf0_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf0_fixed.dat)
 * [etaT3_kappa0.50_nf0_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf0_fixed.dat)
 * [etaT3_kappa0.25_nf0_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf0_fixed.dat)
-
 * [etaT3_HTL_nf2_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf2_fixed.dat)
 * [etaT3_kappa0.50_nf2_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf2_fixed.dat)
 * [etaT3_kappa0.25_nf2_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf2_fixed.dat)
-
 * [etaT3_HTL_nf3_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf3_fixed.dat)
 * [etaT3_kappa0.50_nf3_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf3_fixed.dat)
 * [etaT3_kappa0.25_nf3_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf3_fixed.dat)
-
 
 **With Running**
 
@@ -51,21 +47,22 @@ a maximal value α≤[1...10] which turns out to be of little importance.
 
 ![eta with running](https://github.com/gw3g/runny-gauge/blob/master/out/eta_running.png)
 
-* [etaT3_HTL_nf0_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf0_running.dat)
-* [etaT3_kappa0.50_nf0_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf0_running.dat)
+  * [etaT3_HTL_nf0_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf0_running.dat)
+  * [etaT3_kappa0.50_nf0_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf0_running.dat)
 
-* [etaT3_HTL_nf2_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf2_running.dat)
-* [etaT3_kappa0.50_nf2_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf2_running.dat)
+  * [etaT3_HTL_nf2_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf2_running.dat)
+  * [etaT3_kappa0.50_nf2_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf2_running.dat)
 
-* [etaT3_HTL_nf3_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf3_running.dat)
-* [etaT3_kappa0.50_nf3_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf3_running.dat)
+  * [etaT3_HTL_nf3_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf3_running.dat)
+  * [etaT3_kappa0.50_nf3_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf3_running.dat)
 
 
 ## Usage
 
-I have designed this piece of code for my personal use, simply to calculate a single number: η (for QCD).
-However, this has become a rather central quantity in heavy-ion physics and these results may be
+I have designed this piece of code for my personal use, simply to calculate η (for QCD).
+However, this has become a central quantity in heavy-ion physics and these results may be
 of wider interest.
+
 Data is saved under ``out/data/``, where file names
 indicate etaT3 (for η/t<sup>3</sup>).
 Firstly, the files tagged 'fixed' give the parametric dependence on the coupling
