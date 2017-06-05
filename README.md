@@ -31,10 +31,6 @@ AMY also showed how to go beyond logarithmic accuracy in
 * [etaT3_kappa0.50_nf0_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf0_fixed.dat)
 * [etaT3_kappa0.25_nf0_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf0_fixed.dat)
 
-<!--* [etaT3_HTL_nf1_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf1_fixed.dat)-->
-<!--* [etaT3_kappa0.50_nf1_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf1_fixed.dat)-->
-<!--* [etaT3_kappa0.25_nf1_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf1_fixed.dat)-->
-
 * [etaT3_HTL_nf2_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf2_fixed.dat)
 * [etaT3_kappa0.50_nf2_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf2_fixed.dat)
 * [etaT3_kappa0.25_nf2_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf2_fixed.dat)
@@ -43,17 +39,6 @@ AMY also showed how to go beyond logarithmic accuracy in
 * [etaT3_kappa0.50_nf3_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf3_fixed.dat)
 * [etaT3_kappa0.25_nf3_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf3_fixed.dat)
 
-<!--* [etaT3_HTL_nf4_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf4_fixed.dat)-->
-<!--* [etaT3_kappa0.50_nf4_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf4_fixed.dat)-->
-<!--* [etaT3_kappa0.25_nf4_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf4_fixed.dat)-->
-
-<!--* [etaT3_HTL_nf5_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf5_fixed.dat)-->
-<!--* [etaT3_kappa0.50_nf5_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf5_fixed.dat)-->
-<!--* [etaT3_kappa0.25_nf5_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf5_fixed.dat)-->
-
-* [etaT3_HTL_nf6_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf6_fixed.dat)
-* [etaT3_kappa0.50_nf6_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf6_fixed.dat)
-* [etaT3_kappa0.25_nf6_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf6_fixed.dat)
 
 **With Running**
 
@@ -64,33 +49,25 @@ s-channel (Q<sup>2</sup>>0) and t- or u-channel (Q<sup>2</sup><0) processes.
 To account for the singularity at the Landau pole,
 a maximal value α≤[1...10] which turns out to be of little importance.
 
-[eta with running](https://github.com/gw3g/runny-gauge/blob/master/out/eta_running.png)
+![eta with running](https://github.com/gw3g/runny-gauge/blob/master/out/eta_running.png)
 
 * [etaT3_HTL_nf0_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf0_running.dat)
 * [etaT3_kappa0.50_nf0_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf0_running.dat)
 
-<!--* [etaT3_HTL_nf1_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf1_running.dat)-->
-<!--* [etaT3_kappa0.50_nf1_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf1_running.dat)-->
-
-<!--* [etaT3_HTL_nf2_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf2_running.dat)-->
-<!--* [etaT3_kappa0.50_nf2_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf2_running.dat)-->
+* [etaT3_HTL_nf2_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf2_running.dat)
+* [etaT3_kappa0.50_nf2_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf2_running.dat)
 
 * [etaT3_HTL_nf3_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf3_running.dat)
 * [etaT3_kappa0.50_nf3_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf3_running.dat)
 
-<!--* [etaT3_HTL_nf4_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf4_running.dat)-->
-<!--* [etaT3_kappa0.50_nf4_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf4_running.dat)-->
-
-<!--* [etaT3_HTL_nf5_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf5_running.dat)-->
-<!--* [etaT3_kappa0.50_nf5_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf5_running.dat)-->
-
-<!--* [etaT3_HTL_nf6_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf6_running.dat)-->
-<!--* [etaT3_kappa0.50_nf6_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf6_running.dat)-->
 
 ## Usage
 
+I have designed this piece of code for my personal use, simply to calculate a single number: η (for QCD).
+However, this has become a rather central quantity in heavy-ion physics and these results may be
+of wider interest.
 Data is saved under ``out/data/``, where file names
-indicate etaT3 (for η/T<sup>3</sup>).
+indicate etaT3 (for η/t<sup>3</sup>).
 Firstly, the files tagged 'fixed' give the parametric dependence on the coupling
 parameter g=(4πα)<sup>1/2</sup>.
 The files tagged as 'running' give the temperature dependence dependence
@@ -99,7 +76,7 @@ The files tagged as 'running' give the temperature dependence dependence
 
 **Visualisation**
 
-Use [gnuplot](www.gnuplot.info) to plot data (scripts are under ``out/plotter``).
+Use [gnuplot](http://www.gnuplot.info) to plot data (scripts are under ``out/plotter``).
 For example, to show the temperature dependent viscosity for 3-flavour QCD:
 ```
 make 'NF=3' temperature
