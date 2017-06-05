@@ -32,7 +32,6 @@ Data is saved under ``out/data/``, where file names
 indicate etaT3 (for η/t<sup>3</sup>).
 Firstly, the files tagged 'fixed' give the parametric dependence on the coupling
 parameter g=(4πα)<sup>1/2</sup>.
-
 * [etaT3_HTL_nf0_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf0_fixed.dat)
 * [etaT3_kappa0.50_nf0_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf0_fixed.dat)
 * [etaT3_kappa0.25_nf0_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.25_nf0_fixed.dat)
@@ -54,18 +53,17 @@ s-channel (Q<sup>2</sup>>0) and t- or u-channel (Q<sup>2</sup><0) processes.
 To account for the singularity at the Landau pole,
 a maximal value α≤[1...10] which turns out to be of little importance.
 ![eta with running](https://github.com/gw3g/runny-gauge/blob/master/out/eta_running.png)
+
 The files tagged as 'running' give the temperature dependence dependence
 (T in units of Λ<sub>QCD</sub>).
+* [etaT3_HTL_nf0_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf0_running.dat)
+* [etaT3_kappa0.50_nf0_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf0_running.dat)
 
+* [etaT3_HTL_nf2_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf2_running.dat)
+* [etaT3_kappa0.50_nf2_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf2_running.dat)
 
-  * [etaT3_HTL_nf0_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf0_running.dat)
-  * [etaT3_kappa0.50_nf0_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf0_running.dat)
-
-  * [etaT3_HTL_nf2_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf2_running.dat)
-  * [etaT3_kappa0.50_nf2_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf2_running.dat)
-
-  * [etaT3_HTL_nf3_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf3_running.dat)
-  * [etaT3_kappa0.50_nf3_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf3_running.dat)
+* [etaT3_HTL_nf3_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf3_running.dat)
+* [etaT3_kappa0.50_nf3_running.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf3_running.dat)
 
 
 ## Usage
