@@ -11,7 +11,7 @@ Also in the aforementioned preprint, we give the revised temperature dependence
 for T≈T<sub>c</sub>, which is compatible with other estimates from lattice QCD
 and hydrodynamic simulations.
 
-** Background / kinetic theory **
+**Background / kinetic theory**
 
 The QCD Boltzmann equation (in the quenched case) was first linearised by
 [Baym et al.](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.64.1867)
