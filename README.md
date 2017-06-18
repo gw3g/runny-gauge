@@ -11,9 +11,7 @@ Also in the aforementioned preprint, we give the revised temperature dependence
 for T≈T<sub>c</sub>, which is compatible with other estimates from lattice QCD
 and hydrodynamic simulations.
 
-## Background / kinetic theory
-
-**fixed-α calculation**
+** Background / kinetic theory
 
 The QCD Boltzmann equation (in the quenched case) was first linearised by
 [Baym et al.](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.64.1867)
@@ -28,10 +26,17 @@ AMY also showed how to go beyond logarithmic accuracy
  This settled the LO result for η, as an expansion in α and allowed the
  *next-to-leading-log* coefficients to be calculated.
 
+
+## Data
+
+**fixed-α calculation**
+
+Here we present results for the LO viscosity, which are accurate to 1% (we only dropped inelastic contributions
+and used a single-function _ansatz_ for the off equilibrium solution).
 Data is saved under ``out/data/``, where file names
 indicate etaT3 (for η/t<sup>3</sup>).
 Firstly, the files tagged 'fixed' give the parametric dependence on the coupling
-parameter g=(4πα)<sup>1/2</sup>.
+parameter g=(4πα)<sup>1/2</sup>. Some useful links are given below:
 
 * [etaT3_HTL_nf0_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_HTL_nf0_fixed.dat)
 * [etaT3_kappa0.50_nf0_fixed.dat](https://github.com/gw3g/runny-gauge/blob/master/out/data/etaT3_kappa0.50_nf0_fixed.dat)
