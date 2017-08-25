@@ -44,7 +44,7 @@ void   rate_E(double,double,double);
 int main(int argc, char **argv) {                                        // Main fnc: to explore... T, alpha  dependence
 
   C_integrand = &C_integrand_qo;
-  points = 60; Temp=1.;Nf=0;
+  points = 40; Temp=1.;Nf=0;
 
   while (argc--) Nf=(int) atoi(*argv++);
   /*for (int nf=0;nf<1;nf++) {                                     // loop over active quark flavours*/
@@ -75,8 +75,8 @@ int main(int argc, char **argv) {                                        // Main
     /*HTL = 1 ; kappa=1.00; eval_g(1e-3,1e2);*/
 
     // T-dep
-    HTL = 0 ; kappa=0.5;  eval_T(0.8,9.);
-    HTL = 1 ; kappa=1.00; eval_T(0.8,9.);
+    /*HTL = 0 ; kappa=0.5;  eval_T(0.5,5.);*/
+    HTL = 1 ; kappa=1.00; eval_T(0.5,5.);
     /*HTL = 0 ; kappa=0.5;  eval_T(1.0,1000.);*/
     /*HTL = 1 ; kappa=1.00; eval_T(1.0,1000.);*/
 
