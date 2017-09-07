@@ -54,7 +54,7 @@ int main(int argc, char **argv) {                                        // Main
     /*HTL = 0 ; kappa=1.00; rate_T(.01,9.);*/
     /*HTL = 1 ; kappa=1.00; rate_T(.1,4.,1.0);*/
 
-    /*HTL = 1 ; kappa=1.00; rate_E(0.1,100.,1.0);*/
+    HTL = 1 ; kappa=1.00; rate_E(0.1,100.,1.0);
     /*HTL = 1 ; kappa=1.00; rate_E(1.,8.,0.8);*/
     /*HTL = 1 ; kappa=1.00; rate_E(1.,8.,2.0);*/
     /*HTL = 1 ; kappa=1.00; rate_E(1.,8.,5.0);*/
