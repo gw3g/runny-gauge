@@ -1,5 +1,5 @@
 CC	= gcc
-CFLAGS	= -std=c99 -I. -lgsl -lgslcblas -lm
+CFLAGS	= -std=c99 -fcommon -lgsl -lgslcblas -lm
 SDIR	= src
 ODIR	= build
 OUT	= out
